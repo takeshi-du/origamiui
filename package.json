@@ -1,0 +1,34 @@
+{
+	"name": "origamiui",
+	"version": "0.1.0",
+	"description": "Provides custom blocks for building layouts within the WordPress editor.",
+	"author": "designupjp",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build --webpack-copy-php",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start --webpack-copy-php",
+		"build:css-dev": "sass assets/scss/oui-grid.scss:assets/css/oui-grid.css --style=expanded && postcss assets/css/oui-grid.css --replace --config ./postcss.config.mjs",
+		"build:css-prod": "sass assets/scss/oui-grid.scss:assets/css/oui-grid.min.css --style=compressed && postcss assets/css/oui-grid.min.css --replace --config ./postcss.config.mjs",
+		"css": "npm run build:css-dev && npm run build:css-prod"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^30.4.0"
+	},
+	"dependencies": {
+		"@wordpress/icons": "^10.12.0",
+		"autoprefixer": "^10.4.21",
+		"bootstrap": "5.3.5",
+		"lodash": "^4.17.21",
+		"postcss": "^8.5.3",
+		"postcss-cli": "^11.0.1",
+		"postcss-prefixer": "^3.0.0",
+		"rtlcss": "^4.3.0",
+		"sass": "^1.86.3"
+	}
+}

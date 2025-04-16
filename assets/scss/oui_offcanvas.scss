@@ -1,0 +1,131 @@
+header {
+  display: block;
+}
+/* ---------------------- */
+/* pullheader */
+/* ---------------------- */
+.header {
+  position: relative; /* 初期状態 */
+  transition: transform 0.5s ease; /* スムーズなアニメーション */
+}
+.header.fixed {
+  position: fixed;
+  top: var(--oui-header-fixed-top, 0px);
+  left: 0;
+  width: 100%;
+  /* height: 100%; */
+  transform: translateY(0); /* 表示状態 */
+}
+.header.hidden {
+  /* top: -100%; */
+  transform: translateY(-100%); /* 隠す */
+}
+
+/* ---------------------- */
+/* offcanvas */
+/* ---------------------- */
+.offcanvas-open,
+.offcanvas-close {
+  display: none;
+}
+@media (max-width: 768px) {
+  .offcanvas-body {
+    height: 100vh;
+    width: 100%; /* この値で幅設定 */
+    position: absolute;
+    z-index: 1;
+    /* --- CSS変数を使ってtopを設定 --- */
+    top: 0;
+    left: -100%; /* 左から表示用の初期位置 */
+    background-color: var(--oui-offcanvas-bgcolor, #fff);
+    overflow-x: hidden;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    transition: 0.5s;
+  }
+  .offcanvas_right .offcanvas-body {
+    left: auto;
+    right: -100%; /* 右から表示用の初期位置 */
+  }
+  /* フェードイン用のスタイル */
+  .offcanvas_fade .offcanvas-body {
+    left: 0; /* 位置を固定（スライドしない） */
+    opacity: 0;
+    transition: opacity 0.5s ease; /* opacityのみアニメーション */
+  }
+  .offcanvas_fade .offcanvas-body.open {
+    opacity: 1;
+  }
+
+  .offcanvas-body li, .offcanvas-body a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+  }
+  .offcanvas-body a.active {
+    background-color: #000; /* Add a background color on active links */
+    color: white; /* Text color */
+  }
+  .offcanvas-button {
+    z-index: 999;
+  }
+  .offcanvas-open,.offcanvas-close {
+    z-index: 1000;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .offcanvas-open {
+    display: block;
+  }
+}
+
+
+/* ---------------------- */
+/* dropdown */
+/* ---------------------- */
+/* ドロップダウンの親要素の位置を相対的に設定 */
+.doropdown {
+  position: relative;
+}
+/* ドロップダウンメニューのデフォルト状態（非表示） */
+.doropdown-menu {
+  display: block; /* 初期状態で非表示 */
+  position: absolute; /* 親要素を基準にした絶対位置 */
+  visibility: hidden;
+  top: 100%; /* 親要素の下に配置 */
+  left: 0; /* 左端に揃える */
+  background-color: #fff; /* 背景色 */
+  border: 1px solid #ccc; /* 枠線 */
+  padding: 10px; /* 内余白 */
+  list-style: none; /* リストの点を消す */
+  margin: 0; /* 余白をリセット */
+  opacity: 0; /* 初期状態は透明 */
+  transform: translateY(-10px); /* 少し上に移動 */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* アニメーション設定 */
+}
+/* マウスオーバー時に表示＆アニメーション適用 */
+/* .doropdown:hover .doropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+} */
+.doropdown-menu.is-open {
+  height: auto;
+  visibility: visible; /* 表示する */
+  opacity: 1; /* 不透明に */
+  transform: translateY(0); /* 元の位置に戻す */
+}
+
+@media (max-width: 768px) {
+  .doropdown-menu {
+    position: static;
+    background-color: transparent; /* 背景色 */
+    border: none; /* 枠線 */
+    position: static;
+    height: 0;
+  }
+}

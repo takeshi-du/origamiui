@@ -1,0 +1,331 @@
+# Copyright (C) 2025 OrigamiUI
+# This file is distributed under the same license as the OrigamiUI plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: OrigamiUI 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/origamiui\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-04-02T12:45:47+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: origamiui\n"
+
+#. Plugin Name of the plugin
+#: origamiui.php
+#: origamiui.php:108
+msgid "OrigamiUI"
+msgstr ""
+
+#. Description of the plugin
+#: origamiui.php
+msgid "Example block scaffolded with Create Block tool."
+msgstr ""
+
+#. Author of the plugin
+#: origamiui.php
+msgid "The WordPress Contributors"
+msgstr ""
+
+#: build/custom-column/index.js:1
+#: src/custom-column/edit.js:78
+msgid "Column Settings"
+msgstr ""
+
+#: build/custom-column/index.js:1
+#: build/custom-container/index.js:1
+#: build/custom-grid/index.js:1
+#: build/custom-group/index.js:1
+#: build/custom-row/index.js:1
+#: src/custom-column/edit.js:135
+#: src/custom-container/edit.js:68
+#: src/custom-grid/edit.js:67
+#: src/custom-group/edit.js:70
+#: src/custom-row/edit.js:67
+msgid "Sizing Settings"
+msgstr ""
+
+#: build/custom-column/index.js:1
+#: build/custom-container/index.js:1
+#: build/custom-grid/index.js:1
+#: build/custom-group/index.js:1
+#: build/custom-row/index.js:1
+#: src/custom-column/edit.js:137
+#: src/custom-container/edit.js:70
+#: src/custom-grid/edit.js:69
+#: src/custom-group/edit.js:72
+#: src/custom-row/edit.js:69
+msgid "--size"
+msgstr ""
+
+#: build/custom-column/index.js:1
+#: src/custom-column/edit.js:154
+msgid "Height Settings"
+msgstr ""
+
+#: build/custom-column/index.js:1
+#: build/custom-container/index.js:1
+#: build/custom-group/index.js:1
+#: build/custom-row/index.js:1
+#: src/custom-column/edit.js:177
+#: src/custom-container/edit.js:130
+#: src/custom-group/edit.js:132
+#: src/custom-row/edit.js:129
+msgid "Flex&Grid Settings"
+msgstr ""
+
+#: build/custom-column/index.js:1
+#: src/custom-column/edit.js:184
+msgid "Flex Display Settings"
+msgstr ""
+
+#: build/custom-column/index.js:1
+#: build/custom-container/index.js:1
+#: build/custom-grid/index.js:1
+#: build/custom-group/index.js:1
+#: build/custom-row/index.js:1
+#: src/custom-column/edit.js:317
+#: src/custom-container/edit.js:270
+#: src/custom-grid/edit.js:200
+#: src/custom-group/edit.js:272
+#: src/custom-row/edit.js:269
+msgid "Spacing Settings"
+msgstr ""
+
+#: build/custom-column/index.js:1
+#: build/custom-container/index.js:1
+#: build/custom-grid/index.js:1
+#: build/custom-group/index.js:1
+#: build/custom-row/index.js:1
+#: src/custom-column/edit.js:319
+#: src/custom-container/edit.js:272
+#: src/custom-grid/edit.js:202
+#: src/custom-group/edit.js:274
+#: src/custom-row/edit.js:271
+msgid "--space"
+msgstr ""
+
+#: build/custom-column/index.js:1
+#: src/custom-column/edit.js:332
+msgid "Margin Settings"
+msgstr ""
+
+#: build/custom-column/index.js:1
+#: src/custom-column/edit.js:371
+msgid "Padding Settings"
+msgstr ""
+
+#: build/custom-column/index.js:1
+#: src/custom-column/edit.js:400
+msgid "Gap Settings"
+msgstr ""
+
+#: build/custom-column/index.js:1
+#: build/custom-container/index.js:1
+#: build/custom-grid/index.js:1
+#: build/custom-group/index.js:1
+#: build/custom-row/index.js:1
+#: src/custom-column/edit.js:432
+#: src/custom-container/edit.js:385
+#: src/custom-grid/edit.js:315
+#: src/custom-group/edit.js:387
+#: src/custom-row/edit.js:384
+msgid "Position Settings"
+msgstr ""
+
+#: build/custom-column/index.js:1
+#: build/custom-container/index.js:1
+#: build/custom-grid/index.js:1
+#: build/custom-group/index.js:1
+#: build/custom-row/index.js:1
+#: src/custom-column/edit.js:457
+#: src/custom-container/edit.js:406
+#: src/custom-grid/edit.js:336
+#: src/custom-group/edit.js:457
+#: src/custom-row/edit.js:405
+msgid "Display Settings"
+msgstr ""
+
+#: build/custom-column/index.js:1
+#: build/custom-container/index.js:1
+#: build/custom-grid/index.js:1
+#: build/custom-group/index.js:1
+#: build/custom-row/index.js:1
+#: src/custom-column/edit.js:459
+#: src/custom-container/edit.js:408
+#: src/custom-grid/edit.js:338
+#: src/custom-group/edit.js:459
+#: src/custom-row/edit.js:407
+msgid "Overflow"
+msgstr ""
+
+#: build/custom-column/index.js:1
+#: build/custom-container/index.js:1
+#: build/custom-grid/index.js:1
+#: build/custom-group/index.js:1
+#: build/custom-row/index.js:1
+#: src/custom-column/edit.js:471
+#: src/custom-container/edit.js:420
+#: src/custom-grid/edit.js:350
+#: src/custom-group/edit.js:471
+#: src/custom-row/edit.js:419
+msgid "Opacity"
+msgstr ""
+
+#: build/custom-column/index.js:1
+#: build/custom-container/index.js:1
+#: build/custom-grid/index.js:1
+#: build/custom-group/index.js:1
+#: build/custom-row/index.js:1
+#: src/custom-column/edit.js:484
+#: src/custom-container/edit.js:433
+#: src/custom-grid/edit.js:363
+#: src/custom-group/edit.js:484
+#: src/custom-row/edit.js:432
+msgid "z-index"
+msgstr ""
+
+#: build/custom-column/index.js:1
+#: build/custom-container/index.js:1
+#: build/custom-grid/index.js:1
+#: build/custom-group/index.js:1
+#: build/custom-row/index.js:1
+#: src/custom-column/edit.js:497
+#: src/custom-container/edit.js:446
+#: src/custom-grid/edit.js:376
+#: src/custom-group/edit.js:497
+#: src/custom-row/edit.js:445
+msgid "HTML Tag"
+msgstr ""
+
+#: build/custom-column/index.js:1
+#: build/custom-container/index.js:1
+#: build/custom-grid/index.js:1
+#: build/custom-group/index.js:1
+#: build/custom-row/index.js:1
+#: src/custom-column/edit.js:512
+#: src/custom-container/edit.js:461
+#: src/custom-grid/edit.js:391
+#: src/custom-group/edit.js:534
+#: src/custom-row/edit.js:460
+msgid "Custom CSS"
+msgstr ""
+
+#: build/custom-container/index.js:1
+#: src/custom-container/edit.js:56
+msgid "Container Settings"
+msgstr ""
+
+#: build/custom-container/index.js:1
+#: src/custom-container/edit.js:58
+msgid "Container"
+msgstr ""
+
+#: build/custom-grid/index.js:1
+#: src/custom-grid/edit.js:56
+msgid "Grid Settings"
+msgstr ""
+
+#: build/custom-grid/index.js:1
+#: src/custom-grid/edit.js:58
+msgid "Grid"
+msgstr ""
+
+#: build/custom-grid/index.js:1
+#: src/custom-grid/edit.js:129
+msgid "Flex Settings"
+msgstr ""
+
+#: build/custom-group/index.js:1
+#: src/custom-group/edit.js:427
+msgid "Link Setting"
+msgstr ""
+
+#: build/custom-group/index.js:1
+#: src/custom-group/edit.js:429
+msgid "URL"
+msgstr ""
+
+#: build/custom-group/index.js:1
+#: src/custom-group/edit.js:436
+msgid "Rel"
+msgstr ""
+
+#: build/custom-group/index.js:1
+#: src/custom-group/edit.js:443
+msgid "mailTo"
+msgstr ""
+
+#: build/custom-group/index.js:1
+#: src/custom-group/edit.js:450
+msgid "tell"
+msgstr ""
+
+#: build/custom-row/index.js:1
+#: src/custom-row/edit.js:56
+msgid "Row Settings"
+msgstr ""
+
+#: build/custom-row/index.js:1
+#: src/custom-row/edit.js:58
+msgid "Row"
+msgstr ""
+
+#: build/custom-column/block.json
+#: src/custom-column/block.json
+msgctxt "block title"
+msgid "Column"
+msgstr ""
+
+#: build/custom-column/block.json
+#: src/custom-column/block.json
+msgctxt "block description"
+msgid "A custom column block."
+msgstr ""
+
+#: build/custom-container/block.json
+#: src/custom-container/block.json
+msgctxt "block title"
+msgid "Container"
+msgstr ""
+
+#: build/custom-container/block.json
+#: src/custom-container/block.json
+msgctxt "block description"
+msgid "A custom container block."
+msgstr ""
+
+#: build/custom-grid/block.json
+#: src/custom-grid/block.json
+msgctxt "block title"
+msgid "Grid"
+msgstr ""
+
+#: build/custom-grid/block.json
+#: build/custom-row/block.json
+#: src/custom-grid/block.json
+#: src/custom-row/block.json
+msgctxt "block description"
+msgid "A custom row block."
+msgstr ""
+
+#: build/custom-group/block.json
+#: src/custom-group/block.json
+msgctxt "block title"
+msgid "Group"
+msgstr ""
+
+#: build/custom-group/block.json
+#: src/custom-group/block.json
+msgctxt "block description"
+msgid "A custom Group block."
+msgstr ""
+
+#: build/custom-row/block.json
+#: src/custom-row/block.json
+msgctxt "block title"
+msgid "Row"
+msgstr ""

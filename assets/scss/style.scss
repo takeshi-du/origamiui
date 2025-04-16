@@ -1,0 +1,158 @@
+// ブレークポイントの定義
+$breakpoints: (
+  "sm": 0,       // smはメディアクエリなし
+  "md": 768px,
+  "lg": 992px
+);
+:root {
+  --oui-space: 5px;
+  --oui-size: 5%;
+}
+
+// ------------------------------
+// Margin/Padding
+// ------------------------------
+$properties: (
+  "m": "margin",
+  "p": "padding"
+);
+
+$directions: (
+  "t": "top",
+  "b": "bottom",
+  "l": "left",
+  "r": "right"
+);
+
+// スペースの値（今回はn=1のみ）
+$space-values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+$negative-space-values: -1, -2, -3, -4, -5, -6, -7, -8, -9, -10;
+
+// smブレークポイント（メディアクエリなし）
+@each $prop-abbr, $prop in $properties {
+  @each $dir-abbr, $dir in $directions {
+    @each $value in $space-values {
+      .#{$prop-abbr}#{$dir-abbr}-#{$value} {
+        #{$prop}-#{$dir}: calc(var(--oui-space) * #{$value});
+      }
+    }
+    @each $value in $negative-space-values {
+      .#{$prop-abbr}#{$dir-abbr}-n#{-$value} {
+        #{$prop}-#{$dir}: calc(var(--oui-space) * #{$value});
+      }
+    }
+  }
+}
+// mdとlgブレークポイント
+@each $bp-name, $bp-value in $breakpoints {
+  @if $bp-name != "sm" {
+    @media (min-width: $bp-value) {
+      @each $prop-abbr, $prop in $properties {
+        @each $dir-abbr, $dir in $directions {
+          @each $value in $space-values {
+            .#{$prop-abbr}#{$dir-abbr}-#{$bp-name}-#{$value} {
+              #{$prop}-#{$dir}: calc(var(--oui-space) * #{$value});
+            }
+          }
+          @each $value in $negative-space-values {
+            .#{$prop-abbr}#{$dir-abbr}-#{$bp-name}-n#{-$value} {
+              #{$prop}-#{$dir}: calc(var(--oui-space) * #{$value});
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// ------------------------------
+// gap
+// ------------------------------
+$gapproperties: (
+  "row-gap": "row-gap",
+  "column-gap": "column-gap"
+);
+
+$gap-values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+
+// smブレークポイント（メディアクエリなし）
+@each $prop-abbr, $prop in $gapproperties {
+  @each $value in $gap-values {
+    .#{$prop-abbr}-#{$value} {
+      #{$prop}: calc(var(--oui-space) * #{$value}) !important;
+    }
+  }
+}
+// mdとlgブレークポイント（メディアクエリあり）
+@each $bp-name, $bp-value in $breakpoints {
+  @if $bp-name != "sm" {
+    @media (min-width: $bp-value) {
+      @each $prop-abbr, $prop in $gapproperties {
+        @each $value in $gap-values {
+          .#{$prop-abbr}-#{$bp-name}-#{$value} {
+            #{$prop}: calc(var(--oui-space) * #{$value}) !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ------------------------------
+// Width/Height -> topとかないやつ
+// ------------------------------
+$properties: (
+  "w": "width",
+  "h": "height"
+);
+
+// サイズの値（今回は1のみ、必要に応じて拡張可能）
+$size-values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+
+// smブレークポイント（メディアクエリなし）
+@each $prop-abbr, $prop in $properties {
+  @each $value in $size-values {
+    .#{$prop-abbr}-#{$value} {
+      #{$prop}: calc(var(--oui-size) * #{$value});
+    }
+  }
+}
+// mdとlgブレークポイント（メディアクエリあり）
+@each $bp-name, $bp-value in $breakpoints {
+  @if $bp-name != "sm" {
+    @media (min-width: $bp-value) {
+      @each $prop-abbr, $prop in $properties {
+        @each $value in $size-values {
+          .#{$prop-abbr}-#{$bp-name}-#{$value} {
+            #{$prop}: calc(var(--oui-size) * #{$value});
+          }
+        }
+      }
+    }
+  }
+}
+
+// ------------------------------
+// reboot
+// ------------------------------
+body {
+  word-break: break-all;
+}
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+// ------------------------------
+// image
+// ------------------------------
+.w-100 {
+  img {
+    width: 100% !important;
+  }
+}
+.img-fluid {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
