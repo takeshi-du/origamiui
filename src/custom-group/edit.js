@@ -125,6 +125,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                       ]}
                       onChange={(newHeight) => updateStyles(`base.sizing.height.${tab.name}`, newHeight)}
                       __next40pxDefaultSize={ true }
+                      __nextHasNoMarginBottom={ true }
                     />
                   </FlexItem>
                 </Flex>
@@ -150,6 +151,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                   ]}
                   onChange={(newDisplay) => updateStyles(`base.flex.display.${tab.name}`, newDisplay)}
                   __next40pxDefaultSize={ true }
+                  __nextHasNoMarginBottom={ true }
                 />
                 <Flex style={{flexWrap: 'wrap'}}>
                   <FlexItem style={{width: '45%'}}>
@@ -163,6 +165,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                       ]}
                       onChange={(newDirection) => updateStyles(`base.flex.direction.${tab.name}`, newDirection)}
                       __next40pxDefaultSize={ true }
+                      __nextHasNoMarginBottom={ true }
                     />
                   </FlexItem>
                   <FlexItem style={{width: '45%'}}>
@@ -176,6 +179,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                       ]}
                       onChange={(newWrap) => updateStyles(`base.flex.wrap.${tab.name}`, newWrap)}
                       __next40pxDefaultSize={ true }
+                      __nextHasNoMarginBottom={ true }
                     />
                   </FlexItem>
                 </Flex>
@@ -194,6 +198,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                       ]}
                       onChange={(newAlign) => updateStyles(`base.flex.align.${tab.name}`, newAlign)}
                       __next40pxDefaultSize={ true }
+                      __nextHasNoMarginBottom={ true }
                     />
                   </FlexItem>
                   <FlexItem style={{width: '45%'}}>
@@ -211,6 +216,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                       ]}
                       onChange={(newJustify) => updateStyles(`base.flex.justify.${tab.name}`, newJustify)}
                       __next40pxDefaultSize={ true }
+                      __nextHasNoMarginBottom={ true }
                     />
                   </FlexItem>
                 </Flex>
@@ -226,6 +232,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                       ]}
                       onChange={(newGrow) => updateStyles(`base.flex.grow.${tab.name}`, newGrow)}
                       __next40pxDefaultSize={ true }
+                      __nextHasNoMarginBottom={ true }
                     />
                   </FlexItem>
                   <FlexItem style={{width: '45%'}}>
@@ -239,6 +246,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                       ]}
                       onChange={(newShrink) => updateStyles(`base.flex.shrink.${tab.name}`, newShrink)}
                       __next40pxDefaultSize={ true }
+                      __nextHasNoMarginBottom={ true }
                     />
                   </FlexItem>
                 </Flex>
@@ -257,6 +265,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                       ]}
                       onChange={(newSelf) => updateStyles(`base.flex.self.${tab.name}`, newSelf)}
                       __next40pxDefaultSize={ true }
+                      __nextHasNoMarginBottom={ true }
                     />
                   </FlexItem>
                   <FlexItem style={{width: '45%'}}>
@@ -274,6 +283,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                       ]}
                       onChange={(newOrder) => updateStyles(`base.flex.order.${tab.name}`, newOrder)}
                       __next40pxDefaultSize={ true }
+                      __nextHasNoMarginBottom={ true }
                     />
                   </FlexItem>
                 </Flex>
@@ -333,6 +343,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                           updateStyles(`base.spacing.margin.${side}.${tab.name}`, newMargin)
                         }
                         __next40pxDefaultSize={ true }
+                        __nextHasNoMarginBottom={ true }
                       />
                     </FlexItem>
                   ))}
@@ -363,6 +374,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                           updateStyles(`base.spacing.padding.${side}.${tab.name}`, newPadding)
                         }
                         __next40pxDefaultSize={ true }
+                        __nextHasNoMarginBottom={ true }
                       />
                     </FlexItem>
                   ))}
@@ -392,6 +404,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                           updateStyles(`base.spacing.gap.${side}.${tab.name}`, newGap)
                         }
                         __next40pxDefaultSize={ true }
+                        __nextHasNoMarginBottom={ true }
                       />
                     </FlexItem>
                   ))}
@@ -421,6 +434,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                       ]}
                       onChange={(newClass) => updateStyles(`base.position.className.${tab.name}`, newClass)}
                       __next40pxDefaultSize={ true }
+                      __nextHasNoMarginBottom={ true }
                     />
                   </FlexItem>
                 </Flex>
@@ -437,12 +451,14 @@ export default function Edit({ attributes, setAttributes, clientId }){
             label={__(`縦方向に半分外に出す`, 'origamiui')}
             checked={styles.base.position.isOutsideVertical}
             onChange={(newValue) => updateStyles(`base.position.isOutsideVertical`, newValue)}
+            __nextHasNoMarginBottom={ true }
           />
           <ToggleControl
             style={{ marginTop: '0.5em' }}
             label={__(`横方向に半分外に出す`, 'origamiui')}
             checked={styles.base.position.isOutsideHorizontal}
             onChange={(newValue) => updateStyles(`base.position.isOutsideHorizontal`, newValue)}
+            __nextHasNoMarginBottom={ true }
           />
         </PanelBody>
         <PanelBody title={__('Link Setting', 'origamiui')} initialOpen={false}>
@@ -452,6 +468,8 @@ export default function Edit({ attributes, setAttributes, clientId }){
             onChange={(value) => setAttributes({
               link: { ...attributes.link, url: value }
             })}
+            __next40pxDefaultSize={ true }
+            __nextHasNoMarginBottom={ true }
           />
           <TextControl
             label={__('Rel', 'origamiui')}
@@ -459,6 +477,8 @@ export default function Edit({ attributes, setAttributes, clientId }){
             onChange={(value) => setAttributes({
               link: { ...attributes.link, rel: value }
             })}
+            __next40pxDefaultSize={ true }
+            __nextHasNoMarginBottom={ true }
           />
           <TextControl
             label={__('mailTo', 'origamiui')}
@@ -466,6 +486,8 @@ export default function Edit({ attributes, setAttributes, clientId }){
             onChange={(value) => setAttributes({
               link: { ...attributes.link, mailTo: value }
             })}
+            __next40pxDefaultSize={ true }
+            __nextHasNoMarginBottom={ true }
           />
           <TextControl
             label={__('tell', 'origamiui')}
@@ -473,6 +495,8 @@ export default function Edit({ attributes, setAttributes, clientId }){
             onChange={(value) => setAttributes({
               link: { ...attributes.link, tell: value }
             })}
+            __next40pxDefaultSize={ true }
+            __nextHasNoMarginBottom={ true }
           />
         </PanelBody>
         <PanelBody title={__('Display Settings', 'origamiui')} initialOpen={false}>
@@ -488,6 +512,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
             ]}
             onChange={(newOverflow) => updateStyles(`base.display.overflow`, newOverflow)}
             __next40pxDefaultSize={ true }
+            __nextHasNoMarginBottom={ true }
           />
           <SelectControl
             label={__('Opacity', 'origamiui')}
@@ -502,6 +527,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
             ]}
             onChange={(newOpacity) => updateStyles(`base.display.opacity`, newOpacity)}
             __next40pxDefaultSize={ true }
+            __nextHasNoMarginBottom={ true }
           />
           <SelectControl
             label={__('z-index', 'origamiui')}
@@ -516,6 +542,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
             ]}
             onChange={(newZIndex) => updateStyles(`base.display.zIndex`, newZIndex)}
             __next40pxDefaultSize={ true }
+            __nextHasNoMarginBottom={ true }
           />
           <SelectControl
             label={__('HTML Tag', 'origamiui')}
@@ -530,6 +557,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
             ]}
             onChange={(value) => setAttributes({ tagName: value })}
             __next40pxDefaultSize={ true }
+            __nextHasNoMarginBottom={ true }
           />
           <TabPanel
             tabs={tabs}
@@ -549,6 +577,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                   ]}
                   onChange={(newDisplay) => updateStyles(`base.display.visible.${tab.name}`, newDisplay)}
                   __next40pxDefaultSize={ true }
+                  __nextHasNoMarginBottom={ true }
                 />
               </>
             )}
