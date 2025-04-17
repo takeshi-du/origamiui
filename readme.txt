@@ -12,6 +12,13 @@ Provides custom blocks for building layouts within the WordPress editor.
 
 This plugin includes custom blocks that empower you to build layouts directly within the WordPress editor functionality. You can use the blocks to create responsive sites and original layout patterns.
 
+---
+
+**Source Code / Development**
+
+The source code for OrigamiUI is publicly available on GitHub. You are welcome to review the code, report issues.
+
+* **GitHub Repository:** [origamiui](https://github.com/takeshi-du/origamiui)
 
 == Frequently Asked Questions ==
 
