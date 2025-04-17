@@ -75,6 +75,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
             units={[
               { value: '%', label: '%' },{ value: 'px', label: 'px' },
             ]}
+            __next40pxDefaultSize={ true }
           />
           <TabPanel
             tabs={tabs}
@@ -299,6 +300,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
             units={[
               { value: 'px', label: 'px' },{ value: 'em', label: 'em' },{ value: 'rem', label: 'rem' },
             ]}
+            __next40pxDefaultSize={ true }
           />
           <TabPanel
             tabs={tabs}
