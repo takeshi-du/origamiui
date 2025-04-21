@@ -390,6 +390,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                         value={styles.base.spacing.gap[side][tab.name]}
                         options={[
                           { label: '---', value: '---' },
+                          { label: 0, value: '0' },
                           { label: `${parseFloat(styles.base.spacing.space)}`, value: '1' },
                           { label: `${parseFloat(styles.base.spacing.space) * 2}`, value: '2' },
                           { label: `${parseFloat(styles.base.spacing.space) * 3}`, value: '3' },
