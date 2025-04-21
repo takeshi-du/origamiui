@@ -25,7 +25,7 @@ $directions: (
 );
 
 // スペースの値（今回はn=1のみ）
-$space-values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+$space-values: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 $negative-space-values: -1, -2, -3, -4, -5, -6, -7, -8, -9, -10;
 
 // smブレークポイント（メディアクエリなし）
@@ -73,7 +73,7 @@ $gapproperties: (
   "column-gap": "column-gap"
 );
 
-$gap-values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+$gap-values: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 
 // smブレークポイント（メディアクエリなし）
 @each $prop-abbr, $prop in $gapproperties {

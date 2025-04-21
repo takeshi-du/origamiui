@@ -34,7 +34,20 @@ $enable-cssgrid:              true;
 $utilities: map-get-multiple(
   $utilities,
   (
+    "object-fit",
+    "opacity",
+    "overflow",
+    "overflow-x",
+    "overflow-y",
     "display",
+    "shadow",
+    "position",
+    "top",
+    "bottom",
+    "start",
+    "end",
+    "z-index",
+    "translate-middle",
     "order",
     "flex",
     "flex-direction",
@@ -45,6 +58,7 @@ $utilities: map-get-multiple(
     "align-items",
     "align-content",
     "align-self",
+    "order",
   )
 );
 
