@@ -33,12 +33,12 @@ $negative-space-values: -1, -2, -3, -4, -5, -6, -7, -8, -9, -10;
   @each $dir-abbr, $dir in $directions {
     @each $value in $space-values {
       .#{$prop-abbr}#{$dir-abbr}-#{$value} {
-        #{$prop}-#{$dir}: calc(var(--oui-space) * #{$value});
+        #{$prop}-#{$dir}: calc(var(--oui-space) * #{$value}) !important;
       }
     }
     @each $value in $negative-space-values {
       .#{$prop-abbr}#{$dir-abbr}-n#{-$value} {
-        #{$prop}-#{$dir}: calc(var(--oui-space) * #{$value});
+        #{$prop}-#{$dir}: calc(var(--oui-space) * #{$value}) !important;
       }
     }
   }
@@ -51,12 +51,12 @@ $negative-space-values: -1, -2, -3, -4, -5, -6, -7, -8, -9, -10;
         @each $dir-abbr, $dir in $directions {
           @each $value in $space-values {
             .#{$prop-abbr}#{$dir-abbr}-#{$bp-name}-#{$value} {
-              #{$prop}-#{$dir}: calc(var(--oui-space) * #{$value});
+              #{$prop}-#{$dir}: calc(var(--oui-space) * #{$value}) !important;
             }
           }
           @each $value in $negative-space-values {
             .#{$prop-abbr}#{$dir-abbr}-#{$bp-name}-n#{-$value} {
-              #{$prop}-#{$dir}: calc(var(--oui-space) * #{$value});
+              #{$prop}-#{$dir}: calc(var(--oui-space) * #{$value}) !important;
             }
           }
         }
