@@ -4,7 +4,7 @@
  * Description:       Provides custom blocks for building layouts within the WordPress editor.
  * Requires at least: 6.4
  * Requires PHP:      7.2
- * Version:           0.1.0
+ * Version:           0.1.2
  * Author:            DesignupJP
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
