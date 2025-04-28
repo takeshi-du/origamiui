@@ -1,0 +1,29 @@
+header {
+  display: block;
+}
+/* ---------------------- */
+/* header */
+/* ---------------------- */
+.header {
+  position: relative;
+  transition: transform 0.5s ease;
+}
+.header.header-fixed,
+.header.header-sticky,
+.header.header-absolute {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999999;
+  /* height: 100%; */
+  // transform: translateY(0);
+}
+.header.header-fixed {
+  position: fixed;
+}
+.header.header-sticky {
+  position: sticky;
+}
+.header.header-absolute {
+  position: absolute;
+}

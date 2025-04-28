@@ -1557,25 +1557,33 @@ header {
 }
 
 /* ---------------------- */
-/* pullheader */
+/* header */
 /* ---------------------- */
 .oui_header {
-  position: relative; /* 初期状態 */
-  transition: transform 0.5s ease; /* スムーズなアニメーション */
+  position: relative;
+  transition: transform 0.5s ease;
 }
 
-.oui_header.oui_fixed {
-  position: fixed;
-  top: var(--oui-header-fixed-top, 0px);
+.oui_header.oui_header-fixed,
+.oui_header.oui_header-sticky,
+.oui_header.oui_header-absolute {
+  top: 0;
   left: 0;
   width: 100%;
+  z-index: 999999;
   /* height: 100%; */
-  transform: translateY(0); /* 表示状態 */
 }
 
-.oui_header.oui_hidden {
-  /* top: -100%; */
-  transform: translateY(-100%); /* 隠す */
+.oui_header.oui_header-fixed {
+  position: fixed;
+}
+
+.oui_header.oui_header-sticky {
+  position: sticky;
+}
+
+.oui_header.oui_header-absolute {
+  position: absolute;
 }
 
 /* ---------------------- */

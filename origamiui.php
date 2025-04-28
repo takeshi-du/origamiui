@@ -32,6 +32,7 @@ function origamiui_register_blocks() {
   register_block_type( __DIR__ . '/build/custom-row' );
   register_block_type( __DIR__ . '/build/custom-grid' );
   register_block_type( __DIR__ . '/build/custom-column' );
+  register_block_type( __DIR__ . '/build/custom-header' );
 }
 add_action( 'init', 'origamiui_register_blocks' );
 
@@ -51,6 +52,7 @@ function origamiui_enqueue_blocks_assets() {
     'custom-row',
     'custom-grid',
     'custom-column',
+    'custom-header',
   ];
 
   foreach ($blocks as $block) {

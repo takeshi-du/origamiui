@@ -1,26 +1,3 @@
-header {
-  display: block;
-}
-/* ---------------------- */
-/* pullheader */
-/* ---------------------- */
-.header {
-  position: relative; /* 初期状態 */
-  transition: transform 0.5s ease; /* スムーズなアニメーション */
-}
-.header.fixed {
-  position: fixed;
-  top: var(--oui-header-fixed-top, 0px);
-  left: 0;
-  width: 100%;
-  /* height: 100%; */
-  transform: translateY(0); /* 表示状態 */
-}
-.header.hidden {
-  /* top: -100%; */
-  transform: translateY(-100%); /* 隠す */
-}
-
 /* ---------------------- */
 /* offcanvas */
 /* ---------------------- */
