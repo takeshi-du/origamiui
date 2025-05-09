@@ -144,8 +144,13 @@ export const convertStylesToCSS = (styles) => {
     // return classMap[alignment] || 'position-absolute oui_top-50 oui_start-50 translate-middle';
   };
 
-  if (styles?.base?.offcanvasBgColor) {
-    inlineStyles['--oui-offcanvas-bgcolor'] = styles.base.offcanvasBgColor;
+  if (styles?.base?.offcanvasWidth) {
+    const offcanvasWidth = styles.base.offcanvasWidth;
+    Object.entries(offcanvasWidth).forEach(([breakpoint, val]) => {
+      if (val && val !== '---') {
+        inlineStyles[`--oui-offcanvas-width-${breakpoint}`] = val;
+      }
+    });
   }
   
   if (styles?.base?.sizing) {

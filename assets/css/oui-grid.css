@@ -1552,148 +1552,218 @@
     --bs-gutter-y: 3rem;
   }
 }
-header {
-  display: block;
-}
-
-/* ---------------------- */
-/* header */
-/* ---------------------- */
-.oui_header {
-  position: relative;
-  transition: transform 0.5s ease;
-}
-
-.oui_header.oui_header-fixed,
-.oui_header.oui_header-sticky,
-.oui_header.oui_header-absolute {
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 999999;
-  /* height: 100%; */
-}
-
-.oui_header.oui_header-fixed {
-  position: fixed;
-}
-
-.oui_header.oui_header-sticky {
-  position: sticky;
-}
-
-.oui_header.oui_header-absolute {
-  position: absolute;
-}
-
 /* ---------------------- */
 /* offcanvas */
 /* ---------------------- */
-.oui_offcanvas-open,
-.oui_offcanvas-close {
-  display: none;
+.oui_offcanvas.oui_offcanvas-breakpoint-lg {
+  width: var(--oui-offcanvas-width-lg, 100%);
 }
 
-@media (max-width: 768px) {
-  .oui_offcanvas-body {
+.oui_offcanvas.oui_offcanvas-breakpoint-lg.oui_offcanvas_left {
+  left: calc(var(--oui-offcanvas-width-lg, 100%) * -1);
+}
+
+.oui_offcanvas.oui_offcanvas-breakpoint-lg.oui_offcanvas_right {
+  right: calc(var(--oui-offcanvas-width-lg, 100%) * -1);
+}
+
+@media (max-width: 991.98px) {
+  .oui_offcanvas.oui_offcanvas-breakpoint-md {
+    width: var(--oui-offcanvas-width-md, 100%);
+  }
+  .oui_offcanvas.oui_offcanvas-breakpoint-md.oui_offcanvas_left {
+    left: calc(var(--oui-offcanvas-width-md, 100%) * -1);
+  }
+  .oui_offcanvas.oui_offcanvas-breakpoint-md.oui_offcanvas_right {
+    right: calc(var(--oui-offcanvas-width-md, 100%) * -1);
+  }
+}
+@media (max-width: 767.98px) {
+  .oui_offcanvas.oui_offcanvas-breakpoint-sm {
+    width: var(--oui-offcanvas-width-sm, 100%);
+  }
+  .oui_offcanvas.oui_offcanvas-breakpoint-md {
+    width: var(--oui-offcanvas-width-sm, 100%);
+  }
+  .oui_offcanvas.oui_offcanvas-breakpoint-sm.oui_offcanvas_left {
+    left: calc(var(--oui-offcanvas-width-sm, 100%) * -1);
+  }
+  .oui_offcanvas.oui_offcanvas-breakpoint-sm.oui_offcanvas_right {
+    right: calc(var(--oui-offcanvas-width-sm, 100%) * -1);
+  }
+  .oui_offcanvas.oui_offcanvas-breakpoint-md.oui_offcanvas_left {
+    left: calc(var(--oui-offcanvas-width-sm, 100%) * -1);
+  }
+  .oui_offcanvas.oui_offcanvas-breakpoint-md.oui_offcanvas_right {
+    right: calc(var(--oui-offcanvas-width-sm, 100%) * -1);
+  }
+}
+@media (max-width: 767.98px) {
+  .oui_offcanvas {
     height: 100vh;
-    width: 100%; /* この値で幅設定 */
-    position: absolute;
-    z-index: 1;
-    /* --- CSS変数を使ってtopを設定 --- */
+    position: fixed;
+    z-index: 99999;
     top: 0;
-    left: -100%; /* 左から表示用の初期位置 */
-    background-color: var(--oui-offcanvas-bgcolor, #fff);
     overflow-x: hidden;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    transition: 0.5s;
+    transition: 0.5s ease;
+    visibility: hidden;
+    pointer-events: none;
   }
-  .oui_offcanvas_right .oui_offcanvas-body {
-    left: auto;
-    right: -100%; /* 右から表示用の初期位置 */
+  .oui_offcanvas.oui_offcanvas_slide.oui_is_active {
+    z-index: 99999;
+    visibility: visible;
+    pointer-events: auto;
   }
-  /* フェードイン用のスタイル */
-  .oui_offcanvas_fade .oui_offcanvas-body {
-    left: 0; /* 位置を固定（スライドしない） */
+  /* フェードイン */
+  .oui_offcanvas.oui_offcanvas_fade {
     opacity: 0;
-    transition: opacity 0.5s ease; /* opacityのみアニメーション */
+    transition: opacity 0.5s ease;
   }
-  .oui_offcanvas_fade .oui_offcanvas-body.oui_open {
+  .oui_offcanvas.oui_offcanvas_fade.oui_is_active {
     opacity: 1;
+    z-index: 99999;
+    visibility: visible;
+    pointer-events: auto;
   }
-  .oui_offcanvas-body li, .oui_offcanvas-body a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #fff;
-    display: block;
-    transition: 0.3s;
+  .oui_offcanvas.oui_offcanvas_fade.oui_offcanvas_left {
+    left: 0 !important;
   }
-  .oui_offcanvas-body a.oui_active {
-    background-color: #000; /* Add a background color on active links */
-    color: white; /* Text color */
+  .oui_offcanvas.oui_offcanvas_fade.oui_offcanvas_right {
+    right: 0 !important;
   }
-  .oui_offcanvas-button {
-    z-index: 999;
+  .oui_offcanvas + .oui_offcanvas_bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* z-index: 9; */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.7s ease;
   }
-  .oui_offcanvas-open, .oui_offcanvas-close {
-    z-index: 1000;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-  }
-  .oui_offcanvas-open {
-    display: block;
+  .oui_offcanvas_bg.oui_bg_is_active {
+    opacity: 1;
+    z-index: 3;
+    visibility: visible;
+    pointer-events: auto;
   }
 }
-/* ---------------------- */
-/* dropdown */
-/* ---------------------- */
-/* ドロップダウンの親要素の位置を相対的に設定 */
-.oui_doropdown {
-  position: relative;
+@media (max-width: 991.98px) {
+  .oui_offcanvas.oui_offcanvas-breakpoint-md {
+    height: 100vh;
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    overflow-x: hidden;
+    transition: 0.5s ease;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .oui_offcanvas.oui_offcanvas-breakpoint-md.oui_offcanvas_slide.oui_is_active {
+    z-index: 99999;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  /* フェードイン */
+  .oui_offcanvas.oui_offcanvas-breakpoint-md.oui_offcanvas_fade {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .oui_offcanvas.oui_offcanvas-breakpoint-md.oui_offcanvas_fade.oui_is_active {
+    opacity: 1;
+    z-index: 99999;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .oui_offcanvas.oui_offcanvas-breakpoint-md.oui_offcanvas_fade.oui_offcanvas_left {
+    left: 0 !important;
+  }
+  .oui_offcanvas.oui_offcanvas-breakpoint-md.oui_offcanvas_fade.oui_offcanvas_right {
+    right: 0 !important;
+  }
+  .oui_offcanvas-breakpoint-md + .oui_offcanvas_bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* z-index: 9; */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+  .oui_offcanvas_bg.oui_bg_is_active {
+    opacity: 1;
+    z-index: 3;
+    visibility: visible;
+    pointer-events: auto;
+  }
 }
-
-/* ドロップダウンメニューのデフォルト状態（非表示） */
-.oui_doropdown-menu {
-  display: block; /* 初期状態で非表示 */
-  position: absolute; /* 親要素を基準にした絶対位置 */
+.oui_offcanvas.oui_offcanvas-breakpoint-lg {
+  height: 100vh;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  overflow-x: hidden;
+  transition: 0.5s ease;
   visibility: hidden;
-  top: 100%; /* 親要素の下に配置 */
-  left: 0; /* 左端に揃える */
-  background-color: #fff; /* 背景色 */
-  border: 1px solid #ccc; /* 枠線 */
-  padding: 10px; /* 内余白 */
-  list-style: none; /* リストの点を消す */
-  margin: 0; /* 余白をリセット */
-  opacity: 0; /* 初期状態は透明 */
-  transform: translateY(-10px); /* 少し上に移動 */
-  transition: opacity 0.3s ease, transform 0.3s ease; /* アニメーション設定 */
+  pointer-events: none;
 }
 
-/* マウスオーバー時に表示＆アニメーション適用 */
-/* .doropdown:hover .doropdown-menu {
+.oui_offcanvas.oui_offcanvas-breakpoint-lg.oui_offcanvas_slide.oui_is_active {
+  z-index: 99999;
   visibility: visible;
-  opacity: 1;
-  transform: translateY(0);
-} */
-.oui_doropdown-menu.oui_is-open {
-  height: auto;
-  visibility: visible; /* 表示する */
-  opacity: 1; /* 不透明に */
-  transform: translateY(0); /* 元の位置に戻す */
+  pointer-events: auto;
 }
 
-@media (max-width: 768px) {
-  .oui_doropdown-menu {
-    position: static;
-    background-color: transparent; /* 背景色 */
-    border: none; /* 枠線 */
-    position: static;
-    height: 0;
-  }
+/* slide */
+/* フェードイン */
+.oui_offcanvas.oui_offcanvas-breakpoint-lg.oui_offcanvas_fade {
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
+
+.oui_offcanvas.oui_offcanvas-breakpoint-lg.oui_offcanvas_fade.oui_is_active {
+  opacity: 1;
+  z-index: 99999;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.oui_offcanvas.oui_offcanvas-breakpoint-lg.oui_offcanvas_fade.oui_offcanvas_left {
+  left: 0 !important;
+}
+
+.oui_offcanvas.oui_offcanvas-breakpoint-lg.oui_offcanvas_fade.oui_offcanvas_right {
+  right: 0 !important;
+}
+
+.oui_offcanvas-breakpoint-lg + .oui_offcanvas_bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* z-index: 9; */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.oui_offcanvas_bg.oui_bg_is_active {
+  opacity: 1;
+  z-index: 3;
+  visibility: visible;
+  pointer-events: auto;
+}
+
 .oui_object-fit-contain {
   -o-object-fit: contain !important;
   object-fit: contain !important;

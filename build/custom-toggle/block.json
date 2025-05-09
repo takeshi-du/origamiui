@@ -1,0 +1,203 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "origamiui/custom-toggle",
+  "version": "0.1.0",
+  "title": "Toggle",
+  "category": "origamiui",
+  "description": "A custom Toggle Button block.",
+  "attributes": {
+    "toggleName": {
+      "type": "string",
+      "default": "oui_offcanvas-open"
+    },
+    "toggleTarget": {
+      "type": "string",
+      "default": ""
+    },
+    "styles": {
+      "type": "object",
+      "default": {
+        "base": {
+          "sizing": {
+            "size": "5%",
+            "width": {
+              "sm": "---",
+              "md": "---",
+              "lg": "---"
+            },
+            "height": {
+              "sm": "---",
+              "md": "---",
+              "lg": "---"
+            },
+            "column": {
+              "sm": "---",
+              "md": "---",
+              "lg": "---"
+            }
+          },
+          "flex": {
+            "display": {
+              "sm": "---",
+              "md": "---",
+              "lg": "---"
+            },
+            "direction": {
+              "sm": "---",
+              "md": "---",
+              "lg": "---"
+            },
+            "align": {
+              "sm": "---",
+              "md": "---",
+              "lg": "---"
+            },
+            "justify": {
+              "sm": "---",
+              "md": "---",
+              "lg": "---"
+            },
+            "wrap": {
+              "sm": "---",
+              "md": "---",
+              "lg": "---"
+            },
+            "grow": {
+              "sm": "---",
+              "md": "---",
+              "lg": "---"
+            },
+            "shrink": {
+              "sm": "---",
+              "md": "---",
+              "lg": "---"
+            },
+            "self": {
+              "sm": "---",
+              "md": "---",
+              "lg": "---"
+            },
+            "order": {
+              "sm": "---",
+              "md": "---",
+              "lg": "---"
+            }
+          },
+          "spacing": {
+            "space": "10px",
+            "margin": {
+              "top": {
+                "sm": "---",
+                "md": "---",
+                "lg": "---"
+              },
+              "bottom": {
+                "sm": "---",
+                "md": "---",
+                "lg": "---"
+              },
+              "left": {
+                "sm": "---",
+                "md": "---",
+                "lg": "---"
+              },
+              "right": {
+                "sm": "---",
+                "md": "---",
+                "lg": "---"
+              }
+            },
+            "padding": {
+              "top": {
+                "sm": "---",
+                "md": "---",
+                "lg": "---"
+              },
+              "bottom": {
+                "sm": "---",
+                "md": "---",
+                "lg": "---"
+              },
+              "left": {
+                "sm": "---",
+                "md": "---",
+                "lg": "---"
+              },
+              "right": {
+                "sm": "---",
+                "md": "---",
+                "lg": "---"
+              }
+            },
+            "gap": {
+              "row": {
+                "sm": "---",
+                "md": "---",
+                "lg": "---"
+              },
+              "column": {
+                "sm": "---",
+                "md": "---",
+                "lg": "---"
+              }
+            }
+          },
+          "position": {
+            "className": {
+              "sm": "---",
+              "md": "---",
+              "lg": "---"
+            },
+            "alignment": "",
+            "isOutsideHorizontal": false,
+            "isOutsideVertical": false
+          },
+          "display": {
+            "overflow": "---",
+            "opacity": "---",
+            "zIndex": "---",
+            "visible": {
+              "sm": "---",
+              "md": "---",
+              "lg": "---"
+            }
+          }
+        }
+      }
+    }
+  },
+  "supports": {
+    "html": false,
+    "layout": false,
+    "anchor": true,
+    "color": {
+      "background": true,
+      "gradients": true
+    },
+    "__experimentalBorder": {
+      "color": true,
+      "radius": true,
+      "style": true,
+      "width": true
+    },
+    "shadow": true,
+    "spacing": {
+      "margin": true,
+      "padding": true
+    },
+    "background": {
+      "backgroundImage": true,
+      "backgroundSize": true
+    },
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "textAlign": true
+    }
+  },
+  "style": "oui-css",
+  "editorStyle": "oui-editor",
+  "textdomain": "origamiui",
+  "editorScript": "file:./build/index.js"
+}

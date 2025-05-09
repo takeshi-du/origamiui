@@ -9,7 +9,8 @@ module.exports = {
         'custom-row/index': './src/custom-row/index.js',
         'custom-grid/index': './src/custom-grid/index.js',
         'custom-column/index': './src/custom-column/index.js',
-        'custom-header/index': './src/custom-header/index.js',
+        'custom-offcanvas/index': './src/custom-offcanvas/index.js',
+        'custom-toggle/index': './src/custom-toggle/index.js',
     },
     output: {
         ...defaultConfig.output,
