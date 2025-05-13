@@ -12,6 +12,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
     offcanvasType,
     offcanvasPosition,
     offcanvasBreakPoint,
+    offcanvasBgColor,
     styles
   } = attributes;
   const breakpoints = ['sm', 'md', 'lg'];
@@ -68,6 +69,8 @@ export default function Edit({ attributes, setAttributes, clientId }){
               { label: 'fade', value: 'oui_offcanvas_fade' }
             ]}
             onChange={(value) => setAttributes({ offcanvasType: value })}
+            __next40pxDefaultSize={ true }
+            __nextHasNoMarginBottom={ true }
           />
           <SelectControl
             label={__('Offcanvas Position', 'origamiui')}
@@ -77,6 +80,8 @@ export default function Edit({ attributes, setAttributes, clientId }){
               { label: 'right', value: 'oui_offcanvas_right' }
             ]}
             onChange={(value) => setAttributes({ offcanvasPosition: value })}
+            __next40pxDefaultSize={ true }
+            __nextHasNoMarginBottom={ true }
           />
           <SelectControl
             label={__('Offcanvas Break Point', 'origamiui')}
@@ -87,6 +92,15 @@ export default function Edit({ attributes, setAttributes, clientId }){
               { label: 'pc', value: 'oui_offcanvas-breakpoint-lg' }
             ]}
             onChange={(value) => setAttributes({ offcanvasBreakPoint: value })}
+            __next40pxDefaultSize={ true }
+            __nextHasNoMarginBottom={ true }
+          />
+          <Heading style={{ marginTop: '1.5em', marginBottom: '5px' }}>{__(`Background Color`, 'origamiui')}</Heading>
+          <ColorPicker
+            label={__(`Offcanvas Background Color`, 'origamiui')}
+            color={styles.base.offcanvas.bgColor}
+            onChange={ ( value ) => updateStyles(`base.offcanvas.bgColor`, value)}
+            enableAlpha
           />
           <TabPanel
             tabs={tabs}
@@ -97,11 +111,12 @@ export default function Edit({ attributes, setAttributes, clientId }){
                 <Heading style={{ marginTop: '1.5em' }}>{__(`Offcanvas Width for ${tab.title}`, 'origamiui')}</Heading>
                 <UnitControl
                   label={__(`Offcanvas Width (${tab.title})`, 'origamiui')}
-                  value={styles.base.offcanvasWidth[tab.name]}
-                  onChange={(newWidth) => updateStyles(`base.offcanvasWidth.${tab.name}`, newWidth)}
+                  value={styles.base.offcanvas.width[tab.name]}
+                  onChange={(newWidth) => updateStyles(`base.offcanvas.width.${tab.name}`, newWidth)}
                   units={[
                     { value: '%', label: '%' },
                   ]}
+                  __next40pxDefaultSize={ true }
                 />
               </>
             )}

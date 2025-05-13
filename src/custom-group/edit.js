@@ -432,6 +432,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                         { label: 'relative', value: 'relative' },
                         { label: 'absolute', value: 'absolute' },
                         { label: 'fixed', value: 'fixed' },
+                        { label: 'sticky', value: 'sticky' },
                       ]}
                       onChange={(newClass) => updateStyles(`base.position.className.${tab.name}`, newClass)}
                       __next40pxDefaultSize={ true }

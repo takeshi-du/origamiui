@@ -70,10 +70,13 @@
               "lg": "---"
             }
           },
-          "offcanvasWidth": {
-            "sm": "80%",
-            "md": "100%",
-            "lg": "100%"
+          "offcanvas": {
+            "bgColor": "#fff",
+            "width": {
+              "sm": "80%",
+              "md": "100%",
+              "lg": "100%"
+            }
           }
         }
       }

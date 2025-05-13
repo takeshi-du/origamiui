@@ -10,12 +10,16 @@ export default function save({ attributes }) {
   const fixedToggleClass = 'oui_toggle';
   const combinedClasses = `${blockClasses || ''} ${fixedToggleClass}`.trim();
 
+  const buildDataAttrs = ({ toggleName, toggleTarget }) => ({
+    ...(toggleName   ? { 'data-ui-toggle' : toggleName   } : {}),
+    ...(toggleTarget ? { 'data-ui-target': toggleTarget } : {}),
+  });
+
   // ブロックのプロパティにインラインスタイルを適用
   const blockProps = useBlockProps.save({
     className: combinedClasses,
     style: inlineStyles,
-    'data-toggle': toggleName,
-    'data-target': toggleTarget,
+    ...buildDataAttrs({ toggleName, toggleTarget }),
   });
 
   return (

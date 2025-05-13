@@ -1608,6 +1608,7 @@
     transition: 0.5s ease;
     visibility: hidden;
     pointer-events: none;
+    background-color: var(--oui-offcanvas-bgcolor, #fff);
   }
   .oui_offcanvas.oui_offcanvas_slide.oui_is_active {
     z-index: 99999;
@@ -1661,6 +1662,7 @@
     transition: 0.5s ease;
     visibility: hidden;
     pointer-events: none;
+    background-color: var(--oui-offcanvas-bgcolor, #fff);
   }
   .oui_offcanvas.oui_offcanvas-breakpoint-md.oui_offcanvas_slide.oui_is_active {
     z-index: 99999;
@@ -1713,6 +1715,7 @@
   transition: 0.5s ease;
   visibility: hidden;
   pointer-events: none;
+  background-color: var(--oui-offcanvas-bgcolor, #fff);
 }
 
 .oui_offcanvas.oui_offcanvas-breakpoint-lg.oui_offcanvas_slide.oui_is_active {

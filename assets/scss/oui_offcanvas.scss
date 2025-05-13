@@ -52,6 +52,7 @@
     transition: 0.5s ease;
     visibility: hidden;
     pointer-events: none;
+    background-color: var(--oui-offcanvas-bgcolor, #fff);
   }
   .offcanvas.offcanvas_slide.is_active {
     z-index: 99999;
@@ -107,6 +108,7 @@
     transition: 0.5s ease;
     visibility: hidden;
     pointer-events: none;
+    background-color: var(--oui-offcanvas-bgcolor, #fff);
   }
   .offcanvas.offcanvas-breakpoint-md.offcanvas_slide.is_active {
     z-index: 99999;
@@ -160,6 +162,7 @@
   transition: 0.5s ease;
   visibility: hidden;
   pointer-events: none;
+  background-color: var(--oui-offcanvas-bgcolor, #fff);
 }
 .offcanvas.offcanvas-breakpoint-lg.offcanvas_slide.is_active {
   z-index: 99999;

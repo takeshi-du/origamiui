@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
   //------------------------------------------------------
   //	Offcanvas
   //------------------------------------------------------
-  const openBtn = document.querySelectorAll('[data-toggle="oui_offcanvas-open"]');
-  const closeBtn = document.querySelectorAll('[data-toggle="oui_offcanvas-close"]');
+  const openBtn = document.querySelectorAll('[data-ui-toggle="oui_offcanvas-open"]');
+  const closeBtn = document.querySelectorAll('[data-ui-toggle="oui_offcanvas-close"]');
 
   if (!openBtn || !closeBtn) {
     return;
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   function openNav(clickedButton) {
-    const targetId = clickedButton.getAttribute('data-target');
+    const targetId = clickedButton.getAttribute('data-ui-target');
     const offcanvas = document.querySelector(`#${targetId}`);
     
     if (!offcanvas) {
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.style.overflow = "hidden";
   }
   function closeNav(clickedButton) {
-    const targetId = clickedButton.getAttribute('data-target');
+    const targetId = clickedButton.getAttribute('data-ui-target');
     const offcanvas = document.querySelector(`#${targetId}`);
 
     if (!offcanvas) {

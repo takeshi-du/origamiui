@@ -144,13 +144,20 @@ export const convertStylesToCSS = (styles) => {
     // return classMap[alignment] || 'position-absolute oui_top-50 oui_start-50 translate-middle';
   };
 
-  if (styles?.base?.offcanvasWidth) {
-    const offcanvasWidth = styles.base.offcanvasWidth;
-    Object.entries(offcanvasWidth).forEach(([breakpoint, val]) => {
-      if (val && val !== '---') {
-        inlineStyles[`--oui-offcanvas-width-${breakpoint}`] = val;
-      }
-    });
+  if (styles?.base?.offcanvas) {
+    const { bgColor, width } = styles.base.offcanvas;
+
+    if (width) {
+      Object.entries(width).forEach(([breakpoint, val]) => {
+        if (val && val !== '---') {
+          inlineStyles[`--oui-offcanvas-width-${breakpoint}`] = val;
+        }
+      });
+    }
+
+    if (bgColor) {
+      inlineStyles['--oui-offcanvas-bgcolor'] = bgColor;
+    }
   }
   
   if (styles?.base?.sizing) {
