@@ -91,6 +91,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                       value={styles.base.sizing.width[tab.name]}
                       options={[
                         { label: '---', value: '---' },
+                        { label: 'auto', value: 'auto' },
                         { label: `${parseFloat(styles.base.sizing.size)}`, value: '1' },
                         { label: `${parseFloat(styles.base.sizing.size) * 2}`, value: '2' },
                         { label: `${parseFloat(styles.base.sizing.size) * 3}`, value: '3' },
@@ -112,6 +113,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                       value={styles.base.sizing.height[tab.name]}
                       options={[
                         { label: '---', value: '---' },
+                        { label: 'auto', value: 'auto' },
                         { label: `${parseFloat(styles.base.sizing.size)}`, value: '1' },
                         { label: `${parseFloat(styles.base.sizing.size) * 2}`, value: '2' },
                         { label: `${parseFloat(styles.base.sizing.size) * 3}`, value: '3' },
