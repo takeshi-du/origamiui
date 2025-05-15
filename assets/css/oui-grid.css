@@ -1555,6 +1555,10 @@
 /* ---------------------- */
 /* offcanvas */
 /* ---------------------- */
+.oui_offcanvas + .oui_offcanvas_bg {
+  display: none;
+}
+
 .oui_offcanvas.oui_offcanvas-breakpoint-lg {
   width: var(--oui-offcanvas-width-lg, 100%);
 }
@@ -1567,6 +1571,10 @@
   right: calc(var(--oui-offcanvas-width-lg, 100%) * -1);
 }
 
+.oui_offcanvas.oui_offcanvas-breakpoint-lg + .oui_offcanvas_bg {
+  display: block;
+}
+
 @media (max-width: 991.98px) {
   .oui_offcanvas.oui_offcanvas-breakpoint-md {
     width: var(--oui-offcanvas-width-md, 100%);
@@ -1576,6 +1584,9 @@
   }
   .oui_offcanvas.oui_offcanvas-breakpoint-md.oui_offcanvas_right {
     right: calc(var(--oui-offcanvas-width-md, 100%) * -1);
+  }
+  .oui_offcanvas.oui_offcanvas-breakpoint-md + .oui_offcanvas_bg {
+    display: block;
   }
 }
 @media (max-width: 767.98px) {
@@ -1596,6 +1607,9 @@
   }
   .oui_offcanvas.oui_offcanvas-breakpoint-md.oui_offcanvas_right {
     right: calc(var(--oui-offcanvas-width-sm, 100%) * -1);
+  }
+  .oui_offcanvas + .oui_offcanvas_bg {
+    display: block;
   }
 }
 @media (max-width: 767.98px) {
@@ -5093,6 +5107,10 @@
     column-gap: calc(var(--oui-space) * 10) !important;
   }
 }
+.oui_w-auto {
+  width: auto;
+}
+
 .oui_w-1 {
   width: calc(var(--oui-size) * 1);
 }
@@ -5131,6 +5149,10 @@
 
 .oui_w-10 {
   width: calc(var(--oui-size) * 10);
+}
+
+.oui_h-auto {
+  height: auto;
 }
 
 .oui_h-1 {
@@ -5174,6 +5196,9 @@
 }
 
 @media (min-width: 768px) {
+  .oui_w-md-auto {
+    width: auto;
+  }
   .oui_w-md-1 {
     width: calc(var(--oui-size) * 1);
   }
@@ -5203,6 +5228,9 @@
   }
   .oui_w-md-10 {
     width: calc(var(--oui-size) * 10);
+  }
+  .oui_h-md-auto {
+    height: auto;
   }
   .oui_h-md-1 {
     height: calc(var(--oui-size) * 1);
@@ -5236,6 +5264,9 @@
   }
 }
 @media (min-width: 992px) {
+  .oui_w-lg-auto {
+    width: auto;
+  }
   .oui_w-lg-1 {
     width: calc(var(--oui-size) * 1);
   }
@@ -5265,6 +5296,9 @@
   }
   .oui_w-lg-10 {
     width: calc(var(--oui-size) * 10);
+  }
+  .oui_h-lg-auto {
+    height: auto;
   }
   .oui_h-lg-1 {
     height: calc(var(--oui-size) * 1);
