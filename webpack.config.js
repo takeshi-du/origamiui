@@ -1,20 +1,24 @@
+/* webpack.config.js */
 const defaultConfig = require('@wordpress/scripts/config/webpack.config');
 const path = require('path');
+const fs   = require('fs');
+
+const blocksDir  = path.resolve(__dirname, 'src/blocks');
+const blockSlugs = fs.readdirSync(blocksDir).filter((name) =>
+  fs.statSync(path.join(blocksDir, name)).isDirectory()
+);
+
+const entry = {};
+blockSlugs.forEach((slug) => {
+  entry[`blocks/${slug}/index`] = `./src/blocks/${slug}/index.js`;
+});
 
 module.exports = {
-    ...defaultConfig,
-    entry: {
-        'custom-group/index': './src/custom-group/index.js',
-        'custom-container/index': './src/custom-container/index.js',
-        'custom-row/index': './src/custom-row/index.js',
-        'custom-grid/index': './src/custom-grid/index.js',
-        'custom-column/index': './src/custom-column/index.js',
-        'custom-offcanvas/index': './src/custom-offcanvas/index.js',
-        'custom-toggle/index': './src/custom-toggle/index.js',
-    },
-    output: {
-        ...defaultConfig.output,
-        path: path.resolve(process.cwd(), 'build'),
-        filename: '[name].js',
-    },
+  ...defaultConfig,
+  entry,
+  output: {
+    ...defaultConfig.output,
+    path: path.resolve(process.cwd(), 'build'),
+    filename: '[name].js',
+  },
 };

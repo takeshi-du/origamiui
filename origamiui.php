@@ -27,13 +27,21 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 function origamiui_register_blocks() {
-  register_block_type( __DIR__ . '/build/custom-group' );
-  register_block_type( __DIR__ . '/build/custom-container' );
-  register_block_type( __DIR__ . '/build/custom-row' );
-  register_block_type( __DIR__ . '/build/custom-grid' );
-  register_block_type( __DIR__ . '/build/custom-column' );
-  register_block_type( __DIR__ . '/build/custom-offcanvas' );
-  register_block_type( __DIR__ . '/build/custom-toggle' );
+  $blocks = [
+    'custom-group',
+    'custom-container',
+    'custom-row',
+    'custom-grid',
+    'custom-column',
+    'custom-offcanvas',
+    'custom-toggle',
+  ];
+
+  $block_json_base = __DIR__ . '/build/blocks';
+
+  foreach ( $blocks as $block ) {
+    register_block_type( "$block_json_base/$block" );
+  }
 }
 add_action( 'init', 'origamiui_register_blocks' );
 
@@ -61,9 +69,9 @@ function origamiui_enqueue_blocks_assets() {
     $script_handle = "origamiui-$block";
     wp_enqueue_script(
       $script_handle,
-      plugins_url( "build/$block/index.js", __FILE__ ),
+      plugins_url( "build/blocks/$block/index.js", __FILE__ ),
       array( 'wp-blocks', 'wp-element', 'wp-i18n', 'wp-editor' ),
-      filemtime( plugin_dir_path( __FILE__ ) . "build/$block/index.js" ),
+      filemtime( plugin_dir_path( __FILE__ ) . "build/blocks/$block/index.js" ),
       true
     );
     wp_set_script_translations(

@@ -1,7 +1,7 @@
-import './custom-group';
-import './custom-container';
-import './custom-row';
-import './custom-grid';
-import './custom-column';
-import './custom-offcanvas';
-import './custom-toggle';
+import './blocks/custom-group';
+import './blocks/custom-container';
+import './blocks/custom-row';
+import './blocks/custom-grid';
+import './blocks/custom-column';
+import './blocks/custom-offcanvas';
+import './blocks/custom-toggle';
