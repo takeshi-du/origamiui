@@ -34,6 +34,9 @@ Once the plugin is activated, the custom blocks will appear in the block inserte
 
 == Changelog ==
 
+= 0.2.0 =
+* Add Header Offcanvas
+
 = 0.1.2 =
 * Fix style issue.
 
