@@ -80,7 +80,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
               <Flex style={{flexWrap: 'wrap'}}>
                 <FlexItem style={{width: '45%'}}>
                   <SelectControl
-                    label={__(`Width (${tab.title})`, 'origamiui')}
+                    label={__(`Width (${tab.name})`, 'origamiui')}
                     value={styles.base.sizing.width[tab.name]}
                     options={[
                       { label: '---', value: '---' },
@@ -102,7 +102,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                 </FlexItem>
                 <FlexItem style={{width: '45%'}}>
                   <SelectControl
-                    label={__(`Height (${tab.title})`, 'origamiui')}
+                    label={__(`Height (${tab.name})`, 'origamiui')}
                     value={styles.base.sizing.height[tab.name]}
                     options={[
                       { label: '---', value: '---' },
@@ -134,7 +134,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
               <>
                 <Heading style={{ marginTop: '1.5em' }}>{__(`Flex Display Settings`, 'origamiui')}</Heading>
                 <SelectControl
-                  label={__(`Flex Display (${tab.title})`, 'origamiui')}
+                  label={__(`Flex Display (${tab.name})`, 'origamiui')}
                   value={styles.base.flex.display[tab.name]}
                   options={[
                     { label: '---', value: '---' },
@@ -148,7 +148,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                 <Flex style={{flexWrap: 'wrap'}}>
                   <FlexItem style={{width: '45%'}}>
                     <SelectControl
-                      label={__(`Flex Direction (${tab.title})`, 'origamiui')}
+                      label={__(`Flex Direction (${tab.name})`, 'origamiui')}
                       value={styles.base.flex.direction[tab.name]}
                       options={[
                         { label: '---', value: '---' },
@@ -162,7 +162,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                   </FlexItem>
                   <FlexItem style={{width: '45%'}}>
                     <SelectControl
-                      label={__(`Flex Wrap (${tab.title})`, 'origamiui')}
+                      label={__(`Flex Wrap (${tab.name})`, 'origamiui')}
                       value={styles.base.flex.wrap[tab.name]}
                       options={[
                         { label: '---', value: '---' },
@@ -178,7 +178,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                 <Flex style={{flexWrap: 'wrap'}}>
                   <FlexItem style={{width: '45%'}}>
                     <SelectControl
-                      label={__(`Align Items (${tab.title})`, 'origamiui')}
+                      label={__(`Align Items (${tab.name})`, 'origamiui')}
                       value={styles.base.flex.align[tab.name]}
                       options={[
                         { label: '---', value: '---' },
@@ -195,7 +195,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                   </FlexItem>
                   <FlexItem style={{width: '45%'}}>
                     <SelectControl
-                      label={__(`Justify Content (${tab.title})`, 'origamiui')}
+                      label={__(`Justify Content (${tab.name})`, 'origamiui')}
                       value={styles.base.flex.justify[tab.name]}
                       options={[
                         { label: '---', value: '---' },
@@ -215,7 +215,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                 <Flex style={{flexWrap: 'wrap'}}>
                   <FlexItem style={{width: '45%'}}>
                     <SelectControl
-                      label={__(`Flex Grow (${tab.title})`, 'origamiui')}
+                      label={__(`Flex Grow (${tab.name})`, 'origamiui')}
                       value={styles.base.flex.grow[tab.name]}
                       options={[
                         { label: '---', value: '---' },
@@ -229,7 +229,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                   </FlexItem>
                   <FlexItem style={{width: '45%'}}>
                     <SelectControl
-                      label={__(`Flex Shrink (${tab.title})`, 'origamiui')}
+                      label={__(`Flex Shrink (${tab.name})`, 'origamiui')}
                       value={styles.base.flex.shrink[tab.name]}
                       options={[
                         { label: '---', value: '---' },
@@ -245,7 +245,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                 <Flex style={{flexWrap: 'wrap'}}>
                   <FlexItem style={{width: '45%'}}>
                     <SelectControl
-                      label={__(`Flex Self (${tab.title})`, 'origamiui')}
+                      label={__(`Flex Self (${tab.name})`, 'origamiui')}
                       value={styles.base.flex.self[tab.name]}
                       options={[
                         { label: '---', value: '---' },
@@ -262,7 +262,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                   </FlexItem>
                   <FlexItem style={{width: '45%'}}>
                     <SelectControl
-                      label={__(`Flex Order (${tab.title})`, 'origamiui')}
+                      label={__(`Flex Order (${tab.name})`, 'origamiui')}
                       value={styles.base.flex.order[tab.name]}
                       options={[
                         { label: '---', value: '---' },
@@ -302,7 +302,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                     <FlexItem style={{width: '45%'}}>
                       <SelectControl
                         key={`${side}-${tab.name}`}
-                        label={__(`${side} (${tab.title})`, 'origamiui')}
+                        label={__(`${side} (${tab.name})`, 'origamiui')}
                         value={styles.base.spacing.margin[side][tab.name]}
                         options={[
                           { label: '---', value: '---' },
@@ -343,7 +343,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                     <FlexItem style={{width: '45%'}}>
                       <SelectControl
                         key={`${side}-${tab.name}`}
-                        label={__(`${side} (${tab.title})`, 'origamiui')}
+                        label={__(`${side} (${tab.name})`, 'origamiui')}
                         value={styles.base.spacing.padding[side][tab.name]}
                         options={[
                           { label: '---', value: '---' },
@@ -374,7 +374,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                     <FlexItem style={{width: '45%'}}>
                       <SelectControl
                         key={`${side}-${tab.name}`}
-                        label={__(`${side} (${tab.title})`, 'origamiui')}
+                        label={__(`${side} (${tab.name})`, 'origamiui')}
                         value={styles.base.spacing.gap[side][tab.name]}
                         options={[
                           { label: '---', value: '---' },
@@ -410,7 +410,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                 <Flex style={{flexWrap: 'wrap', marginTop: '1.5em'}}>
                   <FlexItem style={{width: '45%'}}>
                     <SelectControl
-                      label={__(`Position (${tab.title})`, 'origamiui')}
+                      label={__(`Position (${tab.name})`, 'origamiui')}
                       value={styles.base.position.className[tab.name]}
                       options={[
                         { label: '---', value: '---' },
@@ -550,7 +550,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
           <ResponsiveTabs>
             {(tab) => (
               <>
-                <Heading style={{ marginTop: '1.5em', marginBottom: '5px' }}>{__(`Display (${tab.title})`, 'origamiui')}</Heading>
+                <Heading style={{ marginTop: '1.5em', marginBottom: '5px' }}>{__(`Display (${tab.name})`, 'origamiui')}</Heading>
                 <SelectControl
                   value={styles.base.display.visible[tab.name]}
                   options={[
