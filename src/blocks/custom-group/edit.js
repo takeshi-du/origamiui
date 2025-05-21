@@ -9,6 +9,7 @@ import set from 'lodash/set';
 
 // 追加: 共通コンポーネント
 import ResponsiveTabs from '../../components/ResponsiveTabs';
+import PositionSettingsPanel from '../../components/PositionSettingsPanel';
 import DisplaySettingsPanel from '../../components/DisplaySettingsPanel';
 
 export default function Edit({ attributes, setAttributes, clientId }){
@@ -426,52 +427,11 @@ export default function Edit({ attributes, setAttributes, clientId }){
             )}
           </ResponsiveTabs>
         </PanelBody>
-        <PanelBody title={__('Position Settings', 'origamiui')} initialOpen={false}>
-          <ResponsiveTabs>
-            {(tab) => (
-              <>
-                <Flex style={{flexWrap: 'wrap', marginTop: '1.5em'}}>
-                  <FlexItem style={{width: '45%'}}>
-                    <SelectControl
-                      label={__(`Position (${tab.name})`, 'origamiui')}
-                      value={styles.base.position.className[tab.name]}
-                      options={[
-                        { label: '---', value: '---' },
-                        { label: 'static', value: 'static' },
-                        { label: 'relative', value: 'relative' },
-                        { label: 'absolute', value: 'absolute' },
-                        { label: 'fixed', value: 'fixed' },
-                        { label: 'sticky', value: 'sticky' },
-                      ]}
-                      onChange={(newClass) => updateStyles(`base.position.className.${tab.name}`, newClass)}
-                      __next40pxDefaultSize={ true }
-                      __nextHasNoMarginBottom={ true }
-                    />
-                  </FlexItem>
-                </Flex>
-              </>
-            )}
-          </ResponsiveTabs>
-          <AlignmentMatrixControl
-            label={__(`Alignment`)}
-            value={styles.base.position.alignment}
-            onChange={(newValue) => updateStyles(`base.position.alignment`, newValue)}
-          />
-          <ToggleControl
-            style={{ marginTop: '1.5em' }}
-            label={__(`縦方向に半分外に出す`, 'origamiui')}
-            checked={styles.base.position.isOutsideVertical}
-            onChange={(newValue) => updateStyles(`base.position.isOutsideVertical`, newValue)}
-            __nextHasNoMarginBottom={ true }
-          />
-          <ToggleControl
-            style={{ marginTop: '0.5em' }}
-            label={__(`横方向に半分外に出す`, 'origamiui')}
-            checked={styles.base.position.isOutsideHorizontal}
-            onChange={(newValue) => updateStyles(`base.position.isOutsideHorizontal`, newValue)}
-            __nextHasNoMarginBottom={ true }
-          />
-        </PanelBody>
+        <PositionSettingsPanel
+          styles={ styles.base.position }
+          updateStyles={ updateStyles }
+          initialOpen={ false }
+        />
         <PanelBody title={__('Link Setting', 'origamiui')} initialOpen={false}>
           <TextControl
             label={__('URL', 'origamiui')}
