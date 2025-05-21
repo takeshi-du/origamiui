@@ -9,6 +9,7 @@ import set from 'lodash/set';
 
 // 追加: 共通コンポーネント
 import ResponsiveTabs from '../../components/ResponsiveTabs';
+import DisplaySettingsPanel from '../../components/DisplaySettingsPanel';
 
 export default function Edit({ attributes, setAttributes, clientId }){
   const { tagName, link, styles } = attributes;
@@ -509,67 +510,12 @@ export default function Edit({ attributes, setAttributes, clientId }){
             __nextHasNoMarginBottom={ true }
           />
         </PanelBody>
-        <PanelBody title={__('Display Settings', 'origamiui')} initialOpen={false}>
-          <SelectControl
-            label={__('Overflow', 'origamiui')}
-            value={styles.base.display.overflow}
-            options={[
-              { label: '---', value: '---' },
-              { label: 'auto', value: 'auto' },
-              { label: 'hidden', value: 'hidden' },
-              { label: 'visible', value: 'visible' },
-              { label: 'scroll', value: 'scroll' },
-            ]}
-            onChange={(newOverflow) => updateStyles(`base.display.overflow`, newOverflow)}
-            __next40pxDefaultSize={ true }
-            __nextHasNoMarginBottom={ true }
-          />
-          <SelectControl
-            label={__('Opacity', 'origamiui')}
-            value={styles.base.display.opacity}
-            options={[
-              { label: '---', value: '---' },
-              { label: '100%', value: '100' },
-              { label: '75%', value: '75' },
-              { label: '50%', value: '50' },
-              { label: '25%', value: '25' },
-              { label: '0', value: '0' },
-            ]}
-            onChange={(newOpacity) => updateStyles(`base.display.opacity`, newOpacity)}
-            __next40pxDefaultSize={ true }
-            __nextHasNoMarginBottom={ true }
-          />
-          <SelectControl
-            label={__('z-index', 'origamiui')}
-            value={styles.base.display.zIndex}
-            options={[
-              { label: '---', value: '---' },
-              { label: '3', value: '3' },
-              { label: '2', value: '2' },
-              { label: '1', value: '1' },
-              { label: '0', value: '0' },
-              { label: '-1', value: 'n1' },
-            ]}
-            onChange={(newZIndex) => updateStyles(`base.display.zIndex`, newZIndex)}
-            __next40pxDefaultSize={ true }
-            __nextHasNoMarginBottom={ true }
-          />
-          <SelectControl
-            label={__('HTML Tag', 'origamiui')}
-            value={tagName}
-            options={[
-              { label: 'div', value: 'div' },
-              { label: 'main', value: 'main' },
-              { label: 'header', value: 'header' },
-              { label: 'footer', value: 'footer' },
-              { label: 'article', value: 'article' },
-              { label: 'a', value: 'a' }
-            ]}
-            onChange={(value) => setAttributes({ tagName: value })}
-            __next40pxDefaultSize={ true }
-            __nextHasNoMarginBottom={ true }
-          />
-        </PanelBody>
+        <DisplaySettingsPanel
+          styles={ styles.base.display }
+          updateStyles={ updateStyles }      // ← そのまま渡す
+          tagName={ tagName }
+          onTagChange={ (v)=>setAttributes({ tagName: v }) }
+        />
       </InspectorControls>
 
       <TagName {...innerBlocksProps} />
