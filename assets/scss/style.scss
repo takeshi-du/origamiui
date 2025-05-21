@@ -6,6 +6,7 @@ $breakpoints: (
 );
 :root {
   --oui-space: 5px;
+  --oui-gapSpace: 24px;
   --oui-size: 5%;
 }
 
@@ -79,7 +80,7 @@ $gap-values: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 @each $prop-abbr, $prop in $gapproperties {
   @each $value in $gap-values {
     .#{$prop-abbr}-#{$value} {
-      #{$prop}: calc(var(--oui-space) * #{$value}) !important;
+      #{$prop}: calc(var(--oui-gapSpace) * #{$value}) !important;
     }
   }
 }
@@ -90,7 +91,7 @@ $gap-values: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
       @each $prop-abbr, $prop in $gapproperties {
         @each $value in $gap-values {
           .#{$prop-abbr}-#{$bp-name}-#{$value} {
-            #{$prop}: calc(var(--oui-space) * #{$value}) !important;
+            #{$prop}: calc(var(--oui-gapSpace) * #{$value}) !important;
           }
         }
       }

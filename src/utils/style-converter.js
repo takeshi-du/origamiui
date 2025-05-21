@@ -219,13 +219,18 @@ export const convertStylesToCSS = (styles) => {
 
   // styles.base.spacing が存在するか確認
   if (styles?.base?.spacing) {
-    const { space, margin, padding, gap } = styles.base.spacing;
+    const { space, gapSpace, margin, padding, gap } = styles.base.spacing;
     const marginPrefixes = { top: 'oui_mt', bottom: 'oui_mb', left: 'oui_ml', right: 'oui_mr' };
     const paddingPrefixes = { top: 'oui_pt', bottom: 'oui_pb', left: 'oui_pl', right: 'oui_pr' };
     const gapPrefixes = { row: 'oui_row-gap', column: 'oui_column-gap' };
 
     if (space) {
       inlineStyles['--oui-space'] = space;
+    }
+    if (gapSpace) {
+      if (gapSpace !== '0px') {
+        inlineStyles['--oui-gapSpace'] = gapSpace;
+      }
     }
     if (margin) {
       processSpacing('oui_margin', margin, marginPrefixes);

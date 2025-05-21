@@ -91,6 +91,7 @@
           },
           "spacing": {
             "space": "10px",
+            "gapSpace": "24px",
             "margin": {
               "top": {
                 "sm": "---",
