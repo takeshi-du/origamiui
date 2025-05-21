@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, useInnerBlocksProps, InspectorControls, ButtonBlockAppender } from '@wordpress/block-editor';
-import { PanelBody, SelectControl, __experimentalUnitControl as UnitControl, __experimentalHeading as Heading, Flex, FlexItem, AlignmentMatrixControl, ToggleControl, TextControl} from '@wordpress/components';
+import { PanelBody, SelectControl, __experimentalUnitControl as UnitControl, __experimentalHeading as Heading, Flex, FlexItem, TextControl} from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { convertStylesToCSS } from '../../utils/style-converter';
 import cloneDeep from 'lodash/cloneDeep';
@@ -11,6 +11,7 @@ import set from 'lodash/set';
 import ResponsiveTabs from '../../components/ResponsiveTabs';
 import PositionSettingsPanel from '../../components/PositionSettingsPanel';
 import DisplaySettingsPanel from '../../components/DisplaySettingsPanel';
+import SizeSettingsPanel from '../../components/SizeSettingsPanel';
 
 export default function Edit({ attributes, setAttributes, clientId }){
   const { tagName, link, styles } = attributes;
@@ -65,71 +66,11 @@ export default function Edit({ attributes, setAttributes, clientId }){
   return (
     <>
       <InspectorControls>
-        <PanelBody title={__('Sizing Settings', 'origamiui')} initialOpen={false}>
-          <UnitControl
-            label={__('--size', 'origamiui')}
-            value={styles.base.sizing.size}
-            onChange={(newSize) => updateStyles(`base.sizing.size`, newSize)}
-            units={[
-              { value: '%', label: '%' },{ value: 'px', label: 'px' },
-            ]}
-            __next40pxDefaultSize={ true }
-          />
-          <ResponsiveTabs>
-            {(tab) => (
-            <>
-              <Heading style={{ marginTop: '1.5em' }}>{__(`Width & Height Settings`, 'origamiui')}</Heading>
-              <Flex style={{flexWrap: 'wrap'}}>
-                <FlexItem style={{width: '45%'}}>
-                  <SelectControl
-                    label={__(`Width (${tab.name})`, 'origamiui')}
-                    value={styles.base.sizing.width[tab.name]}
-                    options={[
-                      { label: '---', value: '---' },
-                      { label: 'auto', value: 'auto' },
-                      { label: `${parseFloat(styles.base.sizing.size)}`, value: '1' },
-                      { label: `${parseFloat(styles.base.sizing.size) * 2}`, value: '2' },
-                      { label: `${parseFloat(styles.base.sizing.size) * 3}`, value: '3' },
-                      { label: `${parseFloat(styles.base.sizing.size) * 4}`, value: '4' },
-                      { label: `${parseFloat(styles.base.sizing.size) * 5}`, value: '5' },
-                      { label: `${parseFloat(styles.base.sizing.size) * 6}`, value: '6' },
-                      { label: `${parseFloat(styles.base.sizing.size) * 7}`, value: '7' },
-                      { label: `${parseFloat(styles.base.sizing.size) * 8}`, value: '8' },
-                      { label: `${parseFloat(styles.base.sizing.size) * 9}`, value: '9' },
-                      { label: `${parseFloat(styles.base.sizing.size) * 10}`, value: '10' },
-                    ]}
-                    onChange={(newWidth) => updateStyles(`base.sizing.width.${tab.name}`, newWidth)}
-                    __next40pxDefaultSize={ true }
-                  />
-                </FlexItem>
-                <FlexItem style={{width: '45%'}}>
-                  <SelectControl
-                    label={__(`Height (${tab.name})`, 'origamiui')}
-                    value={styles.base.sizing.height[tab.name]}
-                    options={[
-                      { label: '---', value: '---' },
-                      { label: 'auto', value: 'auto' },
-                      { label: `${parseFloat(styles.base.sizing.size)}`, value: '1' },
-                      { label: `${parseFloat(styles.base.sizing.size) * 2}`, value: '2' },
-                      { label: `${parseFloat(styles.base.sizing.size) * 3}`, value: '3' },
-                      { label: `${parseFloat(styles.base.sizing.size) * 4}`, value: '4' },
-                      { label: `${parseFloat(styles.base.sizing.size) * 5}`, value: '5' },
-                      { label: `${parseFloat(styles.base.sizing.size) * 6}`, value: '6' },
-                      { label: `${parseFloat(styles.base.sizing.size) * 7}`, value: '7' },
-                      { label: `${parseFloat(styles.base.sizing.size) * 8}`, value: '8' },
-                      { label: `${parseFloat(styles.base.sizing.size) * 9}`, value: '9' },
-                      { label: `${parseFloat(styles.base.sizing.size) * 10}`, value: '10' },
-                    ]}
-                    onChange={(newHeight) => updateStyles(`base.sizing.height.${tab.name}`, newHeight)}
-                    __next40pxDefaultSize={ true }
-                    __nextHasNoMarginBottom={ true }
-                  />
-                </FlexItem>
-              </Flex>
-            </>
-            )}
-          </ResponsiveTabs>
-        </PanelBody>
+        <SizeSettingsPanel
+          styles={ styles.base.sizing }
+          updateStyles={ updateStyles }
+          initialOpen={ false }
+        />
         <PanelBody title={__('Layout&Flex Settings', 'origamiui')} initialOpen={false}>
           <ResponsiveTabs>
             {(tab) => (
