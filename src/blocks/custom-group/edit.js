@@ -1,23 +1,21 @@
 import { useMemo } from 'react';
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, useInnerBlocksProps, InspectorControls, ButtonBlockAppender } from '@wordpress/block-editor';
-import { PanelBody, SelectControl, __experimentalUnitControl as UnitControl, __experimentalHeading as Heading, Flex, FlexItem, TextControl} from '@wordpress/components';
+import { PanelBody, TextControl} from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { convertStylesToCSS } from '../../utils/style-converter';
 import cloneDeep from 'lodash/cloneDeep';
 import set from 'lodash/set';
 
 // 追加: 共通コンポーネント
-import ResponsiveTabs from '../../components/ResponsiveTabs';
 import PositionSettingsPanel from '../../components/PositionSettingsPanel';
 import DisplaySettingsPanel from '../../components/DisplaySettingsPanel';
 import SizeSettingsPanel from '../../components/SizeSettingsPanel';
 import SpacingSettingsPanel from '../../components/SpacingSettingsPanel';
+import LayoutFlexSettingsPanel from '../../components/LayoutFlexSettingsPanel';
 
 export default function Edit({ attributes, setAttributes, clientId }){
   const { tagName, link, styles } = attributes;
-  const marginSides = ['top', 'bottom', 'left', 'right']; // marginの方向
-  const gapSides = ['row', 'column']; // gapの方向
 
   // スタイルを変換（useMemoで最適化）
   const { inlineStyles, blockClasses } = useMemo(() => {
@@ -72,214 +70,11 @@ export default function Edit({ attributes, setAttributes, clientId }){
           updateStyles={ updateStyles }
           initialOpen={ false }
         />
-        <PanelBody title={__('Layout&Flex Settings', 'origamiui')} initialOpen={false}>
-          <ResponsiveTabs>
-            {(tab) => (
-              <>
-                <Heading style={{ marginTop: '1.5em' }}>{__(`Display Settings`, 'origamiui')}</Heading>
-                <SelectControl
-                  label={__(`Display (${tab.name})`, 'origamiui')}
-                  value={styles.base.flex.display[tab.name]}
-                  options={[
-                    { label: '---', value: '---' },
-                    { label: 'none', value: 'none' },
-                    { label: 'inline', value: 'inline' },
-                    { label: 'inline-block', value: 'inline-block' },
-                    { label: 'block', value: 'block' },
-                    { label: 'flex', value: 'flex' },
-                    { label: 'inline-flex', value: 'inline-flex' }
-                  ]}
-                  onChange={(newDisplay) => updateStyles(`base.flex.display.${tab.name}`, newDisplay)}
-                  __next40pxDefaultSize={ true }
-                  __nextHasNoMarginBottom={ true }
-                />
-                <Heading style={{ marginTop: '1.5em' }}>{__(`Flex Settings`, 'origamiui')}</Heading>
-                <Flex style={{flexWrap: 'wrap'}}>
-                  <FlexItem style={{width: '45%'}}>
-                    <SelectControl
-                      label={__(`Flex Direction (${tab.name})`, 'origamiui')}
-                      value={styles.base.flex.direction[tab.name]}
-                      options={[
-                        { label: '---', value: '---' },
-                        { label: 'row', value: 'row' },
-                        { label: 'column', value: 'column' }
-                      ]}
-                      onChange={(newDirection) => updateStyles(`base.flex.direction.${tab.name}`, newDirection)}
-                      __next40pxDefaultSize={ true }
-                      __nextHasNoMarginBottom={ true }
-                    />
-                  </FlexItem>
-                  <FlexItem style={{width: '45%'}}>
-                    <SelectControl
-                      label={__(`Flex Wrap (${tab.name})`, 'origamiui')}
-                      value={styles.base.flex.wrap[tab.name]}
-                      options={[
-                        { label: '---', value: '---' },
-                        { label: 'no wrap', value: 'nowrap' },
-                        { label: 'wrap', value: 'wrap' }
-                      ]}
-                      onChange={(newWrap) => updateStyles(`base.flex.wrap.${tab.name}`, newWrap)}
-                      __next40pxDefaultSize={ true }
-                      __nextHasNoMarginBottom={ true }
-                    />
-                  </FlexItem>
-                </Flex>
-                <Flex style={{flexWrap: 'wrap'}}>
-                  <FlexItem style={{width: '45%'}}>
-                    <SelectControl
-                      label={__(`Align Items (${tab.name})`, 'origamiui')}
-                      value={styles.base.flex.align[tab.name]}
-                      options={[
-                        { label: '---', value: '---' },
-                        { label: 'start', value: 'start' },
-                        { label: 'end', value: 'end' },
-                        { label: 'center', value: 'center' },
-                        { label: 'baseline', value: 'baseline' },
-                        { label: 'stretch', value: 'stretch' }
-                      ]}
-                      onChange={(newAlign) => updateStyles(`base.flex.align.${tab.name}`, newAlign)}
-                      __next40pxDefaultSize={ true }
-                      __nextHasNoMarginBottom={ true }
-                    />
-                  </FlexItem>
-                  <FlexItem style={{width: '45%'}}>
-                    <SelectControl
-                      label={__(`Justify Content (${tab.name})`, 'origamiui')}
-                      value={styles.base.flex.justify[tab.name]}
-                      options={[
-                        { label: '---', value: '---' },
-                        { label: 'start', value: 'start' },
-                        { label: 'end', value: 'end' },
-                        { label: 'center', value: 'center' },
-                        { label: 'between', value: 'between' },
-                        { label: 'around', value: 'around' },
-                        { label: 'evenry', value: 'evenry' }
-                      ]}
-                      onChange={(newJustify) => updateStyles(`base.flex.justify.${tab.name}`, newJustify)}
-                      __next40pxDefaultSize={ true }
-                      __nextHasNoMarginBottom={ true }
-                    />
-                  </FlexItem>
-                </Flex>
-
-                <Flex style={{flexWrap: 'wrap'}}>
-                  <FlexItem style={{width: '45%'}}>
-                    <SelectControl
-                      label={__(`Flex Grow (${tab.name})`, 'origamiui')}
-                      value={styles.base.flex.grow[tab.name]}
-                      options={[
-                        { label: '---', value: '---' },
-                        { label: 'grow', value: 'grow-1' },
-                        { label: 'no grow', value: 'grow-0' }
-                      ]}
-                      onChange={(newGrow) => updateStyles(`base.flex.grow.${tab.name}`, newGrow)}
-                      __next40pxDefaultSize={ true }
-                      __nextHasNoMarginBottom={ true }
-                    />
-                  </FlexItem>
-                  <FlexItem style={{width: '45%'}}>
-                    <SelectControl
-                      label={__(`Flex Shrink (${tab.name})`, 'origamiui')}
-                      value={styles.base.flex.shrink[tab.name]}
-                      options={[
-                        { label: '---', value: '---' },
-                        { label: 'shrink', value: 'shrink-1' },
-                        { label: 'no shrink', value: 'shrink-0' }
-                      ]}
-                      onChange={(newShrink) => updateStyles(`base.flex.shrink.${tab.name}`, newShrink)}
-                      __next40pxDefaultSize={ true }
-                      __nextHasNoMarginBottom={ true }
-                    />
-                  </FlexItem>
-                </Flex>
-                <Flex style={{flexWrap: 'wrap'}}>
-                  <FlexItem style={{width: '45%'}}>
-                    <SelectControl
-                      label={__(`Flex Self (${tab.name})`, 'origamiui')}
-                      value={styles.base.flex.self[tab.name]}
-                      options={[
-                        { label: '---', value: '---' },
-                        { label: 'start', value: 'start' },
-                        { label: 'end', value: 'end' },
-                        { label: 'center', value: 'center' },
-                        { label: 'baseline', value: 'baseline' },
-                        { label: 'stretch', value: 'stretch' }
-                      ]}
-                      onChange={(newSelf) => updateStyles(`base.flex.self.${tab.name}`, newSelf)}
-                      __next40pxDefaultSize={ true }
-                      __nextHasNoMarginBottom={ true }
-                    />
-                  </FlexItem>
-                  <FlexItem style={{width: '45%'}}>
-                    <SelectControl
-                      label={__(`Flex Order (${tab.name})`, 'origamiui')}
-                      value={styles.base.flex.order[tab.name]}
-                      options={[
-                        { label: '---', value: '---' },
-                        { label: '0', value: '0' },
-                        { label: '1', value: '1' },
-                        { label: '2', value: '2' },
-                        { label: '3', value: '3' },
-                        { label: '4', value: '4' },
-                        { label: '5', value: '5' }
-                      ]}
-                      onChange={(newOrder) => updateStyles(`base.flex.order.${tab.name}`, newOrder)}
-                      __next40pxDefaultSize={ true }
-                      __nextHasNoMarginBottom={ true }
-                    />
-                  </FlexItem>
-                </Flex>
-              </>
-            )}
-          </ResponsiveTabs>
-          <Heading style={{ marginTop: '1.5em' }}>{__(`Gap Settings`, 'origamiui')}</Heading>
-          <UnitControl
-            label={__('--gapSpace', 'origamiui')}
-            value={styles.base.spacing.gapSpace}
-            onChange={(newGapSpace) => updateStyles(`base.spacing.gapSpace`, newGapSpace)}
-            units={[
-              { value: 'px', label: 'px' },{ value: 'em', label: 'em' },{ value: 'rem', label: 'rem' },
-            ]}
-            __next40pxDefaultSize={ true }
-          />
-          <ResponsiveTabs>
-            {(tab) => (
-              <>
-                <Heading style={{ marginTop: '1.5em' }}>{__(`Gap Space`, 'origamiui')}</Heading>
-                <Flex style={{flexWrap: 'wrap'}}>
-                  {gapSides.map((side) => (
-                    <FlexItem style={{width: '45%'}}>
-                      <SelectControl
-                        key={`${side}-${tab.name}`}
-                        label={__(`${side} (${tab.name})`, 'origamiui')}
-                        value={styles.base.spacing.gap[side][tab.name]}
-                        options={[
-                          { label: '---', value: '---' },
-                          { label: 0, value: '0' },
-                          { label: `${parseFloat(styles.base.spacing.gapSpace)}`, value: '1' },
-                          { label: `${parseFloat(styles.base.spacing.gapSpace) * 2}`, value: '2' },
-                          { label: `${parseFloat(styles.base.spacing.gapSpace) * 3}`, value: '3' },
-                          { label: `${parseFloat(styles.base.spacing.gapSpace) * 4}`, value: '4' },
-                          { label: `${parseFloat(styles.base.spacing.gapSpace) * 5}`, value: '5' },
-                          { label: `${parseFloat(styles.base.spacing.gapSpace) * 6}`, value: '6' },
-                          { label: `${parseFloat(styles.base.spacing.gapSpace) * 7}`, value: '7' },
-                          { label: `${parseFloat(styles.base.spacing.gapSpace) * 8}`, value: '8' },
-                          { label: `${parseFloat(styles.base.spacing.gapSpace) * 9}`, value: '9' },
-                          { label: `${parseFloat(styles.base.spacing.gapSpace) * 10}`, value: '10' },
-                        ]}
-                        onChange={(newGap) =>
-                          updateStyles(`base.spacing.gap.${side}.${tab.name}`, newGap)
-                        }
-                        __next40pxDefaultSize={ true }
-                        __nextHasNoMarginBottom={ true }
-                      />
-                    </FlexItem>
-                  ))}
-                </Flex>
-              </>
-            )}
-          </ResponsiveTabs>
-        </PanelBody>
+        <LayoutFlexSettingsPanel
+          styles={ styles.base.flex }
+          updateStyles={ updateStyles }
+          initialOpen={ false }
+        />
         <SpacingSettingsPanel
           styles={ styles.base.spacing }
           updateStyles={ updateStyles }
