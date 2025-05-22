@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, useInnerBlocksProps, InspectorControls, ButtonBlockAppender } from '@wordpress/block-editor';
-import { PanelBody, TextControl} from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { convertStylesToCSS } from '../../utils/style-converter';
 import cloneDeep from 'lodash/cloneDeep';
@@ -13,6 +12,7 @@ import DisplaySettingsPanel from '../../components/DisplaySettingsPanel';
 import SizeSettingsPanel from '../../components/SizeSettingsPanel';
 import SpacingSettingsPanel from '../../components/SpacingSettingsPanel';
 import LayoutFlexSettingsPanel from '../../components/LayoutFlexSettingsPanel';
+import LinkSettingsPanel from '../../components/LinkSettingsPanel';
 
 export default function Edit({ attributes, setAttributes, clientId }){
   const { tagName, link, styles } = attributes;
@@ -37,18 +37,33 @@ export default function Edit({ attributes, setAttributes, clientId }){
 
   const TagName = tagName || 'div';
   // hrefの値を決定
-  let hrefValue = link.url;
-  if (!link.url && link.mailTo) {
-    hrefValue = `mailto:${link.mailTo}`;
-  } else if (!link.url && link.tell) {
-    hrefValue = `tel:${link.tell}`;
-  }
+  const hrefValue = link.url;
+  // let hrefValue = link.url;
+  // if (!link.url && link.mailTo) {
+  //   hrefValue = `mailto:${link.mailTo}`;
+  // } else if (!link.url && link.tell) {
+  //   hrefValue = `tel:${link.tell}`;
+  // }
   // TagNameが'a'の場合にhrefとrelを追加
+  // if (TagName === 'a') {
+  //   blockProps.href = hrefValue;
+  //   if (link.rel) {
+  //     blockProps.rel = link.rel;
+  //   }
+  // }
+  /**
+  * 編集画面では <a> タグに href を付けない
+  * - クリックしても遷移しない
+  * - 外部サイトが iframe で読み込まれる事故を防ぐ
+  * 保存時は save.js 側で正しい href が出力される
+  */
   if (TagName === 'a') {
-    blockProps.href = hrefValue;
-    if (link.rel) {
-      blockProps.rel = link.rel;
-    }
+    blockProps.href = undefined;
+    blockProps.rel  = undefined;
+    /**
+     * クリック操作を止める
+    */
+    blockProps.onClick = (e) => e.preventDefault();
   }
 
   const { innerBlockCount } = useSelect(select => ({
@@ -85,44 +100,13 @@ export default function Edit({ attributes, setAttributes, clientId }){
           updateStyles={ updateStyles }
           initialOpen={ false }
         />
-        <PanelBody title={__('Link Setting', 'origamiui')} initialOpen={false}>
-          <TextControl
-            label={__('URL', 'origamiui')}
-            value={attributes.link.url}
-            onChange={(value) => setAttributes({
-              link: { ...attributes.link, url: value }
-            })}
-            __next40pxDefaultSize={ true }
-            __nextHasNoMarginBottom={ true }
-          />
-          <TextControl
-            label={__('Rel', 'origamiui')}
-            value={attributes.link.rel}
-            onChange={(value) => setAttributes({
-              link: { ...attributes.link, rel: value }
-            })}
-            __next40pxDefaultSize={ true }
-            __nextHasNoMarginBottom={ true }
-          />
-          <TextControl
-            label={__('mailTo', 'origamiui')}
-            value={attributes.link.mailTo}
-            onChange={(value) => setAttributes({
-              link: { ...attributes.link, mailTo: value }
-            })}
-            __next40pxDefaultSize={ true }
-            __nextHasNoMarginBottom={ true }
-          />
-          <TextControl
-            label={__('tell', 'origamiui')}
-            value={attributes.link.tell}
-            onChange={(value) => setAttributes({
-              link: { ...attributes.link, tell: value }
-            })}
-            __next40pxDefaultSize={ true }
-            __nextHasNoMarginBottom={ true }
-          />
-        </PanelBody>
+        <LinkSettingsPanel
+          link={ link }
+          setLink={ ( newLink ) => setAttributes( { link: newLink } ) }
+          tagName={ tagName }
+          setTagName={ ( v ) => setAttributes( { tagName: v } ) }
+          initialOpen={ false }
+        />
         <DisplaySettingsPanel
           styles={ styles.base.display }
           updateStyles={ updateStyles }      // ← そのまま渡す

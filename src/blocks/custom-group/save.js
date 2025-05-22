@@ -16,21 +16,13 @@ export default function save({ attributes }) {
   // ブロックの表示内容
   const TagName = tagName || 'div';
 
-  // hrefの値を決定
-  let hrefValue = link.url;
-  if (!link.url && link.mailTo) {
-    hrefValue = `mailto:${link.mailTo}`;
-  } else if (!link.url && link.tell) {
-    hrefValue = `tel:${link.tell}`;
-  }
   // TagNameが'a'の場合にhrefとrelを追加
   if (TagName === 'a') {
-    blockProps.href = hrefValue;
+    blockProps.href = link.url;
     if (link.rel) {
       blockProps.rel = link.rel;
     }
   }
-
 
   return (
     <>
