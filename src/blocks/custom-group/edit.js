@@ -12,6 +12,7 @@ import ResponsiveTabs from '../../components/ResponsiveTabs';
 import PositionSettingsPanel from '../../components/PositionSettingsPanel';
 import DisplaySettingsPanel from '../../components/DisplaySettingsPanel';
 import SizeSettingsPanel from '../../components/SizeSettingsPanel';
+import SpacingSettingsPanel from '../../components/SpacingSettingsPanel';
 
 export default function Edit({ attributes, setAttributes, clientId }){
   const { tagName, link, styles } = attributes;
@@ -279,95 +280,11 @@ export default function Edit({ attributes, setAttributes, clientId }){
             )}
           </ResponsiveTabs>
         </PanelBody>
-        <PanelBody title={__('Spacing Settings', 'origamiui')} initialOpen={false}>
-          <UnitControl
-            label={__('--space', 'origamiui')}
-            value={styles.base.spacing.space}
-            onChange={(newSpace) => updateStyles(`base.spacing.space`, newSpace)}
-            units={[
-              { value: 'px', label: 'px' },{ value: 'em', label: 'em' },{ value: 'rem', label: 'rem' },
-            ]}
-            __next40pxDefaultSize={ true }
-          />
-          <ResponsiveTabs>
-            {(tab) => (
-              <>
-                <Heading style={{ marginTop: '1.5em' }}>{__(`Margin Settings`, 'origamiui')}</Heading>
-                <Flex style={{flexWrap: 'wrap'}}>
-                  {marginSides.map((side) => (
-                    <FlexItem style={{width: '45%'}}>
-                      <SelectControl
-                        key={`${side}-${tab.name}`}
-                        label={__(`${side} (${tab.name})`, 'origamiui')}
-                        value={styles.base.spacing.margin[side][tab.name]}
-                        options={[
-                          { label: '---', value: '---' },
-                          { label: `${parseFloat(styles.base.spacing.space) * -1}`, value: 'n1' },
-                          { label: `${parseFloat(styles.base.spacing.space) * -2}`, value: 'n2' },
-                          { label: `${parseFloat(styles.base.spacing.space) * -3}`, value: 'n3' },
-                          { label: `${parseFloat(styles.base.spacing.space) * -4}`, value: 'n4' },
-                          { label: `${parseFloat(styles.base.spacing.space) * -5}`, value: 'n5' },
-                          { label: `${parseFloat(styles.base.spacing.space) * -6}`, value: 'n6' },
-                          { label: `${parseFloat(styles.base.spacing.space) * -7}`, value: 'n7' },
-                          { label: `${parseFloat(styles.base.spacing.space) * -8}`, value: 'n8' },
-                          { label: `${parseFloat(styles.base.spacing.space) * -9}`, value: 'n9' },
-                          { label: `${parseFloat(styles.base.spacing.space) * -10}`, value: 'n10' },
-                          { label: 0, value: '0' },
-                          { label: `${parseFloat(styles.base.spacing.space)}`, value: '1' },
-                          { label: `${parseFloat(styles.base.spacing.space) * 2}`, value: '2' },
-                          { label: `${parseFloat(styles.base.spacing.space) * 3}`, value: '3' },
-                          { label: `${parseFloat(styles.base.spacing.space) * 4}`, value: '4' },
-                          { label: `${parseFloat(styles.base.spacing.space) * 5}`, value: '5' },
-                          { label: `${parseFloat(styles.base.spacing.space) * 6}`, value: '6' },
-                          { label: `${parseFloat(styles.base.spacing.space) * 7}`, value: '7' },
-                          { label: `${parseFloat(styles.base.spacing.space) * 8}`, value: '8' },
-                          { label: `${parseFloat(styles.base.spacing.space) * 9}`, value: '9' },
-                          { label: `${parseFloat(styles.base.spacing.space) * 10}`, value: '10' },
-                        ]}
-                        onChange={(newMargin) =>
-                          updateStyles(`base.spacing.margin.${side}.${tab.name}`, newMargin)
-                        }
-                        __next40pxDefaultSize={ true }
-                        __nextHasNoMarginBottom={ true }
-                      />
-                    </FlexItem>
-                  ))}
-                </Flex>
-                <Heading style={{ marginTop: '1.5em' }}>{__(`Padding Settings`, 'origamiui')}</Heading>
-                <Flex style={{flexWrap: 'wrap'}}>
-                  {marginSides.map((side) => (
-                    <FlexItem style={{width: '45%'}}>
-                      <SelectControl
-                        key={`${side}-${tab.name}`}
-                        label={__(`${side} (${tab.name})`, 'origamiui')}
-                        value={styles.base.spacing.padding[side][tab.name]}
-                        options={[
-                          { label: '---', value: '---' },
-                          { label: 0, value: '0' },
-                          { label: `${parseFloat(styles.base.spacing.space)}`, value: '1' },
-                          { label: `${parseFloat(styles.base.spacing.space) * 2}`, value: '2' },
-                          { label: `${parseFloat(styles.base.spacing.space) * 3}`, value: '3' },
-                          { label: `${parseFloat(styles.base.spacing.space) * 4}`, value: '4' },
-                          { label: `${parseFloat(styles.base.spacing.space) * 5}`, value: '5' },
-                          { label: `${parseFloat(styles.base.spacing.space) * 6}`, value: '6' },
-                          { label: `${parseFloat(styles.base.spacing.space) * 7}`, value: '7' },
-                          { label: `${parseFloat(styles.base.spacing.space) * 8}`, value: '8' },
-                          { label: `${parseFloat(styles.base.spacing.space) * 9}`, value: '9' },
-                          { label: `${parseFloat(styles.base.spacing.space) * 10}`, value: '10' },
-                        ]}
-                        onChange={(newPadding) =>
-                          updateStyles(`base.spacing.padding.${side}.${tab.name}`, newPadding)
-                        }
-                        __next40pxDefaultSize={ true }
-                        __nextHasNoMarginBottom={ true }
-                      />
-                    </FlexItem>
-                  ))}
-                </Flex>
-              </>
-            )}
-          </ResponsiveTabs>
-        </PanelBody>
+        <SpacingSettingsPanel
+          styles={ styles.base.spacing }
+          updateStyles={ updateStyles }
+          initialOpen={ false }
+        />
         <PositionSettingsPanel
           styles={ styles.base.position }
           updateStyles={ updateStyles }
