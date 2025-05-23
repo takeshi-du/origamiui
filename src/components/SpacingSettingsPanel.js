@@ -32,7 +32,7 @@ export default function SpacingSettingsPanel( {
 	// 値生成ヘルパ
 	const makeOptions = ( allowNegative = false ) => {
 		const base = parseFloat( styles.space || 1 ) || 1;
-		const ops  = [ { label: '---', value: '---' } ];
+		const ops  = [ { label: '---', value: '' } ];
 		if ( allowNegative ) {
 			for ( let i = 1; i <= 10; i++ ) {
 				ops.push( { label: `${ base * -i }`, value: `n${ i }` } );

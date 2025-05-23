@@ -31,7 +31,7 @@ export default function SizeSettingsPanel( {
 	const makeDimOptions = () => {
 		const base = parseFloat( styles.size || 1 ) || 1;
 		const options = [
-			{ label: '---', value: '---' },
+			{ label: '---', value: '' },
 			{ label: 'auto', value: 'auto' },
 		];
 		for ( let i = 1; i <= 10; i++ ) {

@@ -43,7 +43,7 @@ export default function PositionSettingsPanel( {
 								label={ `${ __( 'Position', 'origamiui' ) } (${ tab.name })` }
 								value={ styles.className[ tab.name ] }
 								options={ [
-									{ label: '---', value: '---' },
+									{ label: '---', value: '' },
 									{ label: 'static', value: 'static' },
 									{ label: 'relative', value: 'relative' },
 									{ label: 'absolute', value: 'absolute' },

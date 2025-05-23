@@ -33,7 +33,7 @@ export default function DisplaySettingsPanel( {
 				label={ __( 'Overflow', 'origamiui' ) }
 				value={ styles.overflow }
 				options={ [
-					{ label: '---', value: '---' },
+					{ label: '---', value: '' },
 					{ label: 'auto', value: 'auto' },
 					{ label: 'hidden', value: 'hidden' },
 					{ label: 'visible', value: 'visible' },
@@ -48,7 +48,7 @@ export default function DisplaySettingsPanel( {
 				label={ __( 'Opacity', 'origamiui' ) }
 				value={ styles.opacity }
 				options={ [
-					{ label: '---', value: '---' },
+					{ label: '---', value: '' },
 					{ label: '100%', value: '100' },
 					{ label: '75%', value: '75' },
 					{ label: '50%', value: '50' },
@@ -64,7 +64,7 @@ export default function DisplaySettingsPanel( {
 				label={ __( 'z-index', 'origamiui' ) }
 				value={ styles.zIndex }
 				options={ [
-					{ label: '---', value: '---' },
+					{ label: '---', value: '' },
 					{ label: '3', value: '3' },
 					{ label: '2', value: '2' },
 					{ label: '1', value: '1' },

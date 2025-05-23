@@ -32,7 +32,7 @@ export default function LayoutFlexSettingsPanel( {
 	// gap オプション生成
 	const makeGapOptions = () => {
 		const base = parseFloat( styles.gapSpace || 1 ) || 1;
-		const ops  = [ { label: '---', value: '---' }, { label: '0', value: '0' } ];
+		const ops  = [ { label: '---', value: '' }, { label: '0', value: '0' } ];
 		for ( let i = 1; i <= 10; i++ ) {
 			ops.push( { label: `${ base * i }`, value: `${ i }` } );
 		}
@@ -56,7 +56,7 @@ export default function LayoutFlexSettingsPanel( {
 							label={ `${ __( 'Display', 'origamiui' ) } (${ tab.name })` }
 							value={ styles.display[ tab.name ] }
 							options={ [
-								{ label: '---', value: '---' },
+								{ label: '---', value: '' },
 								{ label: 'none', value: 'none' },
 								{ label: 'inline', value: 'inline' },
 								{ label: 'inline-block', value: 'inline-block' },
@@ -79,7 +79,7 @@ export default function LayoutFlexSettingsPanel( {
 								{
 									key: 'direction',
 									options: [
-										{ label: '---', value: '---' },
+										{ label: '---', value: '' },
 										{ label: 'row', value: 'row' },
 										{ label: 'column', value: 'column' },
 									],
@@ -87,7 +87,7 @@ export default function LayoutFlexSettingsPanel( {
 								{
 									key: 'wrap',
 									options: [
-										{ label: '---', value: '---' },
+										{ label: '---', value: '' },
 										{ label: 'nowrap', value: 'nowrap' },
 										{ label: 'wrap', value: 'wrap' },
 									],
@@ -114,22 +114,23 @@ export default function LayoutFlexSettingsPanel( {
 								{
 									key: 'align',
 									options: [
-										'start',
-										'end',
-										'center',
-										'baseline',
-										'stretch',
+										{ label: '---', value: '' },
+										{ label: 'start', value: 'start' },
+										{ label: 'end', value: 'end' },
+										{ label: 'center', value: 'center' },
+										{ label: 'baseline', value: 'baseline' },
+										{ label: 'stretch', value: 'stretch' },
 									],
 								},
 								{
 									key: 'justify',
 									options: [
-										'start',
-										'end',
-										'center',
-										'between',
-										'around',
-										'evenry',
+										{ label: '---', value: '' },
+										{ label: 'start', value: 'start' },
+										{ label: 'end', value: 'end' },
+										{ label: 'between', value: 'between' },
+										{ label: 'around', value: 'around' },
+										{ label: 'evenry', value: 'evenry' },
 									],
 								},
 							].map( ( cfg ) => (
@@ -137,13 +138,7 @@ export default function LayoutFlexSettingsPanel( {
 									<SelectControl
 										label={ `${ __( cfg.key, 'origamiui' ) } (${ tab.name })` }
 										value={ styles[ cfg.key ][ tab.name ] }
-										options={ [
-											{ label: '---', value: '---' },
-											...cfg.options.map( ( o ) => ( {
-												label: o,
-												value: o,
-											} ) ),
-										] }
+										options={ cfg.options }
 										onChange={ ( v ) =>
 											set( `${ cfg.key }.${ tab.name }`, v )
 										}
@@ -160,7 +155,7 @@ export default function LayoutFlexSettingsPanel( {
 								{
 									key: 'grow',
 									options: [
-										{ label: '---', value: '---' },
+										{ label: '---', value: '' },
 										{ label: 'grow', value: 'grow-1' },
 										{ label: 'no grow', value: 'grow-0' },
 									],
@@ -168,7 +163,7 @@ export default function LayoutFlexSettingsPanel( {
 								{
 									key: 'shrink',
 									options: [
-										{ label: '---', value: '---' },
+										{ label: '---', value: '' },
 										{ label: 'shrink', value: 'shrink-1' },
 										{ label: 'no shrink', value: 'shrink-0' },
 									],
@@ -176,30 +171,32 @@ export default function LayoutFlexSettingsPanel( {
 								{
 									key: 'self',
 									options: [
-                    '---',
-										'start',
-										'end',
-										'center',
-										'baseline',
-										'stretch',
+										{ label: '---', value: '' },
+										{ label: 'start', value: 'start' },
+										{ label: 'end', value: 'end' },
+										{ label: 'center', value: 'center' },
+										{ label: 'baseline', value: 'baseline' },
+										{ label: 'stretch', value: 'stretch' },
 									],
 								},
 								{
 									key: 'order',
-									options: [ '---', '0', '1', '2', '3', '4', '5' ],
+									options: [
+										{ label: '---', value: '' },
+										{ label: '0', value: '0' },
+										{ label: '1', value: '1' },
+										{ label: '2', value: '2' },
+										{ label: '3', value: '3' },
+										{ label: '4', value: '4' },
+										{ label: '5', value: '5' },
+									],
 								},
 							].map( ( cfg ) => (
 								<FlexItem key={ cfg.key } style={ { width: '45%' } }>
 									<SelectControl
 										label={ `${ __( cfg.key, 'origamiui' ) } (${ tab.name })` }
 										value={ styles[ cfg.key ][ tab.name ] }
-										options={ Array.isArray( cfg.options )
-											? cfg.options.map( ( o ) =>
-													typeof o === 'string'
-														? { label: o, value: o }
-														: o
-											  )
-											: cfg.options }
+										options={ cfg.options }
 										onChange={ ( v ) =>
 											set( `${ cfg.key }.${ tab.name }`, v )
 										}
