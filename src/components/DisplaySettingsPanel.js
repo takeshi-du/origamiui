@@ -8,7 +8,7 @@ import { PanelBody, SelectControl } from '@wordpress/components';
  * props
  * --------------------------------------------------
  * styles        : styles.base.display オブジェクト
- * updateStyles  : ( path, value ) => void   ← Edit 側の updateStyles をそのまま渡す
+ * updateStyles  : ( path, value ) => void
  * tagName       : 現在の HTML タグ
  * onTagChange   : ( newTag ) => void
  * basePath      : "base.display" など (省略可・デフォルトは上記)

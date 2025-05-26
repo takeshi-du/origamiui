@@ -36,33 +36,11 @@ export default function Edit({ attributes, setAttributes, clientId }){
   });
 
   const TagName = tagName || 'div';
-  // hrefの値を決定
-  const hrefValue = link.url;
-  // let hrefValue = link.url;
-  // if (!link.url && link.mailTo) {
-  //   hrefValue = `mailto:${link.mailTo}`;
-  // } else if (!link.url && link.tell) {
-  //   hrefValue = `tel:${link.tell}`;
-  // }
-  // TagNameが'a'の場合にhrefとrelを追加
-  // if (TagName === 'a') {
-  //   blockProps.href = hrefValue;
-  //   if (link.rel) {
-  //     blockProps.rel = link.rel;
-  //   }
-  // }
-  /**
-  * 編集画面では <a> タグに href を付けない
-  * - クリックしても遷移しない
-  * - 外部サイトが iframe で読み込まれる事故を防ぐ
-  * 保存時は save.js 側で正しい href が出力される
-  */
+
   if (TagName === 'a') {
     blockProps.href = undefined;
     blockProps.rel  = undefined;
-    /**
-     * クリック操作を止める
-    */
+    // クリック操作を止める
     blockProps.onClick = (e) => e.preventDefault();
   }
 
@@ -109,7 +87,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
         />
         <DisplaySettingsPanel
           styles={ styles.base.display }
-          updateStyles={ updateStyles }      // ← そのまま渡す
+          updateStyles={ updateStyles }
           tagName={ tagName }
           onTagChange={ (v)=>setAttributes({ tagName: v }) }
         />
