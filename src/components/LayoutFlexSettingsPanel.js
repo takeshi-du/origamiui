@@ -6,8 +6,16 @@ import {
 	Flex,
 	FlexItem,
 	__experimentalUnitControl as UnitControl,
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
 } from '@wordpress/components';
 import ResponsiveTabs from './ResponsiveTabs';
+
+// icon
+import { arrowRight, arrowDown } from '@wordpress/icons';
+// import { ReactComponent as alignStartRow } from '../../assets/images/layout/align-start-row.svg';
+// import { ReactComponent as alignEndRow } from '../../assets/images/layout/align-end-row.svg';
+import { AlignStartRow, AlignEndRow, AlignCenterRow, AlignStretchRow, AlignBaselineRow, AlignStartColumn, AlignEndColumn, AlignCenterColumn, AlignStretchColumn, AlignBaselineColumn, JustifyStartRow, JustifyEndRow, JustifyCenterRow, JustifyBetweenRow, JustifyAroundRow, JustifyStartColumn, JustifyEndColumn, JustifyCenterColumn, JustifyBetweenColumn, JustifyAroundColumn, SelfStartRow, SelfEndRow, SelfCenterRow, SelfStretchRow, SelfBaselineRow, SelfStartColumn, SelfEndColumn, SelfCenterColumn, SelfStretchColumn, SelfBaselineColumn, } from '../components/LayoutFlexIcons';
 
 const gapSides = [ 'row', 'column' ];
 
@@ -73,81 +81,151 @@ export default function LayoutFlexSettingsPanel( {
 						<Heading style={ { marginTop: '1.5em' } }>
 							{ __( 'Flex Settings', 'origamiui' ) }
 						</Heading>
-						<Flex wrap>
-							{/* Direction / Wrap */}
-							{ [
-								{
-									key: 'direction',
-									options: [
-										{ label: '---', value: '' },
-										{ label: 'row', value: 'row' },
-										{ label: 'column', value: 'column' },
-									],
-								},
-								{
-									key: 'wrap',
-									options: [
-										{ label: '---', value: '' },
-										{ label: 'nowrap', value: 'nowrap' },
-										{ label: 'wrap', value: 'wrap' },
-									],
-								},
-							].map( ( cfg ) => (
-								<FlexItem key={ cfg.key } style={ { width: '45%' } }>
-									<SelectControl
-										label={ `${ __( cfg.key, 'origamiui' ) } (${ tab.name })` }
-										value={ styles[ cfg.key ][ tab.name ] }
-										options={ cfg.options }
-										onChange={ ( v ) =>
-											set( `${ cfg.key }.${ tab.name }`, v )
-										}
-										__next40pxDefaultSize
-										__nextHasNoMarginBottom
-									/>
-								</FlexItem>
-							) ) }
-						</Flex>
+						<ToggleGroupControl
+							label={ `${ __( 'Direction', 'origamiui' ) } (${ tab.name })` }
+							value={ styles.direction[ tab.name ] || undefined }
+							onChange={ ( dir ) =>
+								set( `direction.${ tab.name }`, dir ?? '' )
+							}
+							isDeselectable
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+						>
+							<ToggleGroupControlOptionIcon
+								value="row"
+								icon={ arrowRight }
+								label="row"
+							/>
+							<ToggleGroupControlOptionIcon
+								value="column"
+								icon={ arrowDown }
+								label="column"
+							/>
+						</ToggleGroupControl>
 
-						{/* Align / Justify */}
-						<Flex wrap>
-							{ [
-								{
-									key: 'align',
-									options: [
-										{ label: '---', value: '' },
-										{ label: 'start', value: 'start' },
-										{ label: 'end', value: 'end' },
-										{ label: 'center', value: 'center' },
-										{ label: 'baseline', value: 'baseline' },
-										{ label: 'stretch', value: 'stretch' },
-									],
-								},
-								{
-									key: 'justify',
-									options: [
-										{ label: '---', value: '' },
-										{ label: 'start', value: 'start' },
-										{ label: 'end', value: 'end' },
-										{ label: 'between', value: 'between' },
-										{ label: 'around', value: 'around' },
-										{ label: 'evenry', value: 'evenry' },
-									],
-								},
-							].map( ( cfg ) => (
-								<FlexItem key={ cfg.key } style={ { width: '45%' } }>
-									<SelectControl
-										label={ `${ __( cfg.key, 'origamiui' ) } (${ tab.name })` }
-										value={ styles[ cfg.key ][ tab.name ] }
-										options={ cfg.options }
-										onChange={ ( v ) =>
-											set( `${ cfg.key }.${ tab.name }`, v )
-										}
-										__next40pxDefaultSize
-										__nextHasNoMarginBottom
-									/>
-								</FlexItem>
-							) ) }
-						</Flex>
+						<ToggleGroupControl
+							label={ `${ __( 'Align', 'origamiui' ) } (${ tab.name })` }
+							value={ styles.align[ tab.name ] || undefined }
+							onChange={ ( dir ) =>
+								set( `align.${ tab.name }`, dir ?? '' )
+							}
+							isDeselectable
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+						>
+							<ToggleGroupControlOptionIcon
+								value="start"
+								icon={ styles.direction[ tab.name ] === 'column' ? AlignStartColumn : AlignStartRow  }
+								label="start"
+							/>
+							<ToggleGroupControlOptionIcon
+								value="center"
+								icon={ styles.direction[ tab.name ] === 'column' ? AlignCenterColumn : AlignCenterRow  }
+								label="center"
+							/>
+							<ToggleGroupControlOptionIcon
+								value="end"
+								icon={ styles.direction[ tab.name ] === 'column' ? AlignEndColumn : AlignEndRow  }
+								label="end"
+							/>
+							<ToggleGroupControlOptionIcon
+								value="stretch"
+								icon={ styles.direction[ tab.name ] === 'column' ? AlignStretchColumn : AlignStretchRow  }
+								label="stretch"
+							/>
+							<ToggleGroupControlOptionIcon
+								value="baseline"
+								icon={ styles.direction[ tab.name ] === 'column' ? AlignBaselineColumn : AlignBaselineRow  }
+								label="baseline"
+							/>
+						</ToggleGroupControl>
+
+						<ToggleGroupControl
+							label={ `${ __( 'Justify', 'origamiui' ) } (${ tab.name })` }
+							value={ styles.justify[ tab.name ] || undefined }
+							onChange={ ( dir ) =>
+								set( `justify.${ tab.name }`, dir ?? '' )
+							}
+							isDeselectable
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+						>
+							<ToggleGroupControlOptionIcon
+								value="start"
+								icon={ styles.direction[ tab.name ] === 'column' ? JustifyStartColumn : JustifyStartRow  }
+								label="start"
+							/>
+							<ToggleGroupControlOptionIcon
+								value="center"
+								icon={ styles.direction[ tab.name ] === 'column' ? JustifyCenterColumn : JustifyCenterRow  }
+								label="center"
+							/>
+							<ToggleGroupControlOptionIcon
+								value="end"
+								icon={ styles.direction[ tab.name ] === 'column' ? JustifyEndColumn : JustifyEndRow  }
+								label="end"
+							/>
+							<ToggleGroupControlOptionIcon
+								value="between"
+								icon={ styles.direction[ tab.name ] === 'column' ? JustifyBetweenColumn : JustifyBetweenRow  }
+								label="between"
+							/>
+							<ToggleGroupControlOptionIcon
+								value="around"
+								icon={ styles.direction[ tab.name ] === 'column' ? JustifyAroundColumn : JustifyAroundRow  }
+								label="around"
+							/>
+						</ToggleGroupControl>
+
+						<ToggleGroupControl
+							label={ `${ __( 'AlignSelf', 'origamiui' ) } (${ tab.name })` }
+							value={ styles.self[ tab.name ] || undefined }
+							onChange={ ( dir ) =>
+								set( `self.${ tab.name }`, dir ?? '' )
+							}
+							isDeselectable
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+						>
+							<ToggleGroupControlOptionIcon
+								value="start"
+								icon={ styles.direction[ tab.name ] === 'column' ? SelfStartColumn : SelfStartRow  }
+								label="start"
+							/>
+							<ToggleGroupControlOptionIcon
+								value="center"
+								icon={ styles.direction[ tab.name ] === 'column' ? SelfCenterColumn : SelfCenterRow  }
+								label="center"
+							/>
+							<ToggleGroupControlOptionIcon
+								value="end"
+								icon={ styles.direction[ tab.name ] === 'column' ? SelfEndColumn : SelfEndRow  }
+								label="end"
+							/>
+							<ToggleGroupControlOptionIcon
+								value="stretch"
+								icon={ styles.direction[ tab.name ] === 'column' ? SelfStretchColumn : SelfStretchRow  }
+								label="stretch"
+							/>
+							<ToggleGroupControlOptionIcon
+								value="baseline"
+								icon={ styles.direction[ tab.name ] === 'column' ? SelfBaselineColumn : SelfBaselineRow  }
+								label="baseline"
+							/>
+						</ToggleGroupControl>
+
+						{/* <SelectControl
+							label={ `${ __( 'Wrap', 'origamiui' ) } (${ tab.name })` }
+							value={styles.wrap[tab.name]}
+							options={[
+								{ label: '---', value: '' },
+								{ label: 'nowrap', value: 'nowrap' },
+								{ label: 'wrap', value: 'wrap' },
+							]}
+							onChange={(v) => set(`wrap.${tab.name}`, v)}
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+						/> */}
 
 						{/* Grow / Shrink / Self / Order */}
 						<Flex wrap>
@@ -169,14 +247,11 @@ export default function LayoutFlexSettingsPanel( {
 									],
 								},
 								{
-									key: 'self',
+									key: 'wrap',
 									options: [
 										{ label: '---', value: '' },
-										{ label: 'start', value: 'start' },
-										{ label: 'end', value: 'end' },
-										{ label: 'center', value: 'center' },
-										{ label: 'baseline', value: 'baseline' },
-										{ label: 'stretch', value: 'stretch' },
+										{ label: 'wrap', value: 'wrap' },
+										{ label: 'no wrap', value: 'nowrap' },
 									],
 								},
 								{

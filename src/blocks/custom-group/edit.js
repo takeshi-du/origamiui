@@ -58,18 +58,18 @@ export default function Edit({ attributes, setAttributes, clientId }){
   return (
     <>
       <InspectorControls>
-        <SizeSettingsPanel
-          styles={ styles.base.sizing }
-          updateStyles={ updateStyles }
-          initialOpen={ false }
-        />
         <LayoutFlexSettingsPanel
           styles={ styles.base.flex }
           updateStyles={ updateStyles }
-          initialOpen={ false }
+          initialOpen={ true }
         />
         <SpacingSettingsPanel
           styles={ styles.base.spacing }
+          updateStyles={ updateStyles }
+          initialOpen={ false }
+        />
+        <SizeSettingsPanel
+          styles={ styles.base.sizing }
           updateStyles={ updateStyles }
           initialOpen={ false }
         />

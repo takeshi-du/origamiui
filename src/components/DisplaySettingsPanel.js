@@ -1,6 +1,9 @@
 // src/components/DisplaySettingsPanel.js
 import { __ } from '@wordpress/i18n';
-import { PanelBody, SelectControl } from '@wordpress/components';
+import { 
+	PanelBody,
+	SelectControl,
+} from '@wordpress/components';
 
 /**
  * 共通「Display Settings」パネル
@@ -43,7 +46,6 @@ export default function DisplaySettingsPanel( {
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 			/>
-
 			<SelectControl
 				label={ __( 'Opacity', 'origamiui' ) }
 				value={ styles.opacity }
