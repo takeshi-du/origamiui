@@ -1,17 +1,17 @@
-import { useMemo, useCallback } from 'react';
+import { useMemo } from 'react';
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, useInnerBlocksProps, InspectorControls, ButtonBlockAppender } from '@wordpress/block-editor';
-import { PanelBody, SelectControl, TabPanel, __experimentalHeading as Heading, TextControl} from '@wordpress/components';
+import { PanelBody, SelectControl, __experimentalHeading as Heading, TextControl} from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { convertStylesToCSS } from '../../utils/style-converter';
 import cloneDeep from 'lodash/cloneDeep';
 import set from 'lodash/set';
 
+// 追加: 共通コンポーネント
+import ResponsiveTabs from '../../components/ResponsiveTabs';
+
 export default function Edit({ attributes, setAttributes, clientId }){
   const { toggleName, toggleTarget, styles } = attributes;
-  const breakpoints = ['sm', 'md', 'lg'];
-  // const marginSides = ['top', 'bottom', 'left', 'right'];
-  // const gapSides = ['row', 'column'];
 
   // スタイルを変換（useMemoで最適化）
   const { inlineStyles, blockClasses } = useMemo(() => {
@@ -24,12 +24,6 @@ export default function Edit({ attributes, setAttributes, clientId }){
     set(newStyles, path, value);
     setAttributes({ styles: newStyles });
   };
-
-  // TabPanel用のタブ定義
-  const tabs = breakpoints.map((breakpoint) => ({
-    name: breakpoint,
-    title: breakpoint.toUpperCase(),
-  }));
 
   const buildDataAttrs = ({ toggleName, toggleTarget }) => ({
     ...(toggleName   ? { 'data-ui-toggle' : toggleName   } : {}),
@@ -44,12 +38,6 @@ export default function Edit({ attributes, setAttributes, clientId }){
   const combinedClasses = `${blockClasses || ''} ${fixedToggleClass}`.trim();
 
   // ブロックのプロパティにインラインスタイルを適用
-  // const blockProps = useBlockProps({
-  //   className: combinedClasses,
-  //   style: inlineStyles,
-  //   'data-toggle': toggleName,
-  //   'data-target': toggleTarget,
-  // });
   const blockProps = useBlockProps({
     className: combinedClasses,
     style: inlineStyles,
@@ -58,7 +46,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
 
   const innerBlocksProps = useInnerBlocksProps(blockProps, {
     renderAppender: innerBlockCount > 0
-      ? undefined // デフォルトのInserterを使用
+      ? undefined
       : () => <ButtonBlockAppender rootClientId={clientId} />
   });
 
@@ -86,6 +74,24 @@ export default function Edit({ attributes, setAttributes, clientId }){
             __next40pxDefaultSize={ true }
             __nextHasNoMarginBottom={ true }
           />
+          <ResponsiveTabs>
+            { ( tab ) => (
+              <>
+                <Heading style={{ marginTop: '1.5em', marginBottom: '5px' }}>{__(`Display (${tab.name})`, 'origamiui')}</Heading>
+                <SelectControl
+                  value={styles.base.display.visible[tab.name]}
+                  options={[
+                    { label: '---', value: '---' },
+                    { label: 'none', value: 'none' },
+                    { label: 'block', value: 'block' },
+                  ]}
+                  onChange={(newDisplay) => updateStyles(`base.display.visible.${tab.name}`, newDisplay)}
+                  __next40pxDefaultSize={ true }
+                  __nextHasNoMarginBottom={ true }
+                />
+              </>
+            ) }
+          </ResponsiveTabs>
         </PanelBody>
         <PanelBody title={__('Display Settings', 'origamiui')} initialOpen={false}>
           <SelectControl
@@ -132,29 +138,6 @@ export default function Edit({ attributes, setAttributes, clientId }){
             __next40pxDefaultSize={ true }
             __nextHasNoMarginBottom={ true }
           />
-          <TabPanel
-            tabs={tabs}
-            onSelect={() => {}} // タブ選択時の処理は不要
-          >
-            {(tab) => (
-              <>
-                <Heading style={{ marginTop: '1.5em', marginBottom: '5px' }}>{__(`Display (${tab.title})`, 'origamiui')}</Heading>
-                <SelectControl
-                  value={styles.base.display.visible[tab.name]}
-                  options={[
-                    { label: '---', value: '---' },
-                    { label: 'none', value: 'none' },
-                    { label: 'inline', value: 'inline' },
-                    { label: 'inline-block', value: 'inline-block' },
-                    { label: 'block', value: 'block' },
-                  ]}
-                  onChange={(newDisplay) => updateStyles(`base.display.visible.${tab.name}`, newDisplay)}
-                  __next40pxDefaultSize={ true }
-                  __nextHasNoMarginBottom={ true }
-                />
-              </>
-            )}
-          </TabPanel>
         </PanelBody>
       </InspectorControls>
       
