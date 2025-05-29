@@ -165,3 +165,18 @@ body {
     height: auto;
   }
 }
+
+// ------------------------------
+// grid
+// ------------------------------
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--oui-grid-columns-sm, 12), 1fr);
+
+  @media (min-width: 768px) {   // md
+    grid-template-columns: repeat(var(--oui-grid-columns-md, 12), 1fr);
+  }
+  @media (min-width: 992px) {   // lg
+    grid-template-columns: repeat(var(--oui-grid-columns-lg, 12), 1fr);
+  }
+}

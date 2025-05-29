@@ -5349,4 +5349,19 @@ body {
   height: auto;
 }
 
+.oui_grid {
+  display: grid;
+  grid-template-columns: repeat(var(--oui-grid-columns-sm, 12), 1fr);
+}
+@media (min-width: 768px) {
+  .oui_grid {
+    grid-template-columns: repeat(var(--oui-grid-columns-md, 12), 1fr);
+  }
+}
+@media (min-width: 992px) {
+  .oui_grid {
+    grid-template-columns: repeat(var(--oui-grid-columns-lg, 12), 1fr);
+  }
+}
+
 /*# sourceMappingURL=oui-grid.css.map */

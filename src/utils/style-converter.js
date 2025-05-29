@@ -267,9 +267,6 @@ export const convertStylesToCSS = (styles) => {
     if (row) {
       generateBreakpointClasses('oui_', row);
     }
-    if (grid) {
-      generateBreakpointClasses('oui_', grid);
-    }
     if (overflow) {
       generateClasses('oui_overflow', overflow);
     }
@@ -281,6 +278,15 @@ export const convertStylesToCSS = (styles) => {
     }
     if (visible) {
       generateBreakpointClasses('oui_d', visible);
+    }
+
+    if (grid?.columns) {
+      ['sm','md','lg'].forEach((bp) => {
+        const val = styles.base.display.grid.columns[bp];
+        if (val !== undefined && val !== '' && Number(val) !== 12) {
+          inlineStyles[`--oui-grid-columns-${bp}`] = String(val);
+        }
+      });
     }
   }
 

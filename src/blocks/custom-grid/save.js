@@ -9,7 +9,7 @@ export default function save({ attributes }) {
 
   // ブロックのプロパティにインラインスタイルを適用
   const blockProps = useBlockProps.save({
-    className: blockClasses,
+    className: [ 'oui_grid', blockClasses ].filter( Boolean ).join( ' ' ),
     style: inlineStyles,
   });
 
