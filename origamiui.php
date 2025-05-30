@@ -30,7 +30,6 @@ function origamiui_register_blocks() {
   $blocks = [
     'custom-group',
     'custom-container',
-    'custom-row',
     'custom-grid',
     'custom-column',
     'custom-offcanvas',
@@ -58,7 +57,6 @@ function origamiui_enqueue_blocks_assets() {
   $blocks = [
     'custom-group',
     'custom-container',
-    'custom-row',
     'custom-grid',
     'custom-column',
     'custom-offcanvas',
