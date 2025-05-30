@@ -66,16 +66,22 @@ export default function Edit({ attributes, setAttributes, clientId }){
           />
         </PanelBody>
         <LayoutFlexSettingsPanel
+          stylesRoot={ styles }
+          setStyles={ ( s ) => setAttributes({ styles: s }) }
           styles={ styles.base.flex }
           updateStyles={ updateStyles }
           initialOpen={ false }
         />
         <SpacingSettingsPanel
+          stylesRoot={ styles }
+          setStyles={ ( s ) => setAttributes({ styles: s }) }
           styles={ styles.base.spacing }
           updateStyles={ updateStyles }
           initialOpen={ false }
         />
         <SizeSettingsPanel
+          stylesRoot={ styles }
+          setStyles={ ( s ) => setAttributes({ styles: s }) }
           styles={ styles.base.sizing }
           updateStyles={ updateStyles }
           initialOpen={ false }

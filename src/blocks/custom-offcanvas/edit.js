@@ -123,6 +123,8 @@ export default function Edit({ attributes, setAttributes, clientId }){
           </TabPanel>
         </PanelBody>
         <LayoutFlexSettingsPanel
+          stylesRoot={ styles }
+          setStyles={ ( s ) => setAttributes({ styles: s }) }
           styles={ styles.base.flex }
           updateStyles={ updateStyles }
           initialOpen={ false }

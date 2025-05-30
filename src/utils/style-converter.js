@@ -217,10 +217,8 @@ export const convertStylesToCSS = (styles) => {
       generateBreakpointClasses('oui_order', order);
     }
 
-    if (gapSpace) {
-      if (gapSpace !== '0px') {
-        inlineStyles['--oui-gapSpace'] = gapSpace;
-      }
+    if (gapSpace !== '' && gapSpace !== undefined && gapSpace !== null) {
+      inlineStyles['--oui-gapSpace'] = gapSpace;
     }
     if (gap) {
       processSpacing('oui_gap', gap, gapPrefixes);

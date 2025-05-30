@@ -25,7 +25,7 @@
       "default": {
         "base": {
           "sizing": {
-            "size": "5%",
+            "size": "",
             "width": {
               "sm": "",
               "md": "",
@@ -88,7 +88,7 @@
               "md": "",
               "lg": ""
             },
-            "gapSpace": "24px",
+            "gapSpace": "",
             "gap": {
               "row": {
                 "sm": "",
@@ -103,7 +103,7 @@
             }
           },
           "spacing": {
-            "space": "10px",
+            "space": "",
             "margin": {
               "top": {
                 "sm": "",

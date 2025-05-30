@@ -4,10 +4,16 @@ import {
 	SelectControl,
 	__experimentalUnitControl as UnitControl,
 	Flex,
+	Button,
 	FlexItem,
 	__experimentalHeading as Heading,
 } from '@wordpress/components';
 import ResponsiveTabs from './ResponsiveTabs';
+import cloneDeep from 'lodash/cloneDeep';
+import set from 'lodash/set';
+
+// icon
+import { trash } from '@wordpress/icons';
 
 /**
  * 共通「Sizing Settings」パネル
@@ -20,24 +26,41 @@ import ResponsiveTabs from './ResponsiveTabs';
  * initialOpen   : PanelBody 初期 open 状態
  */
 export default function SizeSettingsPanel( {
+	stylesRoot,
+	setStyles,
 	styles,
 	updateStyles,
 	basePath = 'base.sizing',
 	initialOpen = false,
 } ) {
-	const set = ( key, v ) => updateStyles( `${ basePath }.${ key }`, v );
+	const upStyles = ( key, v ) => updateStyles( `${ basePath }.${ key }`, v );
 
-	// width / height のオプションを生成（--size の整数倍）
-	const makeDimOptions = () => {
-		const base = parseFloat( styles.size || 1 ) || 1;
-		const options = [
-			{ label: '---', value: '' },
-			{ label: 'auto', value: 'auto' },
-		];
-		for ( let i = 1; i <= 10; i++ ) {
-			options.push( { label: `${ base * i }`, value: `${ i }` } );
-		}
-		return options;
+	// size オプション生成
+	const base = parseFloat( styles.size );
+	const hasBase = ! isNaN( base );
+	const sizeOptions = hasBase
+		? [
+				{ label: '---', value: '' },
+				{ label: 'auto',   value: 'auto' },
+				...Array.from( { length: 10 }, ( _, i ) => ( {
+					label: `${ base * ( i + 1 ) }`,
+					value: String( i + 1 ),
+				} ) ),
+			]
+		: [ { label: '---', value: '' }, { label: 'auto',   value: 'auto' } ];
+	
+	const resetSize = () => {
+		const clone = cloneDeep( stylesRoot );
+
+		set( clone, `${ basePath }.size`, '' );
+
+		[ 'width', 'height' ].forEach( axis => {
+			[ 'sm', 'md', 'lg' ].forEach( bp => {
+				set( clone, `${ basePath }.${ axis }.${ bp }`, '' );
+			} );
+		} );
+
+		setStyles( clone );
 	};
 
 	return (
@@ -49,14 +72,21 @@ export default function SizeSettingsPanel( {
 			<UnitControl
 				label={ __( '--size', 'origamiui' ) }
 				value={ styles.size }
-				onChange={ ( v ) => set( 'size', v ) }
+				onChange={ ( v ) => upStyles( 'size', v ) }
 				units={ [
 					{ value: '%', label: '%' },
 					{ value: 'px', label: 'px' },
 				] }
 				__next40pxDefaultSize
 			/>
-
+			{/* Reset ボタン */}
+			<Button
+				icon={ trash }
+				variant="secondary"
+				text={ __( 'Reset size', 'origamiui' ) }
+				onClick={ resetSize }
+				description={ __( 'Reset size & size options', 'origamiui' ) }
+			/>
 			{/* Width / Height – breakpoint 別 */}
 			<ResponsiveTabs>
 				{ ( tab ) => (
@@ -70,9 +100,9 @@ export default function SizeSettingsPanel( {
 									<SelectControl
 										label={ `${ __( dim, 'origamiui' ) } (${ tab.name })` }
 										value={ styles[ dim ][ tab.name ] }
-										options={ makeDimOptions() }
+										options={ sizeOptions }
 										onChange={ ( v ) =>
-											set( `${ dim }.${ tab.name }`, v )
+											upStyles( `${ dim }.${ tab.name }`, v )
 										}
 										__next40pxDefaultSize
 										__nextHasNoMarginBottom={ true }

@@ -3,12 +3,17 @@ import {
 	PanelBody,
 	__experimentalUnitControl as UnitControl,
 	SelectControl,
-	RangeControl, 
+	Button, 
 	Flex,
 	FlexItem,
 	__experimentalHeading as Heading,
 } from '@wordpress/components';
 import ResponsiveTabs from './ResponsiveTabs';
+import cloneDeep from 'lodash/cloneDeep';
+import set from 'lodash/set';
+
+// icon
+import { trash } from '@wordpress/icons';
 
 const marginSides = [ 'top', 'bottom', 'left', 'right' ];
 
@@ -23,26 +28,43 @@ const marginSides = [ 'top', 'bottom', 'left', 'right' ];
  * initialOpen   : PanelBody の初期 open 状態
  */
 export default function SpacingSettingsPanel( {
+	stylesRoot,
+	setStyles,
 	styles,
 	updateStyles,
 	basePath = 'base.spacing',
 	initialOpen = false,
 } ) {
-	const set = ( key, v ) => updateStyles( `${ basePath }.${ key }`, v );
+	const upStyle = ( key, v ) => updateStyles( `${ basePath }.${ key }`, v );
 
-	const makeOptions = ( allowNegative = false ) => {
-		const base = parseFloat( styles.space || 1 ) || 1;
-		const ops  = [ { label: '---', value: '' } ];
-		if ( allowNegative ) {
-			for ( let i = 1; i <= 10; i++ ) {
-				ops.push( { label: `${ base * -i }`, value: `n${ i }` } );
-			}
-		}
-		ops.push( { label: '0', value: '0' } );
-		for ( let i = 1; i <= 10; i++ ) {
-			ops.push( { label: `${ base * i }`, value: `${ i }` } );
-		}
-		return ops;
+	// space オプション生成
+	const base = parseFloat( styles.space );
+	const hasBase = ! isNaN( base );
+	const spaceOptions = hasBase
+		? [
+				{ label: '---', value: '' },
+				{ label: '0',   value: '0' },
+				...Array.from( { length: 10 }, ( _, i ) => ( {
+					label: `${ base * ( i + 1 ) }`,
+					value: String( i + 1 ),
+				} ) ),
+			]
+		: [ { label: '---', value: '' } ];
+	
+	const resetSpace = () => {
+		const clone = cloneDeep( stylesRoot );
+
+		set( clone, `${ basePath }.space`, '' );
+
+		[ 'margin', 'padding' ].forEach( axis => {
+			[ 'top', 'bottom', 'left', 'right' ].forEach( side => {
+				[ 'sm', 'md', 'lg' ].forEach( bp => {
+					set( clone, `${ basePath }.${ axis }.${side}.${ bp }`, '' );
+				} );
+			} );
+		} );
+
+		setStyles( clone );
 	};
 
 	return (
@@ -54,7 +76,7 @@ export default function SpacingSettingsPanel( {
 			<UnitControl
 				label={ __( '--space', 'origamiui' ) }
 				value={ styles.space }
-				onChange={ ( v ) => set( 'space', v ) }
+				onChange={ ( v ) => upStyle( 'space', v ) }
 				units={ [
 					{ value: 'px', label: 'px' },
 					{ value: 'em', label: 'em' },
@@ -62,7 +84,14 @@ export default function SpacingSettingsPanel( {
 				] }
 				__next40pxDefaultSize
 			/>
-
+			{/* Reset ボタン */}
+			<Button
+				icon={ trash }
+				variant="secondary"
+				text={ __( 'Reset space', 'origamiui' ) }
+				onClick={ resetSpace }
+				description={ __( 'Reset space & gap options', 'origamiui' ) }
+			/>
 			<ResponsiveTabs>
 				{ ( tab ) => (
 					<>
@@ -77,32 +106,9 @@ export default function SpacingSettingsPanel( {
 										key={`${side}-${tab.name}`}
 										label={ `${ side } (${ tab.name })` }
 										value={ styles.margin[ side ][ tab.name ] }
-										options={[
-											{ label: '---', value: '' },
-											{ label: `${parseFloat(styles.space) * -1}`, value: 'n1' },
-											{ label: `${parseFloat(styles.space) * -2}`, value: 'n2' },
-											{ label: `${parseFloat(styles.space) * -3}`, value: 'n3' },
-											{ label: `${parseFloat(styles.space) * -4}`, value: 'n4' },
-											{ label: `${parseFloat(styles.space) * -5}`, value: 'n5' },
-											{ label: `${parseFloat(styles.space) * -6}`, value: 'n6' },
-											{ label: `${parseFloat(styles.space) * -7}`, value: 'n7' },
-											{ label: `${parseFloat(styles.space) * -8}`, value: 'n8' },
-											{ label: `${parseFloat(styles.space) * -9}`, value: 'n9' },
-											{ label: `${parseFloat(styles.space) * -10}`, value: 'n10' },
-											{ label: 0, value: '0' },
-											{ label: `${parseFloat(styles.space)}`, value: '1' },
-											{ label: `${parseFloat(styles.space) * 2}`, value: '2' },
-											{ label: `${parseFloat(styles.space) * 3}`, value: '3' },
-											{ label: `${parseFloat(styles.space) * 4}`, value: '4' },
-											{ label: `${parseFloat(styles.space) * 5}`, value: '5' },
-											{ label: `${parseFloat(styles.space) * 6}`, value: '6' },
-											{ label: `${parseFloat(styles.space) * 7}`, value: '7' },
-											{ label: `${parseFloat(styles.space) * 8}`, value: '8' },
-											{ label: `${parseFloat(styles.space) * 9}`, value: '9' },
-											{ label: `${parseFloat(styles.space) * 10}`, value: '10' },
-										]}
+										options={spaceOptions}
 										onChange={ ( v ) =>
-											set( `margin.${ side }.${ tab.name }`, v )
+											upStyle( `margin.${ side }.${ tab.name }`, v )
 										}
 										__next40pxDefaultSize
 										__nextHasNoMarginBottom
@@ -121,22 +127,9 @@ export default function SpacingSettingsPanel( {
 									<SelectControl
 										label={ `${ side } (${ tab.name })` }
 										value={ styles.padding[ side ][ tab.name ] }
-										options={[
-											{ label: '---', value: '' },
-											{ label: 0, value: '0' },
-											{ label: `${parseFloat(styles.space)}`, value: '1' },
-											{ label: `${parseFloat(styles.space) * 2}`, value: '2' },
-											{ label: `${parseFloat(styles.space) * 3}`, value: '3' },
-											{ label: `${parseFloat(styles.space) * 4}`, value: '4' },
-											{ label: `${parseFloat(styles.space) * 5}`, value: '5' },
-											{ label: `${parseFloat(styles.space) * 6}`, value: '6' },
-											{ label: `${parseFloat(styles.space) * 7}`, value: '7' },
-											{ label: `${parseFloat(styles.space) * 8}`, value: '8' },
-											{ label: `${parseFloat(styles.space) * 9}`, value: '9' },
-											{ label: `${parseFloat(styles.space) * 10}`, value: '10' },
-										]}
+										options={spaceOptions}
 										onChange={ ( v ) =>
-											set( `padding.${ side }.${ tab.name }`, v )
+											upStyle( `padding.${ side }.${ tab.name }`, v )
 										}
 										__next40pxDefaultSize
 										__nextHasNoMarginBottom

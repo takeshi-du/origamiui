@@ -5,6 +5,7 @@ import {
 	__experimentalHeading as Heading,
 	Flex,
 	FlexItem,
+	Button,
 	__experimentalUnitControl as UnitControl,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
@@ -13,6 +14,7 @@ import ResponsiveTabs from './ResponsiveTabs';
 
 // icon
 import { AlignStartRow, AlignEndRow, AlignCenterRow, AlignStretchRow, AlignBaselineRow, AlignStartColumn, AlignEndColumn, AlignCenterColumn, AlignStretchColumn, AlignBaselineColumn } from '../components/LayoutFlexIcons';
+import { trash } from '@wordpress/icons';
 
 const gapSides = [ 'row', 'column' ];
 
@@ -35,13 +37,29 @@ export default function LayoutGridSettingsPanel( {
 	const set = ( key, v ) => updateStyles( `${ basePath }.${ key }`, v );
 
 	// gap オプション生成
-	const makeGapOptions = () => {
-		const base = parseFloat( styles.gapSpace || 1 ) || 1;
-		const ops  = [ { label: '---', value: '' }, { label: '0', value: '0' } ];
-		for ( let i = 1; i <= 10; i++ ) {
-			ops.push( { label: `${ base * i }`, value: `${ i }` } );
-		}
-		return ops;
+	const base = parseFloat( styles.gapSpace );
+	const hasBase = ! isNaN( base );
+	const gapOptions = hasBase
+		? [
+				{ label: '---', value: '' },
+				{ label: '0',   value: '0' },
+				...Array.from( { length: 10 }, ( _, i ) => ( {
+					label: `${ base * ( i + 1 ) }`,
+					value: String( i + 1 ),
+				} ) ),
+			]
+		: [ { label: '---', value: '' } ];
+	
+	const resetGap = () => {
+		// 1) gapSpace を空欄
+		updateStyles( `${ basePath }.gapSpace`, '' );
+
+		// 2) row / column × sm,md,lg すべて空欄
+		[ 'row', 'column' ].forEach( axis => {
+			[ 'sm', 'md', 'lg' ].forEach( bp => {
+				updateStyles( `${ basePath }.gap.${ axis }.${ bp }`, '' );
+			} );
+		} );
 	};
 
 	return (
@@ -112,7 +130,14 @@ export default function LayoutGridSettingsPanel( {
 				] }
 				__next40pxDefaultSize
 			/>
-
+			{/* Reset ボタン */}
+			<Button
+				icon={ trash }
+				variant="secondary"
+				text={ __( 'Reset gap', 'origamiui' ) }
+				onClick={ resetGap }
+				description={ __( 'Reset gapSpace & gap options', 'origamiui' ) }
+			/>
 			{/* Gap row / column */}
 			<ResponsiveTabs>
 				{ ( tab ) => (
@@ -126,7 +151,7 @@ export default function LayoutGridSettingsPanel( {
 									<SelectControl
 										label={ `${ axis } (${ tab.name })` }
 										value={ styles.gap[ axis ][ tab.name ] }
-										options={ makeGapOptions() }
+										options={ gapOptions }
 										onChange={ ( v ) =>
 											set( `gap.${ axis }.${ tab.name }`, v )
 										}

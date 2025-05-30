@@ -20,13 +20,13 @@
       "default": {
         "base": {
           "display": {
-            "overflow": "---",
-            "opacity": "---",
-            "zIndex": "---",
+            "overflow": "",
+            "opacity": "",
+            "zIndex": "",
             "visible": {
-              "sm": "---",
-              "md": "---",
-              "lg": "---"
+              "sm": "",
+              "md": "",
+              "lg": ""
             }
           }
         }

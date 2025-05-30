@@ -70,30 +70,39 @@ export default function Edit({ attributes, setAttributes, clientId }){
           <Heading style={ { marginTop: '1.5em' } }>{ __( 'Column Settings', 'origamiui' ) }</Heading>
           <RangeControl
             label={ `${ __( 'Column', 'origamiui' ) } (SM)` }
-            value={ styles.base.sizing.column.sm }
+            value={ styles.base.sizing.column.sm ?? undefined }
             onChange={ ( v ) => updateStyles( `base.sizing.column.sm`, v ) }
             min={ 1 }
             max={ 12 }
             step={ 1 }
+            allowReset
+	          resetFallbackValue=""
             __next40pxDefaultSize
+            __nextHasNoMarginBottom
           />
           <RangeControl
             label={ `${ __( 'Column', 'origamiui' ) } (MD)` }
-            value={ styles.base.sizing.column.md }
+            value={ styles.base.sizing.column.md ?? undefined }
             onChange={ ( v ) => updateStyles( `base.sizing.column.md`, v ) }
             min={ 1 }
             max={ 12 }
             step={ 1 }
+            allowReset
+	          resetFallbackValue=""
             __next40pxDefaultSize
+            __nextHasNoMarginBottom
           />
           <RangeControl
             label={ `${ __( 'Column', 'origamiui' ) } (LG)` }
-            value={ styles.base.sizing.column.lg }
+            value={ styles.base.sizing.column.lg ?? undefined }
             onChange={ ( v ) => updateStyles( `base.sizing.column.lg`, v ) }
             min={ 1 }
             max={ 12 }
             step={ 1 }
+            allowReset
+	          resetFallbackValue=""
             __next40pxDefaultSize
+            __nextHasNoMarginBottom
           />
           <Heading style={ { marginTop: '1.5em' } }>{ __( 'Offset Settings', 'origamiui' ) }</Heading>
           <RangeControl
@@ -106,6 +115,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
             allowReset
 	          resetFallbackValue=""
             __next40pxDefaultSize
+            __nextHasNoMarginBottom
           />
           <RangeControl
             label={ `${ __( 'Offset', 'origamiui' ) } (MD)` }
@@ -117,6 +127,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
             allowReset
 	          resetFallbackValue=""
             __next40pxDefaultSize
+            __nextHasNoMarginBottom
           />
           <RangeControl
             label={ `${ __( 'Offset', 'origamiui' ) } (LG)` }
@@ -128,6 +139,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
             allowReset
 	          resetFallbackValue=""
             __next40pxDefaultSize
+            __nextHasNoMarginBottom
           />
           {/* <ResponsiveTabs>
             { ( tab ) => (
@@ -185,16 +197,22 @@ export default function Edit({ attributes, setAttributes, clientId }){
           </ResponsiveTabs> */}
         </PanelBody>
         <LayoutFlexSettingsPanel
+          stylesRoot={ styles }
+          setStyles={ ( s ) => setAttributes({ styles: s }) }
           styles={ styles.base.flex }
           updateStyles={ updateStyles }
           initialOpen={ false }
         />
         <SpacingSettingsPanel
+          stylesRoot={ styles }
+          setStyles={ ( s ) => setAttributes({ styles: s }) }
           styles={ styles.base.spacing }
           updateStyles={ updateStyles }
           initialOpen={ false }
         />
         <SizeSettingsPanel
+          stylesRoot={ styles }
+          setStyles={ ( s ) => setAttributes({ styles: s }) }
           styles={ styles.base.sizing }
           updateStyles={ updateStyles }
           initialOpen={ false }

@@ -1,10 +1,11 @@
 import { useMemo } from 'react';
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, useInnerBlocksProps, InspectorControls, ButtonBlockAppender } from '@wordpress/block-editor';
-import { PanelBody, SelectControl, Flex, FlexItem, RangeControl, __experimentalHeading as Heading, __experimentalUnitControl as UnitControl, __experimentalToggleGroupControl as ToggleGroupControl,
+import { PanelBody, SelectControl, Flex, FlexItem, Button, RangeControl, __experimentalHeading as Heading, __experimentalUnitControl as UnitControl, __experimentalToggleGroupControl as ToggleGroupControl,
   __experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon } from '@wordpress/components';
 // icon
 import { AlignStartRow, AlignEndRow, AlignCenterRow, AlignStretchRow, AlignBaselineRow, AlignStartColumn, AlignEndColumn, AlignCenterColumn, AlignStretchColumn, AlignBaselineColumn } from '../../components/LayoutFlexIcons';
+import { trash } from '@wordpress/icons';
 import { useSelect } from '@wordpress/data';
 import { convertStylesToCSS } from '../../utils/style-converter';
 import cloneDeep from 'lodash/cloneDeep';
@@ -20,14 +21,31 @@ export default function Edit({ attributes, setAttributes, clientId }){
   const { tagName, styles } = attributes;
   const gapSides = [ 'row', 'column' ];
 
-  const makeGapOptions = () => {
-		const base = parseFloat( styles.gapSpace || 1 ) || 1;
-		const ops  = [ { label: '---', value: '' }, { label: '0', value: '0' } ];
-		for ( let i = 1; i <= 10; i++ ) {
-			ops.push( { label: `${ base * i }`, value: `${ i }` } );
-		}
-		return ops;
-	};
+  const base = parseFloat( styles.base.flex.gapSpace );
+  const hasBase = ! isNaN( base );
+  const gapOptions = hasBase
+    ? [
+        { label: '---', value: '' },
+        { label: '0',   value: '0' },
+        ...Array.from( { length: 10 }, ( _, i ) => ( {
+          label: `${ base * ( i + 1 ) }`,
+          value: String( i + 1 ),
+        } ) ),
+      ]
+    : [ { label: '---', value: '' } ];
+  
+  const resetGap = () => {
+    const clone = cloneDeep( styles );
+    clone.base.flex.gapSpace = '';
+
+    ['row','column'].forEach( axis => {
+      ['sm','md','lg'].forEach( bp => {
+        clone.base.flex.gap[ axis ][ bp ] = '';
+      });
+    });
+
+    setAttributes( { styles: clone } );
+  };
 
   // スタイルを変換（useMemoで最適化）
   const { inlineStyles, blockClasses } = useMemo(() => {
@@ -72,6 +90,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
             max={ 12 }
             step={ 1 }
             __next40pxDefaultSize
+            __nextHasNoMarginBottom
           />
           <RangeControl
             label={ `${ __( 'Grid Columns', 'origamiui' ) } (MD)` }
@@ -81,6 +100,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
             max={ 12 }
             step={ 1 }
             __next40pxDefaultSize
+            __nextHasNoMarginBottom
           />
           <RangeControl
             label={ `${ __( 'Grid Columns', 'origamiui' ) } (LG)` }
@@ -90,6 +110,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
             max={ 12 }
             step={ 1 }
             __next40pxDefaultSize
+            __nextHasNoMarginBottom
           />
           <Heading style={ { marginTop: '1.5em' } }>
             { __( 'Layout Settings', 'origamiui' ) }
@@ -153,6 +174,16 @@ export default function Edit({ attributes, setAttributes, clientId }){
               { value: 'rem', label: 'rem' },
             ] }
             __next40pxDefaultSize
+            __nextHasNoMarginBottom
+          />
+          {/* Reset ボタン */}
+          <Button
+            icon={ trash }
+            variant="secondary"
+            text={ __( 'Reset gap', 'origamiui' ) }
+            onClick={ resetGap }
+            description={ __( 'Reset gapSpace & gap options', 'origamiui' ) }
+            __next40pxDefaultSize
           />
           {/* Gap row / column */}
           <ResponsiveTabs>
@@ -161,22 +192,6 @@ export default function Edit({ attributes, setAttributes, clientId }){
                 <Heading style={ { marginTop: '1.5em' } }>
                   { __( 'Gap Space', 'origamiui' ) }
                 </Heading>
-                {/* <Flex wrap>
-                  { gapSides.map( ( axis ) => (
-                    <FlexItem key={ axis } style={ { width: '45%' } }>
-                      <SelectControl
-                        label={ `${ axis } (${ tab.name })` }
-                        value={ styles.gap[ axis ][ tab.name ] }
-                        options={ makeGapOptions() }
-                        onChange={ ( v ) =>
-                          set( `gap.${ axis }.${ tab.name }`, v )
-                        }
-                        __next40pxDefaultSize
-                        __nextHasNoMarginBottom
-                      />
-                    </FlexItem>
-                  ) ) }
-                </Flex> */}
                 <Flex style={{flexWrap: 'wrap'}}>
                   {gapSides.map((side) => (
                     <FlexItem style={{width: '45%'}}>
@@ -184,20 +199,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                         key={`${side}-${tab.name}`}
                         label={`${side} (${tab.title})`}
                         value={styles.base.flex.gap[side][tab.name]}
-                        options={[
-                          { label: '---', value: '' },
-                          { label: 0, value: '0' },
-                          { label: `${parseFloat(styles.base.flex.gapSpace)}`, value: '1' },
-                          { label: `${parseFloat(styles.base.flex.gapSpace) * 2}`, value: '2' },
-                          { label: `${parseFloat(styles.base.flex.gapSpace) * 3}`, value: '3' },
-                          { label: `${parseFloat(styles.base.flex.gapSpace) * 4}`, value: '4' },
-                          { label: `${parseFloat(styles.base.flex.gapSpace) * 5}`, value: '5' },
-                          { label: `${parseFloat(styles.base.flex.gapSpace) * 6}`, value: '6' },
-                          { label: `${parseFloat(styles.base.flex.gapSpace) * 7}`, value: '7' },
-                          { label: `${parseFloat(styles.base.flex.gapSpace) * 8}`, value: '8' },
-                          { label: `${parseFloat(styles.base.flex.gapSpace) * 9}`, value: '9' },
-                          { label: `${parseFloat(styles.base.flex.gapSpace) * 10}`, value: '10' },
-                        ]}
+                        options={gapOptions}
                         onChange={(newGap) =>
                           updateStyles(`base.flex.gap.${side}.${tab.name}`, newGap)
                         }
@@ -218,11 +220,15 @@ export default function Edit({ attributes, setAttributes, clientId }){
           showDisplaySetting={ false }
         /> */}
         <SpacingSettingsPanel
+          stylesRoot={ styles }
+          setStyles={ ( s ) => setAttributes({ styles: s }) }
           styles={ styles.base.spacing }
           updateStyles={ updateStyles }
           initialOpen={ false }
         />
         <SizeSettingsPanel
+          stylesRoot={ styles }
+          setStyles={ ( s ) => setAttributes({ styles: s }) }
           styles={ styles.base.sizing }
           updateStyles={ updateStyles }
           initialOpen={ false }

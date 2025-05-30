@@ -16,7 +16,7 @@
       "default": {
         "base": {
           "sizing": {
-            "size": "5%",
+            "size": "",
             "width": {
               "sm": "",
               "md": "",
@@ -28,9 +28,9 @@
               "lg": ""
             },
             "column": {
-              "sm": 4,
+              "sm": 12,
               "md": 4,
-              "lg": 4
+              "lg": ""
             },
             "offset": {
               "sm": "",
@@ -85,7 +85,7 @@
               "md": "",
               "lg": ""
             },
-            "gapSpace": "24px",
+            "gapSpace": "",
             "gap": {
               "row": {
                 "sm": "",
@@ -100,7 +100,7 @@
             }
           },
           "spacing": {
-            "space": "10px",
+            "space": "",
             "margin": {
               "top": {
                 "sm": "",
