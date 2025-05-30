@@ -197,7 +197,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                     <FlexItem style={{width: '45%'}}>
                       <SelectControl
                         key={`${side}-${tab.name}`}
-                        label={`${side} (${tab.title})`}
+                        label={`${side} (${tab.name})`}
                         value={styles.base.flex.gap[side][tab.name]}
                         options={gapOptions}
                         onChange={(newGap) =>
