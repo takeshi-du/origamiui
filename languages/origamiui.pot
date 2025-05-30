@@ -9,14 +9,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-15T04:52:20+00:00\n"
+"POT-Creation-Date: 2025-05-30T22:20:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: origamiui\n"
 
 #. Plugin Name of the plugin
 #: origamiui.php
-#: origamiui.php:84
+#: origamiui.php:90
 msgid "OrigamiUI"
 msgstr ""
 
@@ -30,411 +30,492 @@ msgstr ""
 msgid "DesignupJP"
 msgstr ""
 
-#: build/custom-column/index.js:1
-#: src/custom-column/edit.js:71
-msgid "Column Settings"
-msgstr ""
-
-#: build/custom-column/index.js:1
-#: build/custom-container/index.js:1
-#: build/custom-grid/index.js:1
-#: build/custom-group/index.js:1
-#: build/custom-row/index.js:1
-#: src/custom-column/edit.js:132
-#: src/custom-container/edit.js:70
-#: src/custom-grid/edit.js:69
-#: src/custom-group/edit.js:70
-#: src/custom-row/edit.js:69
-msgid "Sizing Settings"
-msgstr ""
-
-#: build/custom-column/index.js:1
-#: build/custom-container/index.js:1
-#: build/custom-grid/index.js:1
-#: build/custom-group/index.js:1
-#: build/custom-row/index.js:1
-#: src/custom-column/edit.js:134
-#: src/custom-container/edit.js:72
-#: src/custom-grid/edit.js:71
-#: src/custom-group/edit.js:72
-#: src/custom-row/edit.js:71
-msgid "--size"
-msgstr ""
-
-#: build/custom-column/index.js:1
-#: src/custom-column/edit.js:152
-msgid "Height Settings"
-msgstr ""
-
-#: build/custom-column/index.js:1
-#: build/custom-container/index.js:1
-#: build/custom-group/index.js:1
-#: build/custom-offcanvas/index.js:1
-#: build/custom-row/index.js:1
-#: src/custom-column/edit.js:177
-#: src/custom-container/edit.js:137
-#: src/custom-group/edit.js:138
-#: src/custom-offcanvas/edit.js:125
-#: src/custom-row/edit.js:136
-msgid "Flex&Grid Settings"
-msgstr ""
-
-#: build/custom-column/index.js:1
-#: build/custom-container/index.js:1
-#: build/custom-grid/index.js:1
-#: build/custom-group/index.js:1
-#: src/custom-column/edit.js:184
-#: src/custom-container/edit.js:144
-#: src/custom-grid/edit.js:143
-#: src/custom-group/edit.js:145
-msgid "Flex Display Settings"
-msgstr ""
-
-#: build/custom-column/index.js:1
-#: build/custom-container/index.js:1
-#: build/custom-grid/index.js:1
-#: build/custom-group/index.js:1
-#: build/custom-row/index.js:1
-#: src/custom-column/edit.js:335
-#: src/custom-container/edit.js:295
-#: src/custom-grid/edit.js:215
-#: src/custom-group/edit.js:296
-#: src/custom-row/edit.js:294
-msgid "Spacing Settings"
-msgstr ""
-
-#: build/custom-column/index.js:1
-#: build/custom-container/index.js:1
-#: build/custom-grid/index.js:1
-#: build/custom-group/index.js:1
-#: build/custom-row/index.js:1
-#: src/custom-column/edit.js:337
-#: src/custom-container/edit.js:297
-#: src/custom-grid/edit.js:217
-#: src/custom-group/edit.js:298
-#: src/custom-row/edit.js:296
-msgid "--space"
-msgstr ""
-
-#: build/custom-column/index.js:1
-#: build/custom-container/index.js:1
-#: build/custom-grid/index.js:1
-#: build/custom-group/index.js:1
-#: src/custom-column/edit.js:351
-#: src/custom-container/edit.js:311
-#: src/custom-grid/edit.js:231
-#: src/custom-group/edit.js:312
-msgid "Margin Settings"
-msgstr ""
-
-#: build/custom-column/index.js:1
-#: build/custom-container/index.js:1
-#: build/custom-grid/index.js:1
-#: build/custom-group/index.js:1
-#: src/custom-column/edit.js:392
-#: src/custom-container/edit.js:352
-#: src/custom-grid/edit.js:272
-#: src/custom-group/edit.js:353
-msgid "Padding Settings"
-msgstr ""
-
-#: build/custom-column/index.js:1
-#: build/custom-container/index.js:1
-#: build/custom-grid/index.js:1
-#: build/custom-group/index.js:1
-#: src/custom-column/edit.js:423
-#: src/custom-container/edit.js:383
-#: src/custom-grid/edit.js:303
-#: src/custom-group/edit.js:384
-msgid "Gap Settings"
-msgstr ""
-
-#: build/custom-column/index.js:1
-#: build/custom-container/index.js:1
-#: build/custom-grid/index.js:1
-#: build/custom-group/index.js:1
-#: build/custom-row/index.js:1
-#: src/custom-column/edit.js:458
-#: src/custom-container/edit.js:418
-#: src/custom-grid/edit.js:338
-#: src/custom-group/edit.js:419
-#: src/custom-row/edit.js:417
-msgid "Position Settings"
-msgstr ""
-
-#: build/custom-column/index.js:1
-#: build/custom-container/index.js:1
-#: build/custom-grid/index.js:1
-#: build/custom-group/index.js:1
-#: build/custom-row/index.js:1
-#: build/custom-toggle/index.js:1
-#: src/custom-column/edit.js:485
-#: src/custom-container/edit.js:445
-#: src/custom-grid/edit.js:365
-#: src/custom-group/edit.js:506
-#: src/custom-row/edit.js:444
-#: src/custom-toggle/edit.js:90
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: build/blocks/custom-offcanvas/index.js:1
+#: build/blocks/custom-toggle/index.js:1
+#: src/blocks/custom-toggle/edit.js:96
+#: src/components/DisplaySettingsPanel.js:32
+#: src/components/LayoutFlexSettingsPanel.js:86
 msgid "Display Settings"
 msgstr ""
 
-#: build/custom-column/index.js:1
-#: build/custom-container/index.js:1
-#: build/custom-grid/index.js:1
-#: build/custom-group/index.js:1
-#: build/custom-row/index.js:1
-#: build/custom-toggle/index.js:1
-#: src/custom-column/edit.js:487
-#: src/custom-container/edit.js:447
-#: src/custom-grid/edit.js:367
-#: src/custom-group/edit.js:508
-#: src/custom-row/edit.js:446
-#: src/custom-toggle/edit.js:92
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: build/blocks/custom-toggle/index.js:1
+#: src/blocks/custom-toggle/edit.js:98
+#: src/components/DisplaySettingsPanel.js:36
 msgid "Overflow"
 msgstr ""
 
-#: build/custom-column/index.js:1
-#: build/custom-container/index.js:1
-#: build/custom-grid/index.js:1
-#: build/custom-group/index.js:1
-#: build/custom-row/index.js:1
-#: build/custom-toggle/index.js:1
-#: src/custom-column/edit.js:501
-#: src/custom-container/edit.js:461
-#: src/custom-grid/edit.js:381
-#: src/custom-group/edit.js:522
-#: src/custom-row/edit.js:460
-#: src/custom-toggle/edit.js:106
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: build/blocks/custom-toggle/index.js:1
+#: src/blocks/custom-toggle/edit.js:112
+#: src/components/DisplaySettingsPanel.js:50
 msgid "Opacity"
 msgstr ""
 
-#: build/custom-column/index.js:1
-#: build/custom-container/index.js:1
-#: build/custom-grid/index.js:1
-#: build/custom-group/index.js:1
-#: build/custom-row/index.js:1
-#: build/custom-toggle/index.js:1
-#: src/custom-column/edit.js:516
-#: src/custom-container/edit.js:476
-#: src/custom-grid/edit.js:396
-#: src/custom-group/edit.js:537
-#: src/custom-row/edit.js:475
-#: src/custom-toggle/edit.js:121
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: build/blocks/custom-toggle/index.js:1
+#: src/blocks/custom-toggle/edit.js:127
+#: src/components/DisplaySettingsPanel.js:66
 msgid "z-index"
 msgstr ""
 
-#: build/custom-column/index.js:1
-#: build/custom-container/index.js:1
-#: build/custom-grid/index.js:1
-#: build/custom-group/index.js:1
-#: build/custom-row/index.js:1
-#: src/custom-column/edit.js:531
-#: src/custom-container/edit.js:491
-#: src/custom-grid/edit.js:411
-#: src/custom-group/edit.js:552
-#: src/custom-row/edit.js:490
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: src/components/DisplaySettingsPanel.js:82
 msgid "HTML Tag"
 msgstr ""
 
-#: build/custom-container/index.js:1
-#: src/custom-container/edit.js:56
-msgid "Container Settings"
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: src/components/SizeSettingsPanel.js:68
+msgid "Sizing Settings"
 msgstr ""
 
-#: build/custom-container/index.js:1
-#: src/custom-container/edit.js:58
-msgid "Container"
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: src/components/SizeSettingsPanel.js:73
+msgid "--size"
 msgstr ""
 
-#: build/custom-container/index.js:1
-#: build/custom-grid/index.js:1
-#: build/custom-group/index.js:1
-#: src/custom-container/edit.js:86
-#: src/custom-grid/edit.js:85
-#: src/custom-group/edit.js:86
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: src/components/SizeSettingsPanel.js:86
+msgid "Reset size"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: src/components/SizeSettingsPanel.js:88
+msgid "Reset size & size options"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: src/components/SizeSettingsPanel.js:95
 msgid "Width & Height Settings"
 msgstr ""
 
-#: build/custom-grid/index.js:1
-#: src/custom-grid/edit.js:56
-msgid "Grid Settings"
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: src/components/SpacingSettingsPanel.js:72
+msgid "Spacing Settings"
 msgstr ""
 
-#: build/custom-grid/index.js:1
-#: src/custom-grid/edit.js:58
-msgid "Grid"
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: src/components/SpacingSettingsPanel.js:77
+msgid "--space"
 msgstr ""
 
-#: build/custom-grid/index.js:1
-#: src/custom-grid/edit.js:136
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: src/components/SpacingSettingsPanel.js:91
+msgid "Reset space"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: src/components/SpacingSettingsPanel.js:93
+msgid "Reset space & gap options"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: src/components/SpacingSettingsPanel.js:100
+msgid "Margin Settings"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: src/components/SpacingSettingsPanel.js:122
+msgid "Padding Settings"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: build/blocks/custom-offcanvas/index.js:1
+#: src/components/LayoutFlexSettingsPanel.js:77
+msgid "Layout & Flex Settings"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: build/blocks/custom-offcanvas/index.js:1
+#: src/components/LayoutFlexSettingsPanel.js:89
+msgid "Display"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: build/blocks/custom-offcanvas/index.js:1
+#: src/components/LayoutFlexSettingsPanel.js:107
 msgid "Flex Settings"
 msgstr ""
 
-#: build/custom-group/index.js:1
-#: src/custom-group/edit.js:455
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: build/blocks/custom-offcanvas/index.js:1
+#: src/components/LayoutFlexSettingsPanel.js:110
+msgid "Direction"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: build/blocks/custom-offcanvas/index.js:1
+#: src/blocks/custom-grid/edit.js:123
+#: src/components/LayoutFlexSettingsPanel.js:132
+#: src/components/LayoutGridSettingsPanel.js:79
+msgid "Align"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: build/blocks/custom-offcanvas/index.js:1
+#: src/components/LayoutFlexSettingsPanel.js:169
+msgid "Justify"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: build/blocks/custom-offcanvas/index.js:1
+#: src/components/LayoutFlexSettingsPanel.js:206
+msgid "AlignSelf"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: build/blocks/custom-offcanvas/index.js:1
+#: src/blocks/custom-grid/edit.js:163
+#: src/components/LayoutFlexSettingsPanel.js:315
+#: src/components/LayoutGridSettingsPanel.js:120
+msgid "Gap Settings"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: build/blocks/custom-offcanvas/index.js:1
+#: src/blocks/custom-grid/edit.js:166
+#: src/components/LayoutFlexSettingsPanel.js:318
+#: src/components/LayoutGridSettingsPanel.js:123
+msgid "--gapSpace"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: build/blocks/custom-offcanvas/index.js:1
+#: src/blocks/custom-grid/edit.js:183
+#: src/components/LayoutFlexSettingsPanel.js:332
+#: src/components/LayoutGridSettingsPanel.js:137
+msgid "Reset gap"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: build/blocks/custom-offcanvas/index.js:1
+#: src/blocks/custom-grid/edit.js:185
+#: src/components/LayoutFlexSettingsPanel.js:334
+#: src/components/LayoutGridSettingsPanel.js:139
+msgid "Reset gapSpace & gap options"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: build/blocks/custom-offcanvas/index.js:1
+#: src/blocks/custom-grid/edit.js:193
+#: src/components/LayoutFlexSettingsPanel.js:341
+#: src/components/LayoutGridSettingsPanel.js:146
+msgid "Gap Space"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: src/blocks/custom-column/edit.js:69
+#: src/blocks/custom-column/edit.js:70
+msgid "Column Settings"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: src/blocks/custom-column/edit.js:72
+#: src/blocks/custom-column/edit.js:84
+#: src/blocks/custom-column/edit.js:96
+msgid "Column"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: src/blocks/custom-column/edit.js:107
+msgid "Offset Settings"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: src/blocks/custom-column/edit.js:109
+#: src/blocks/custom-column/edit.js:121
+#: src/blocks/custom-column/edit.js:133
+msgid "Offset"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: src/blocks/custom-column/edit.js:220
+#: src/blocks/custom-container/edit.js:89
+#: src/blocks/custom-grid/edit.js:236
+#: src/components/PositionSettingsPanel.js:34
+msgid "Position Settings"
+msgstr ""
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1
+#: src/blocks/custom-column/edit.js:226
+#: src/blocks/custom-container/edit.js:95
+#: src/blocks/custom-grid/edit.js:242
+#: src/components/PositionSettingsPanel.js:43
+msgid "Position"
+msgstr ""
+
+#: build/blocks/custom-container/index.js:1
+#: src/blocks/custom-container/edit.js:55
+msgid "Container Settings"
+msgstr ""
+
+#: build/blocks/custom-container/index.js:1
+#: src/blocks/custom-container/edit.js:57
+msgid "Container"
+msgstr ""
+
+#: build/blocks/custom-grid/index.js:1
+#: src/blocks/custom-grid/edit.js:84
+msgid "Grid Settings"
+msgstr ""
+
+#: build/blocks/custom-grid/index.js:1
+#: src/blocks/custom-grid/edit.js:86
+#: src/blocks/custom-grid/edit.js:96
+#: src/blocks/custom-grid/edit.js:106
+msgid "Grid Columns"
+msgstr ""
+
+#: build/blocks/custom-grid/index.js:1
+#: src/blocks/custom-grid/edit.js:116
+#: src/components/LayoutGridSettingsPanel.js:67
+#: src/components/LayoutGridSettingsPanel.js:76
+msgid "Layout Settings"
+msgstr ""
+
+#: build/blocks/custom-group/index.js:1
+#: src/components/PositionSettingsPanel.js:66
+msgid "Alignment Settings"
+msgstr ""
+
+#: build/blocks/custom-group/index.js:1
+#: src/components/PositionSettingsPanel.js:69
+msgid "Alignment"
+msgstr ""
+
+#: build/blocks/custom-group/index.js:1
+#: src/components/PositionSettingsPanel.js:76
+msgid "Translate Settings"
+msgstr ""
+
+#: build/blocks/custom-group/index.js:1
+#: src/components/PositionSettingsPanel.js:81
 msgid "縦方向に半分外に出す"
 msgstr ""
 
-#: build/custom-group/index.js:1
-#: src/custom-group/edit.js:462
+#: build/blocks/custom-group/index.js:1
+#: src/components/PositionSettingsPanel.js:88
 msgid "横方向に半分外に出す"
 msgstr ""
 
-#: build/custom-group/index.js:1
-#: src/custom-group/edit.js:468
+#: build/blocks/custom-group/index.js:1
+#: src/components/LinkSettingsPanel.js:31
 msgid "Link Setting"
 msgstr ""
 
-#: build/custom-group/index.js:1
-#: src/custom-group/edit.js:470
-msgid "URL"
+#: build/blocks/custom-group/index.js:1
+#: src/components/LinkSettingsPanel.js:35
+msgid "リンクを有効にする"
 msgstr ""
 
-#: build/custom-group/index.js:1
-#: src/custom-group/edit.js:479
+#: build/blocks/custom-group/index.js:1
+#: src/components/LinkSettingsPanel.js:42
+msgid "URL / mailto: / tel:"
+msgstr ""
+
+#: build/blocks/custom-group/index.js:1
+#: src/components/LinkSettingsPanel.js:51
 msgid "Rel"
 msgstr ""
 
-#: build/custom-group/index.js:1
-#: src/custom-group/edit.js:488
-msgid "mailTo"
-msgstr ""
-
-#: build/custom-group/index.js:1
-#: src/custom-group/edit.js:497
-msgid "tell"
-msgstr ""
-
-#: build/custom-offcanvas/index.js:1
-#: src/custom-offcanvas/edit.js:63
+#: build/blocks/custom-offcanvas/index.js:1
+#: src/blocks/custom-offcanvas/edit.js:63
 msgid "Offcanvas Settings"
 msgstr ""
 
-#: build/custom-offcanvas/index.js:1
-#: src/custom-offcanvas/edit.js:65
+#: build/blocks/custom-offcanvas/index.js:1
+#: src/blocks/custom-offcanvas/edit.js:65
 msgid "Offcanvas Type"
 msgstr ""
 
-#: build/custom-offcanvas/index.js:1
-#: src/custom-offcanvas/edit.js:76
+#: build/blocks/custom-offcanvas/index.js:1
+#: src/blocks/custom-offcanvas/edit.js:76
 msgid "Offcanvas Position"
 msgstr ""
 
-#: build/custom-offcanvas/index.js:1
-#: src/custom-offcanvas/edit.js:87
+#: build/blocks/custom-offcanvas/index.js:1
+#: src/blocks/custom-offcanvas/edit.js:87
 msgid "Offcanvas Break Point"
 msgstr ""
 
-#: build/custom-offcanvas/index.js:1
-#: src/custom-offcanvas/edit.js:98
+#: build/blocks/custom-offcanvas/index.js:1
+#: src/blocks/custom-offcanvas/edit.js:98
 msgid "Background Color"
 msgstr ""
 
-#: build/custom-offcanvas/index.js:1
-#: src/custom-offcanvas/edit.js:100
+#: build/blocks/custom-offcanvas/index.js:1
+#: src/blocks/custom-offcanvas/edit.js:100
 msgid "Offcanvas Background Color"
 msgstr ""
 
-#: build/custom-row/index.js:1
-#: src/custom-row/edit.js:56
-msgid "Row Settings"
-msgstr ""
-
-#: build/custom-row/index.js:1
-#: src/custom-row/edit.js:58
-msgid "Row"
-msgstr ""
-
-#: build/custom-toggle/index.js:1
-#: src/custom-toggle/edit.js:69
+#: build/blocks/custom-toggle/index.js:1
+#: src/blocks/custom-toggle/edit.js:57
 msgid "Toggle Settings"
 msgstr ""
 
-#: build/custom-toggle/index.js:1
-#: src/custom-toggle/edit.js:71
+#: build/blocks/custom-toggle/index.js:1
+#: src/blocks/custom-toggle/edit.js:59
 msgid "Toggle Type"
 msgstr ""
 
-#: build/custom-toggle/index.js:1
-#: src/custom-toggle/edit.js:83
+#: build/blocks/custom-toggle/index.js:1
+#: src/blocks/custom-toggle/edit.js:71
 msgid "Toggle Target"
 msgstr ""
 
-#: build/custom-column/block.json
-#: src/custom-column/block.json
+#: build/blocks/custom-column/block.json
+#: src/blocks/custom-column/block.json
 msgctxt "block title"
 msgid "Column"
 msgstr ""
 
-#: build/custom-column/block.json
-#: src/custom-column/block.json
+#: build/blocks/custom-column/block.json
+#: src/blocks/custom-column/block.json
 msgctxt "block description"
 msgid "A custom column block."
 msgstr ""
 
-#: build/custom-container/block.json
-#: src/custom-container/block.json
+#: build/blocks/custom-container/block.json
+#: src/blocks/custom-container/block.json
 msgctxt "block title"
 msgid "Container"
 msgstr ""
 
-#: build/custom-container/block.json
-#: src/custom-container/block.json
+#: build/blocks/custom-container/block.json
+#: src/blocks/custom-container/block.json
 msgctxt "block description"
 msgid "A custom container block."
 msgstr ""
 
-#: build/custom-grid/block.json
-#: src/custom-grid/block.json
+#: build/blocks/custom-grid/block.json
+#: src/blocks/custom-grid/block.json
 msgctxt "block title"
 msgid "Grid"
 msgstr ""
 
-#: build/custom-grid/block.json
-#: build/custom-row/block.json
-#: src/custom-grid/block.json
-#: src/custom-row/block.json
+#: build/blocks/custom-grid/block.json
+#: src/blocks/custom-grid/block.json
 msgctxt "block description"
 msgid "A custom row block."
 msgstr ""
 
-#: build/custom-group/block.json
-#: src/custom-group/block.json
+#: build/blocks/custom-group/block.json
+#: src/blocks/custom-group/block.json
 msgctxt "block title"
 msgid "Group"
 msgstr ""
 
-#: build/custom-group/block.json
-#: src/custom-group/block.json
+#: build/blocks/custom-group/block.json
+#: src/blocks/custom-group/block.json
 msgctxt "block description"
 msgid "A custom Group block."
 msgstr ""
 
-#: build/custom-offcanvas/block.json
-#: src/custom-offcanvas/block.json
+#: build/blocks/custom-offcanvas/block.json
+#: src/blocks/custom-offcanvas/block.json
 msgctxt "block title"
 msgid "Offcanvas"
 msgstr ""
 
-#: build/custom-offcanvas/block.json
-#: src/custom-offcanvas/block.json
+#: build/blocks/custom-offcanvas/block.json
+#: src/blocks/custom-offcanvas/block.json
 msgctxt "block description"
 msgid "A custom Offcanvas block."
 msgstr ""
 
-#: build/custom-row/block.json
-#: src/custom-row/block.json
-msgctxt "block title"
-msgid "Row"
-msgstr ""
-
-#: build/custom-toggle/block.json
-#: src/custom-toggle/block.json
+#: build/blocks/custom-toggle/block.json
+#: src/blocks/custom-toggle/block.json
 msgctxt "block title"
 msgid "Toggle"
 msgstr ""
 
-#: build/custom-toggle/block.json
-#: src/custom-toggle/block.json
+#: build/blocks/custom-toggle/block.json
+#: src/blocks/custom-toggle/block.json
 msgctxt "block description"
 msgid "A custom Toggle Button block."
 msgstr ""
