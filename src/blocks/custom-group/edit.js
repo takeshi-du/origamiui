@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
+import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, useInnerBlocksProps, InspectorControls, ButtonBlockAppender } from '@wordpress/block-editor';
+import { PanelBody } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { convertStylesToCSS } from '../../utils/style-converter';
 import cloneDeep from 'lodash/cloneDeep';
@@ -13,9 +15,20 @@ import SizeSettingsPanel from '../../components/SizeSettingsPanel';
 import SpacingSettingsPanel from '../../components/SpacingSettingsPanel';
 import LayoutFlexSettingsPanel from '../../components/LayoutFlexSettingsPanel';
 import LinkSettingsPanel from '../../components/LinkSettingsPanel';
+import CodeMirrorField from '../../components/CodeMirrorField';
+import useCustomCSS from '../../hooks/useCustomCSS';
 
 export default function Edit({ attributes, setAttributes, clientId }){
   const { tagName, link, styles } = attributes;
+  const {
+		editorClass,
+		customCSS,
+		initialValue,
+		handleChange,
+	} = useCustomCSS( attributes, setAttributes, {
+		prefix: 'oui_cm-group',
+		defaultTemplate: 'selector {\n    background:#007cba;\n}\n',
+	} );
 
   // スタイルを変換（useMemoで最適化）
   const { inlineStyles, blockClasses } = useMemo(() => {
@@ -29,9 +42,10 @@ export default function Edit({ attributes, setAttributes, clientId }){
     setAttributes({ styles: newStyles });
   };
 
+  const combinedClasses = [ blockClasses, editorClass ].filter( Boolean ).join( ' ' );
   // ブロックのプロパティにインラインスタイルを適用
   const blockProps = useBlockProps({
-    className: blockClasses,
+    className: combinedClasses,
     style: inlineStyles,
   });
 
@@ -97,9 +111,16 @@ export default function Edit({ attributes, setAttributes, clientId }){
           tagName={ tagName }
           onTagChange={ (v)=>setAttributes({ tagName: v }) }
         />
+        <PanelBody title={__('Custom CSS', 'origamiui')} initialOpen={false}>
+          <CodeMirrorField value={ initialValue } onChange={ handleChange } />
+          <p style={{ fontSize: 12, opacity: .7 }}>
+            {__('ヒント: 「selector」を使うとこのボタンだけに適用されます。', 'origamiui')}
+          </p>
+        </PanelBody>
       </InspectorControls>
 
       <TagName {...innerBlocksProps} />
+      { customCSS && <style>{ customCSS }</style> }
     </>
   );
 };

@@ -20,6 +20,18 @@
         "tell": ""
       }
     },
+    "uid": {
+      "type": "string",
+      "default": ""
+    },
+    "customCSS": {
+      "type": "string",
+      "default": ""
+    },
+    "className": {
+      "type": "string",
+      "default": ""
+    },
     "styles": {
       "type": "object",
       "default": {
