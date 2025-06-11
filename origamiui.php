@@ -113,3 +113,7 @@ function origamiui_add_editor_css_to_editor() {
   );
 }
 add_action('enqueue_block_assets', 'origamiui_add_editor_css_to_editor');
+
+add_action( 'enqueue_block_editor_assets', function () {
+    wp_enqueue_code_editor( [ 'type' => 'text/css' ] );
+} );

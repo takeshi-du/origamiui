@@ -11,7 +11,7 @@ export default function CodeMirrorField( { value, onChange } ) {
 			value,
 			mode: 'css',
 			lineNumbers: true,
-			lint: true,
+			lint: false,
 			gutters: [ 'CodeMirror-lint-markers' ],
 			extraKeys: { 'Ctrl-Space': 'autocomplete' },
 		} );

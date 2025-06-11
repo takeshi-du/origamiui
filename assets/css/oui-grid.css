@@ -5349,6 +5349,15 @@ body {
   height: auto;
 }
 
+.oui_wp-block-origamiui-custom-group img,
+.oui_wp-block-origamiui-custom-container img,
+.oui_wp-block-origamiui-custom-grid img,
+.oui_wp-block-origamiui-custom-column img,
+.oui_wp-block-origamiui-custom-offcanvas img,
+.oui_wp-block-origamiui-custom-toggle img {
+  line-height: 1;
+}
+
 .oui_grid {
   display: grid;
   grid-template-columns: repeat(var(--oui-grid-columns-sm, 12), 1fr);

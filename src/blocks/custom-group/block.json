@@ -21,8 +21,8 @@
       }
     },
     "uid": { "type": "string", "default": "" },
-    "customCSS": { "type": "string", "default": "" },
-    "className": { "type": "string", "default": "" },
+    "rawCSS": { "type": "string", "default": "" },
+    "compiledCSS": { "type": "string", "default": "" },
     "styles": {
       "type": "object",
       "default": {
@@ -203,5 +203,12 @@
   "style": "oui-css",
   "editorStyle": "oui-editor",
   "textdomain": "origamiui",
-  "editorScript": "file:./build/index.js"
+  "editorScript": "file:./build/index.js",
+  "dependencies": [
+    "wp-code-editor",
+    "wp-block-editor",
+    "wp-element",
+    "wp-components",
+    "wp-i18n"
+  ]
 }

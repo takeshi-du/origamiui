@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, useInnerBlocksProps, InspectorControls, ButtonBlockAppender } from '@wordpress/block-editor';
 import { PanelBody } from '@wordpress/components';
@@ -21,14 +20,11 @@ import useCustomCSS from '../../hooks/useCustomCSS';
 export default function Edit({ attributes, setAttributes, clientId }){
   const { tagName, link, styles } = attributes;
   const {
-		editorClass,
-		customCSS,
-		initialValue,
-		handleChange,
-	} = useCustomCSS( attributes, setAttributes, {
-		prefix: 'oui_cm-group',
-		defaultTemplate: 'selector {\n    background:#007cba;\n}\n',
-	} );
+    blockClass, rawCSS, compiledCSS, onChange
+  } = useCustomCSS(
+    { ...attributes, clientId }, setAttributes,
+    { prefix: 'oui_cm-group', tpl: 'selector {}' }
+  );
 
   // スタイルを変換（useMemoで最適化）
   const { inlineStyles, blockClasses } = useMemo(() => {
@@ -42,10 +38,10 @@ export default function Edit({ attributes, setAttributes, clientId }){
     setAttributes({ styles: newStyles });
   };
 
-  const combinedClasses = [ blockClasses, editorClass ].filter( Boolean ).join( ' ' );
+  // const combinedClasses = [ blockClasses, blockClass ].filter( Boolean ).join( ' ' );
   // ブロックのプロパティにインラインスタイルを適用
   const blockProps = useBlockProps({
-    className: combinedClasses,
+    className: blockClasses,
     style: inlineStyles,
   });
 
@@ -112,15 +108,15 @@ export default function Edit({ attributes, setAttributes, clientId }){
           onTagChange={ (v)=>setAttributes({ tagName: v }) }
         />
         <PanelBody title={__('Custom CSS', 'origamiui')} initialOpen={false}>
-          <CodeMirrorField value={ initialValue } onChange={ handleChange } />
+          <CodeMirrorField value={ rawCSS } onChange={ onChange } />
           <p style={{ fontSize: 12, opacity: .7 }}>
-            {__('ヒント: 「selector」を使うとこのボタンだけに適用されます。', 'origamiui')}
+            {__(`「selector」を使うとこのブロック${clientId}だけに適用されます。`, 'origamiui')}
           </p>
         </PanelBody>
       </InspectorControls>
 
       <TagName {...innerBlocksProps} />
-      { customCSS && <style>{ customCSS }</style> }
+      { compiledCSS && <style>{ compiledCSS }</style> }
     </>
   );
 };

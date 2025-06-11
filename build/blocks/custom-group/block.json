@@ -24,11 +24,11 @@
       "type": "string",
       "default": ""
     },
-    "customCSS": {
+    "rawCSS": {
       "type": "string",
       "default": ""
     },
-    "className": {
+    "compiledCSS": {
       "type": "string",
       "default": ""
     },
@@ -212,5 +212,12 @@
   "style": "oui-css",
   "editorStyle": "oui-editor",
   "textdomain": "origamiui",
-  "editorScript": "file:./build/index.js"
+  "editorScript": "file:./build/index.js",
+  "dependencies": [
+    "wp-code-editor",
+    "wp-block-editor",
+    "wp-element",
+    "wp-components",
+    "wp-i18n"
+  ]
 }

@@ -2,16 +2,18 @@ import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 import { convertStylesToCSS } from '../../utils/style-converter';
 
 export default function save({ attributes }) {
-  const { tagName, link, styles, className, customCSS } = attributes;
+  const { tagName, link, styles, compiledCSS } = attributes;
 
   // スタイルを変換
   const { inlineStyles, blockClasses } = convertStylesToCSS(styles);
 
   // const combinedClasses = `${blockClasses || ''} ${className}`.trim();
-  const combinedClasses = [ blockClasses, className ].filter( Boolean ).join( ' ' );
+  // const suffix = clientId.split('-').pop(); 
+  // const editorClass = `oui_cm-${ suffix }`; 
+  // const combinedClasses = [ blockClasses, className ].filter( Boolean ).join( ' ' );
   // ブロックのプロパティにインラインスタイルを適用
   const blockProps = useBlockProps.save({
-    className: combinedClasses,
+    className: blockClasses,
     style: inlineStyles,
   });
 
@@ -31,8 +33,8 @@ export default function save({ attributes }) {
       <TagName {...blockProps}>
         <InnerBlocks.Content />
       </TagName>
-      { customCSS && (
-				<style dangerouslySetInnerHTML={ { __html: customCSS } } />
+      { compiledCSS && (
+				<style dangerouslySetInnerHTML={ { __html: compiledCSS } } />
 			) }
     </>
   );
