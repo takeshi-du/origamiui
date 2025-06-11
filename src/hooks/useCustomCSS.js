@@ -1,9 +1,7 @@
-// src/hooks/useCustomCSS.js
 import { useEffect, useCallback } from '@wordpress/element';
 
 /**
- * カスタム CSS を selector ベースで保存し、表示時にブロック専用クラスへ
- * 置き換える共通フック
+ * カスタム CSS を selector ベースで保存し、表示時にブロック専用クラスへ置き換える共通フック
  *
  * @param {Object}   attrs      ブロック属性（edit.js から渡す）
  * @param {Function} setAttrs   setAttributes
@@ -14,15 +12,15 @@ import { useEffect, useCallback } from '@wordpress/element';
 export default function useCustomCSS( attrs, setAttrs, { prefix, tpl } ) {
 	/* ---------- 変数準備 ---------- */
 	const { rawCSS = tpl, compiledCSS } = attrs;
-	const suffix   = attrs.clientId.split( '-' ).pop();   // clientId の末尾
-	const cls      = `${ prefix }-${ suffix }`;           // 例: oui_cm-group-893a0dea1bb1
-	const regexSel = new RegExp( `\\.${ prefix }-[a-f0-9]+`, 'g' );  // 旧クラス検出用
+	const suffix   = attrs.clientId.split( '-' ).pop();
+	const cls      = `${ prefix }-${ suffix }`;
+	const regexSel = new RegExp( `\\.${ prefix }-[a-f0-9]+`, 'g' );
 
 	/* ---------- ① rawCSS → compiledCSS 同期 ---------- */
 	useEffect( () => {
 		const newCompiled = rawCSS
-			.replace( /selector/g, `.${ cls }` )   // selector → 現クラス
-			.replace( regexSel, `.${ cls }` );     // 旧クラス → 現クラス
+			.replace( /selector/g, `.${ cls }` )
+			.replace( regexSel, `.${ cls }` );
 
 		if ( newCompiled !== compiledCSS ) {
 			setAttrs( { compiledCSS: newCompiled } );
@@ -31,7 +29,7 @@ export default function useCustomCSS( attrs, setAttrs, { prefix, tpl } ) {
 
 	/* ---------- ② CodeMirror onChange ---------- */
 	const onChange = useCallback(
-		( text ) => setAttrs( { rawCSS: text } ), // selector のまま保存
+		( text ) => setAttrs( { rawCSS: text } ),
 		[]
 	);
 

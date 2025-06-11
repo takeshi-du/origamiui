@@ -23,7 +23,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
     blockClass, rawCSS, compiledCSS, onChange
   } = useCustomCSS(
     { ...attributes, clientId }, setAttributes,
-    { prefix: 'oui_cm-group', tpl: 'selector {}' }
+    { prefix: 'oui_cm-group', tpl: 'selector {...}' }
   );
 
   // スタイルを変換（useMemoで最適化）
@@ -37,7 +37,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
     set(newStyles, path, value);
     setAttributes({ styles: newStyles });
   };
-
+  
   // const combinedClasses = [ blockClasses, blockClass ].filter( Boolean ).join( ' ' );
   // ブロックのプロパティにインラインスタイルを適用
   const blockProps = useBlockProps({
@@ -109,8 +109,17 @@ export default function Edit({ attributes, setAttributes, clientId }){
         />
         <PanelBody title={__('Custom CSS', 'origamiui')} initialOpen={false}>
           <CodeMirrorField value={ rawCSS } onChange={ onChange } />
-          <p style={{ fontSize: 12, opacity: .7 }}>
-            {__(`「selector」を使うとこのブロック${clientId}だけに適用されます。`, 'origamiui')}
+          <p
+            style={{
+              fontSize: 12,
+              opacity: 0.7,
+              whiteSpace: 'pre-wrap',
+            }}
+          >
+            {__(
+              `「selector」を使うとこのブロックだけに適用されます。\n\n例)\nselector {\n  color: red;\n}\nselector:hover {\n  color: blue;\n}`,
+              'origamiui'
+            )}
           </p>
         </PanelBody>
       </InspectorControls>
