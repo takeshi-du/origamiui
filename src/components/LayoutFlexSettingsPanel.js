@@ -239,19 +239,6 @@ export default function LayoutFlexSettingsPanel( {
 							/>
 						</ToggleGroupControl>
 
-						{/* <SelectControl
-							label={ `${ __( 'Wrap', 'origamiui' ) } (${ tab.name })` }
-							value={styles.wrap[tab.name]}
-							options={[
-								{ label: '---', value: '' },
-								{ label: 'nowrap', value: 'nowrap' },
-								{ label: 'wrap', value: 'wrap' },
-							]}
-							onChange={(v) => set(`wrap.${tab.name}`, v)}
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
-						/> */}
-
 						{/* Grow / Shrink / Self / Order */}
 						<Flex wrap>
 							{ [

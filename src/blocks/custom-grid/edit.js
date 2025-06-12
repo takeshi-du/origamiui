@@ -129,6 +129,9 @@ export default function Edit({ attributes, setAttributes, clientId }){
             { ( tab ) => (
               <>
                 {/* Flex */}
+                <Heading style={ { marginTop: '1.5em' } }>
+                  { __( 'Flex Settings', 'origamiui' ) }
+                </Heading>
                 <ToggleGroupControl
                   label={ `${ __( 'Align', 'origamiui' ) } (${ tab.name })` }
                   value={ styles.base.flex.align[ tab.name ] || undefined }
@@ -165,6 +168,61 @@ export default function Edit({ attributes, setAttributes, clientId }){
                     label="baseline"
                   />
                 </ToggleGroupControl>
+
+                {/* Grow / Shrink / Self / Order */}
+                <Flex wrap>
+                  { [
+                    {
+                      key: 'grow',
+                      options: [
+                        { label: '---', value: '' },
+                        { label: 'grow', value: 'grow-1' },
+                        { label: 'no grow', value: 'grow-0' },
+                      ],
+                    },
+                    {
+                      key: 'shrink',
+                      options: [
+                        { label: '---', value: '' },
+                        { label: 'shrink', value: 'shrink-1' },
+                        { label: 'no shrink', value: 'shrink-0' },
+                      ],
+                    },
+                    {
+                      key: 'wrap',
+                      options: [
+                        { label: '---', value: '' },
+                        { label: 'wrap', value: 'wrap' },
+                        { label: 'no wrap', value: 'nowrap' },
+                      ],
+                    },
+                    {
+                      key: 'order',
+                      options: [
+                        { label: '---', value: '' },
+                        { label: '0', value: '0' },
+                        { label: '1', value: '1' },
+                        { label: '2', value: '2' },
+                        { label: '3', value: '3' },
+                        { label: '4', value: '4' },
+                        { label: '5', value: '5' },
+                      ],
+                    },
+                  ].map( ( cfg ) => (
+                    <FlexItem key={ cfg.key } style={ { width: '45%' } }>
+                      <SelectControl
+                        label={ `${ __( cfg.key, 'origamiui' ) } (${ tab.name })` }
+                        value={ styles.base.flex[ cfg.key ][ tab.name ] }
+                        options={ cfg.options }
+                        onChange={ ( v ) =>
+                          updateStyles( `base.flex.${ cfg.key }.${ tab.name }`, v )
+                        }
+                        __next40pxDefaultSize
+                        __nextHasNoMarginBottom
+                      />
+                    </FlexItem>
+                  ) ) }
+                </Flex>
               </>
             ) }
           </ResponsiveTabs>
