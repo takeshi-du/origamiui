@@ -9,14 +9,22 @@ import set from 'lodash/set';
 
 // 追加: 共通コンポーネント
 import ResponsiveTabs from '../../components/ResponsiveTabs';
-import PositionSettingsPanel from '../../components/PositionSettingsPanel';
 import DisplaySettingsPanel from '../../components/DisplaySettingsPanel';
 import SizeSettingsPanel from '../../components/SizeSettingsPanel';
 import SpacingSettingsPanel from '../../components/SpacingSettingsPanel';
 import LayoutFlexSettingsPanel from '../../components/LayoutFlexSettingsPanel';
 
+import CodeMirrorField from '../../components/CodeMirrorField';
+import useCustomCSS from '../../hooks/useCustomCSS';
+
 export default function Edit({ attributes, setAttributes, clientId }){
   const { tagName, styles } = attributes;
+  const {
+    blockClass, rawCSS, compiledCSS, onChange
+  } = useCustomCSS(
+    { ...attributes, clientId }, setAttributes,
+    { prefix: 'oui_cm-container', tpl: 'selector {...}' }
+  );
 
   // スタイルを変換（useMemoで最適化）
   const { inlineStyles, blockClasses } = useMemo(() => {
@@ -117,9 +125,25 @@ export default function Edit({ attributes, setAttributes, clientId }){
           tagName={ tagName }
           onTagChange={ (v)=>setAttributes({ tagName: v }) }
         />
+        <PanelBody title={__('Custom CSS', 'origamiui')} initialOpen={false}>
+          <CodeMirrorField value={ rawCSS } onChange={ onChange } />
+          <p
+            style={{
+              fontSize: 12,
+              opacity: 0.7,
+              whiteSpace: 'pre-wrap',
+            }}
+          >
+            {__(
+              `「selector」を使うとこのブロックだけに適用されます。\n\n例)\nselector {\n  color: red;\n}\nselector:hover {\n  color: blue;\n}`,
+              'origamiui'
+            )}
+          </p>
+        </PanelBody>
       </InspectorControls>
       
       <TagName {...innerBlocksProps} />
+      { compiledCSS && <style>{ compiledCSS }</style> }
     </>
   );
 };

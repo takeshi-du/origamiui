@@ -15,8 +15,17 @@ import SizeSettingsPanel from '../../components/SizeSettingsPanel';
 import SpacingSettingsPanel from '../../components/SpacingSettingsPanel';
 import LayoutFlexSettingsPanel from '../../components/LayoutFlexSettingsPanel';
 
+import CodeMirrorField from '../../components/CodeMirrorField';
+import useCustomCSS from '../../hooks/useCustomCSS';
+
 export default function Edit({ attributes, setAttributes, clientId }){
   const { tagName, styles } = attributes;
+  const {
+    blockClass, rawCSS, compiledCSS, onChange
+  } = useCustomCSS(
+    { ...attributes, clientId }, setAttributes,
+    { prefix: 'oui_cm-column', tpl: 'selector {...}' }
+  );
 
   // スタイルを変換（useMemoで最適化）
   const { inlineStyles, blockClasses } = useMemo(() => {
@@ -141,60 +150,6 @@ export default function Edit({ attributes, setAttributes, clientId }){
             __next40pxDefaultSize
             __nextHasNoMarginBottom
           />
-          {/* <ResponsiveTabs>
-            { ( tab ) => (
-              <Flex style={{flexWrap: 'wrap', marginTop: '1.5em'}}>
-                <FlexItem style={{width: '45%'}}>
-                  <SelectControl
-                    label={__(`Column (${tab.title})`, 'origamiui')}
-                    value={styles.base.sizing.column[tab.name]}
-                    options={[
-                      { label: '---', value: '---' },
-                      { label: '1', value: '1' },
-                      { label: '2', value: '2' },
-                      { label: '3', value: '3' },
-                      { label: '4', value: '4' },
-                      { label: '5', value: '5' },
-                      { label: '6', value: '6' },
-                      { label: '7', value: '7' },
-                      { label: '8', value: '8' },
-                      { label: '9', value: '9' },
-                      { label: '10', value: '10' },
-                      { label: '11', value: '11' },
-                      { label: '12', value: '12' },
-                    ]}
-                    onChange={(newColumn) => updateStyles(`base.sizing.column.${tab.name}`, newColumn)}
-                    __next40pxDefaultSize={ true }
-                    __nextHasNoMarginBottom={ true }
-                  />
-                </FlexItem>
-                <FlexItem style={{width: '45%'}}>
-                  <SelectControl
-                    label={__(`Offset (${tab.title})`, 'origamiui')}
-                    value={styles.base.sizing.offset[tab.name]}
-                    options={[
-                      { label: '---', value: '---' },
-                      { label: '1', value: '1' },
-                      { label: '2', value: '2' },
-                      { label: '3', value: '3' },
-                      { label: '4', value: '4' },
-                      { label: '5', value: '5' },
-                      { label: '6', value: '6' },
-                      { label: '7', value: '7' },
-                      { label: '8', value: '8' },
-                      { label: '9', value: '9' },
-                      { label: '10', value: '10' },
-                      { label: '11', value: '11' },
-                      { label: '12', value: '12' },
-                    ]}
-                    onChange={(newOffset) => updateStyles(`base.sizing.offset.${tab.name}`, newOffset)}
-                    __next40pxDefaultSize={ true }
-                    __nextHasNoMarginBottom={ true }
-                  />
-                </FlexItem>
-              </Flex>
-            ) }
-          </ResponsiveTabs> */}
         </PanelBody>
         <LayoutFlexSettingsPanel
           stylesRoot={ styles }
@@ -248,9 +203,25 @@ export default function Edit({ attributes, setAttributes, clientId }){
           tagName={ tagName }
           onTagChange={ (v)=>setAttributes({ tagName: v }) }
         />
+        <PanelBody title={__('Custom CSS', 'origamiui')} initialOpen={false}>
+          <CodeMirrorField value={ rawCSS } onChange={ onChange } />
+          <p
+            style={{
+              fontSize: 12,
+              opacity: 0.7,
+              whiteSpace: 'pre-wrap',
+            }}
+          >
+            {__(
+              `「selector」を使うとこのブロックだけに適用されます。\n\n例)\nselector {\n  color: red;\n}\nselector:hover {\n  color: blue;\n}`,
+              'origamiui'
+            )}
+          </p>
+        </PanelBody>
       </InspectorControls>
       
       <TagName {...innerBlocksProps} />
+      { compiledCSS && <style>{ compiledCSS }</style> }
     </>
   );
 };

@@ -2,7 +2,7 @@ import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 import { convertStylesToCSS } from '../../utils/style-converter';
 
 export default function save({ attributes }) {
-  const { tagName, styles } = attributes;
+  const { tagName, styles, compiledCSS } = attributes;
 
   // スタイルを変換
   const { inlineStyles, blockClasses } = convertStylesToCSS(styles);
@@ -21,6 +21,9 @@ export default function save({ attributes }) {
       <TagName {...blockProps}>
         <InnerBlocks.Content />
       </TagName>
+      { compiledCSS && (
+				<style dangerouslySetInnerHTML={ { __html: compiledCSS } } />
+			) }
     </>
   );
 }
