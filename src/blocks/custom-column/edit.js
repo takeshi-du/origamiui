@@ -17,6 +17,7 @@ import LayoutFlexSettingsPanel from '../../components/LayoutFlexSettingsPanel';
 
 import CodeMirrorField from '../../components/CodeMirrorField';
 import useCustomCSS from '../../hooks/useCustomCSS';
+import useHeadStyle from '../../hooks/useHeadStyle';
 
 export default function Edit({ attributes, setAttributes, clientId }){
   const { tagName, styles } = attributes;
@@ -32,6 +33,8 @@ export default function Edit({ attributes, setAttributes, clientId }){
     return convertStylesToCSS(styles);
   }, [styles]);
 
+  const nodeRef = useHeadStyle( compiledCSS, clientId );
+
   // スタイルの更新
   const updateStyles = (path, value) => {
     const newStyles = cloneDeep(styles);
@@ -43,6 +46,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
   const blockProps = useBlockProps({
     className: blockClasses,
     style: inlineStyles,
+    ref: nodeRef, 
   });
 
   const TagName = tagName || 'div';

@@ -21,9 +21,6 @@ export default function save({ attributes }) {
       <TagName {...blockProps}>
         <InnerBlocks.Content />
       </TagName>
-      { compiledCSS && (
-				<style dangerouslySetInnerHTML={ { __html: compiledCSS } } />
-			) }
     </>
   );
 }

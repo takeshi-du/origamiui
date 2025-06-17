@@ -117,3 +117,68 @@ add_action('enqueue_block_assets', 'origamiui_add_editor_css_to_editor');
 add_action( 'enqueue_block_editor_assets', function () {
     wp_enqueue_code_editor( [ 'type' => 'text/css' ] );
 } );
+
+
+/**
+ * CSS ミニファイ
+ */
+function origamiui_minify_css( $css ) {
+	$css = preg_replace( '#/\*[^*]*\*+([^/][^*]*\*+)*/#', '', $css );
+	$css = preg_replace( '/\s*([{:;,}])\s+/', '$1', $css );
+	$css = preg_replace( '/\s\s+/', ' ', $css );
+	$css = str_replace( ';}', '}', $css );
+	return trim( $css );
+}
+/**
+ * inlinecssを出力
+ */
+function origamiui_collect_block_css( $block_content, $block ) {
+	$target_blocks = array(
+		'origamiui/custom-group',
+		'origamiui/custom-container',
+		'origamiui/custom-grid',
+		'origamiui/custom-column',
+		'origamiui/custom-offcanvas',
+		'origamiui/custom-toggle',
+	);
+
+	if ( in_array( $block['blockName'], $target_blocks, true ) ) {
+		$css  = $block['attrs']['compiledCSS'] ?? '';
+		$slug = $block['attrs']['className']   ?? '';
+
+		if ( $css && $slug ) {
+			global $origamiui_inline_styles;
+			// 同じクラスの CSS が既にあれば上書き（後勝ち）
+			$origamiui_inline_styles[ $slug ] = $css;
+		}
+
+		// ブロック直下の <style> タグを 1 つだけ取り除く
+		$block_content = preg_replace( '#<style[^>]*>.*?</style>#is', '', $block_content, 1 );
+	}
+
+	return $block_content;
+}
+add_filter( 'render_block', 'origamiui_collect_block_css', 10, 2 );
+
+/**
+ * css 出力
+ */
+function origamiui_print_collected_css() {
+	global $origamiui_inline_styles;
+
+	if ( empty( $origamiui_inline_styles ) ) {
+		return;
+	}
+
+	$handle = 'origamiui';
+	if ( ! wp_style_is( $handle, 'registered' ) ) {
+		wp_register_style( $handle, false, array(), null );
+		wp_enqueue_style( $handle );
+	}
+
+	$css_raw = implode( "\n", $origamiui_inline_styles );
+  $css_min = origamiui_minify_css( $css_raw );
+	wp_add_inline_style( $handle, $css_min );
+}
+// WP がフロント用 CSS を出力した直後に差し込む （20 は少し後ろ寄り）
+add_action( 'wp_enqueue_scripts', 'origamiui_print_collected_css', 20 );

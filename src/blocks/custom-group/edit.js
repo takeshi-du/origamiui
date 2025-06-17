@@ -16,9 +16,12 @@ import LayoutFlexSettingsPanel from '../../components/LayoutFlexSettingsPanel';
 import LinkSettingsPanel from '../../components/LinkSettingsPanel';
 import CodeMirrorField from '../../components/CodeMirrorField';
 import useCustomCSS from '../../hooks/useCustomCSS';
+import useHeadStyle  from '../../hooks/useHeadStyle';
 
 export default function Edit({ attributes, setAttributes, clientId }){
   const { tagName, link, styles } = attributes;
+
+  /* Custom CSS 取得 */
   const {
     blockClass, rawCSS, compiledCSS, onChange
   } = useCustomCSS(
@@ -26,10 +29,13 @@ export default function Edit({ attributes, setAttributes, clientId }){
     { prefix: 'oui_cm-group', tpl: 'selector {...}' }
   );
 
-  // スタイルを変換（useMemoで最適化）
+  /* インライン & クラス変換 */
   const { inlineStyles, blockClasses } = useMemo(() => {
     return convertStylesToCSS(styles);
   }, [styles]);
+
+  /* head へスタイルを注入 */
+  const nodeRef = useHeadStyle( compiledCSS, clientId );
 
   // スタイルの更新
   const updateStyles = (path, value) => {
@@ -38,9 +44,9 @@ export default function Edit({ attributes, setAttributes, clientId }){
     setAttributes({ styles: newStyles });
   };
   
-  // const combinedClasses = [ blockClasses, blockClass ].filter( Boolean ).join( ' ' );
   // ブロックのプロパティにインラインスタイルを適用
   const blockProps = useBlockProps({
+    ref: nodeRef, 
     className: blockClasses,
     style: inlineStyles,
   });
@@ -54,6 +60,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
     blockProps.onClick = (e) => e.preventDefault();
   }
 
+  /* インナーブロック設定 */
   const { innerBlockCount } = useSelect(select => ({
     innerBlockCount: select('core/block-editor').getBlockCount(clientId),
   }), [clientId]);
@@ -125,7 +132,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
       </InspectorControls>
 
       <TagName {...innerBlocksProps} />
-      { compiledCSS && <style>{ compiledCSS }</style> }
+      {/* { compiledCSS && <style>{ compiledCSS }</style> } */}
     </>
   );
 };
