@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.body.style.overflow = "hidden";
+    document.body.classList.add("oui_offcanvas_opened");
   }
   function closeNav(clickedButton) {
     const targetId = clickedButton.getAttribute('data-ui-target');
@@ -68,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
       offcanvas.style.left = negativeOffcanvasWidth;
     }
     document.body.style.overflow = "";
+    document.body.classList.remove("oui_offcanvas_opened");
   }
 
   const BREAKPOINTS = {

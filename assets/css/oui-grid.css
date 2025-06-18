@@ -1776,9 +1776,13 @@
 
 .oui_offcanvas_bg.oui_bg_is_active {
   opacity: 1;
-  z-index: 3;
+  z-index: 5;
   visibility: visible;
   pointer-events: auto;
+}
+
+.oui_offcanvas_opened #wpadminbar {
+  z-index: 1;
 }
 
 .oui_object-fit-contain {
@@ -5340,6 +5344,17 @@ body {
   box-sizing: border-box;
 }
 
+a:focus {
+  outline: 0;
+}
+
+@media (max-width: 767.8px) {
+  .oui_container {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 .oui_w-100 img {
   width: 100% !important;
 }

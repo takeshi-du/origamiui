@@ -206,7 +206,11 @@
 }
 .offcanvas_bg.bg_is_active {
   opacity: 1;
-  z-index: 3;
+  z-index: 5;
   visibility: visible;
   pointer-events: auto;
+}
+
+.offcanvas_opened #wpadminbar {
+  z-index: 1;
 }
