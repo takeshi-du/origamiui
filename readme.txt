@@ -20,6 +20,14 @@ The source code for OrigamiUI is publicly available on GitHub. You are welcome t
 
 * **GitHub Repository:** [origamiui](https://github.com/takeshi-du/origamiui)
 
+== Installation ==
+
+= Installation from within WordPress =
+
+1. Visit **Plugins > Add New**.
+2. Search for **OrigauiUI**.
+3. Install and activate the OrigamiUI plugin.
+
 == Frequently Asked Questions ==
 
 = How do I find the blocks? =
@@ -28,24 +36,12 @@ Once the plugin is activated, the custom blocks will appear in the block inserte
 
 == Screenshots ==
 
-1. Custom block will appear in the OrigamiUI category in the Block Insertion Tool.
+1. Custom blocks allow you to set spacing and size.
 2. You can create layouts by adding blocks just like you would with HTML coding.
-3. Custom blocks allow you to set spacing and size.
+3. Custom block will appear in the OrigamiUI category in the Block Insertion Tool.
+4. You can create any layouts.
 
 == Changelog ==
 
-= 0.3.0 =
-* Update Settings UI
-
-= 0.2.0 =
-* Add Header Offcanvas
-
-= 0.1.2 =
-* Fix style issue.
-
-= 0.1.1 =
-* Fix style issue.
-
-= 0.1.0 =
-* Initial release.
+For the plugin's changelog, please head over to [the GitHub repository](https://github.com/takeshi-du/origamiui)
 

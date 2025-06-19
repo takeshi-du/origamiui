@@ -2,10 +2,10 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: OrigamiUI 0.2.0\n"
+"Project-Id-Version: OrigamiUI 0.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/origamiui\n"
-"POT-Creation-Date: 2025-05-30T22:20:17+00:00\n"
-"PO-Revision-Date: 2025-05-31 07:31+0900\n"
+"POT-Creation-Date: 2025-06-19T05:33:07+00:00\n"
+"PO-Revision-Date: 2025-06-19 14:38+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -160,9 +160,9 @@ msgid "Display"
 msgstr "表示設定"
 
 #: build/blocks/custom-column/index.js:1
-#: build/blocks/custom-container/index.js:1
+#: build/blocks/custom-container/index.js:1 build/blocks/custom-grid/index.js:1
 #: build/blocks/custom-group/index.js:1
-#: build/blocks/custom-offcanvas/index.js:1
+#: build/blocks/custom-offcanvas/index.js:1 src/blocks/custom-grid/edit.js:137
 #: src/components/LayoutFlexSettingsPanel.js:107
 msgid "Flex Settings"
 msgstr "Flex設定"
@@ -178,7 +178,7 @@ msgstr "方向"
 #: build/blocks/custom-column/index.js:1
 #: build/blocks/custom-container/index.js:1 build/blocks/custom-grid/index.js:1
 #: build/blocks/custom-group/index.js:1
-#: build/blocks/custom-offcanvas/index.js:1 src/blocks/custom-grid/edit.js:123
+#: build/blocks/custom-offcanvas/index.js:1 src/blocks/custom-grid/edit.js:140
 #: src/components/LayoutFlexSettingsPanel.js:132
 #: src/components/LayoutGridSettingsPanel.js:79
 msgid "Align"
@@ -203,8 +203,8 @@ msgstr "整列(Self)"
 #: build/blocks/custom-column/index.js:1
 #: build/blocks/custom-container/index.js:1 build/blocks/custom-grid/index.js:1
 #: build/blocks/custom-group/index.js:1
-#: build/blocks/custom-offcanvas/index.js:1 src/blocks/custom-grid/edit.js:163
-#: src/components/LayoutFlexSettingsPanel.js:315
+#: build/blocks/custom-offcanvas/index.js:1 src/blocks/custom-grid/edit.js:235
+#: src/components/LayoutFlexSettingsPanel.js:302
 #: src/components/LayoutGridSettingsPanel.js:120
 msgid "Gap Settings"
 msgstr "ギャップ設定"
@@ -212,8 +212,8 @@ msgstr "ギャップ設定"
 #: build/blocks/custom-column/index.js:1
 #: build/blocks/custom-container/index.js:1 build/blocks/custom-grid/index.js:1
 #: build/blocks/custom-group/index.js:1
-#: build/blocks/custom-offcanvas/index.js:1 src/blocks/custom-grid/edit.js:166
-#: src/components/LayoutFlexSettingsPanel.js:318
+#: build/blocks/custom-offcanvas/index.js:1 src/blocks/custom-grid/edit.js:238
+#: src/components/LayoutFlexSettingsPanel.js:305
 #: src/components/LayoutGridSettingsPanel.js:123
 msgid "--gapSpace"
 msgstr "ギャップ変数"
@@ -221,8 +221,8 @@ msgstr "ギャップ変数"
 #: build/blocks/custom-column/index.js:1
 #: build/blocks/custom-container/index.js:1 build/blocks/custom-grid/index.js:1
 #: build/blocks/custom-group/index.js:1
-#: build/blocks/custom-offcanvas/index.js:1 src/blocks/custom-grid/edit.js:183
-#: src/components/LayoutFlexSettingsPanel.js:332
+#: build/blocks/custom-offcanvas/index.js:1 src/blocks/custom-grid/edit.js:255
+#: src/components/LayoutFlexSettingsPanel.js:319
 #: src/components/LayoutGridSettingsPanel.js:137
 msgid "Reset gap"
 msgstr "ギャップリセット"
@@ -230,8 +230,8 @@ msgstr "ギャップリセット"
 #: build/blocks/custom-column/index.js:1
 #: build/blocks/custom-container/index.js:1 build/blocks/custom-grid/index.js:1
 #: build/blocks/custom-group/index.js:1
-#: build/blocks/custom-offcanvas/index.js:1 src/blocks/custom-grid/edit.js:185
-#: src/components/LayoutFlexSettingsPanel.js:334
+#: build/blocks/custom-offcanvas/index.js:1 src/blocks/custom-grid/edit.js:257
+#: src/components/LayoutFlexSettingsPanel.js:321
 #: src/components/LayoutGridSettingsPanel.js:139
 msgid "Reset gapSpace & gap options"
 msgstr "ギャップとオプション設定をリセット"
@@ -239,67 +239,92 @@ msgstr "ギャップとオプション設定をリセット"
 #: build/blocks/custom-column/index.js:1
 #: build/blocks/custom-container/index.js:1 build/blocks/custom-grid/index.js:1
 #: build/blocks/custom-group/index.js:1
-#: build/blocks/custom-offcanvas/index.js:1 src/blocks/custom-grid/edit.js:193
-#: src/components/LayoutFlexSettingsPanel.js:341
+#: build/blocks/custom-offcanvas/index.js:1 src/blocks/custom-grid/edit.js:265
+#: src/components/LayoutFlexSettingsPanel.js:328
 #: src/components/LayoutGridSettingsPanel.js:146
 msgid "Gap Space"
 msgstr "ギャップ幅"
 
-#: build/blocks/custom-column/index.js:1 src/blocks/custom-column/edit.js:69
-#: src/blocks/custom-column/edit.js:70
+#: build/blocks/custom-column/index.js:1 src/blocks/custom-column/edit.js:82
+#: src/blocks/custom-column/edit.js:83
 msgid "Column Settings"
 msgstr "カラム設定"
 
-#: build/blocks/custom-column/index.js:1 src/blocks/custom-column/edit.js:72
-#: src/blocks/custom-column/edit.js:84 src/blocks/custom-column/edit.js:96
+#: build/blocks/custom-column/index.js:1 src/blocks/custom-column/edit.js:85
+#: src/blocks/custom-column/edit.js:97 src/blocks/custom-column/edit.js:109
 msgid "Column"
 msgstr "カラム"
 
-#: build/blocks/custom-column/index.js:1 src/blocks/custom-column/edit.js:107
+#: build/blocks/custom-column/index.js:1 src/blocks/custom-column/edit.js:120
 msgid "Offset Settings"
 msgstr "オフセット設定"
 
-#: build/blocks/custom-column/index.js:1 src/blocks/custom-column/edit.js:109
-#: src/blocks/custom-column/edit.js:121 src/blocks/custom-column/edit.js:133
+#: build/blocks/custom-column/index.js:1 src/blocks/custom-column/edit.js:122
+#: src/blocks/custom-column/edit.js:134 src/blocks/custom-column/edit.js:146
 msgid "Offset"
 msgstr "オフセット"
 
 #: build/blocks/custom-column/index.js:1
 #: build/blocks/custom-container/index.js:1 build/blocks/custom-grid/index.js:1
-#: build/blocks/custom-group/index.js:1 src/blocks/custom-column/edit.js:220
-#: src/blocks/custom-container/edit.js:89 src/blocks/custom-grid/edit.js:236
+#: build/blocks/custom-group/index.js:1 src/blocks/custom-column/edit.js:179
+#: src/blocks/custom-container/edit.js:101 src/blocks/custom-grid/edit.js:302
 #: src/components/PositionSettingsPanel.js:34
 msgid "Position Settings"
 msgstr "配置設定"
 
 #: build/blocks/custom-column/index.js:1
 #: build/blocks/custom-container/index.js:1 build/blocks/custom-grid/index.js:1
-#: build/blocks/custom-group/index.js:1 src/blocks/custom-column/edit.js:226
-#: src/blocks/custom-container/edit.js:95 src/blocks/custom-grid/edit.js:242
+#: build/blocks/custom-group/index.js:1 src/blocks/custom-column/edit.js:185
+#: src/blocks/custom-container/edit.js:107 src/blocks/custom-grid/edit.js:308
 #: src/components/PositionSettingsPanel.js:43
 msgid "Position"
 msgstr "配置"
 
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1 build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1 src/blocks/custom-column/edit.js:210
+#: src/blocks/custom-container/edit.js:132 src/blocks/custom-grid/edit.js:333
+#: src/blocks/custom-group/edit.js:117
+msgid "Custom CSS"
+msgstr "カスタムCSS"
+
+#: build/blocks/custom-column/index.js:1
+#: build/blocks/custom-container/index.js:1 build/blocks/custom-grid/index.js:1
+#: build/blocks/custom-group/index.js:1 src/blocks/custom-column/edit.js:219
+#: src/blocks/custom-container/edit.js:141 src/blocks/custom-grid/edit.js:342
+#: src/blocks/custom-group/edit.js:126
+msgid ""
+"「selector」を使うとこのブロックだけに適用されます。\n"
+"\n"
+"例)\n"
+"selector {\n"
+"  color: red;\n"
+"}\n"
+"selector:hover {\n"
+"  color: blue;\n"
+"}"
+msgstr ""
+
 #: build/blocks/custom-container/index.js:1
-#: src/blocks/custom-container/edit.js:55
+#: src/blocks/custom-container/edit.js:67
 msgid "Container Settings"
 msgstr "コンテナ設定"
 
 #: build/blocks/custom-container/index.js:1
-#: src/blocks/custom-container/edit.js:57
+#: src/blocks/custom-container/edit.js:69
 msgid "Container"
 msgstr "コンテナ"
 
-#: build/blocks/custom-grid/index.js:1 src/blocks/custom-grid/edit.js:84
+#: build/blocks/custom-grid/index.js:1 src/blocks/custom-grid/edit.js:98
 msgid "Grid Settings"
 msgstr "グリッド設定"
 
-#: build/blocks/custom-grid/index.js:1 src/blocks/custom-grid/edit.js:86
-#: src/blocks/custom-grid/edit.js:96 src/blocks/custom-grid/edit.js:106
+#: build/blocks/custom-grid/index.js:1 src/blocks/custom-grid/edit.js:100
+#: src/blocks/custom-grid/edit.js:110 src/blocks/custom-grid/edit.js:120
 msgid "Grid Columns"
 msgstr "グリッドカラム"
 
-#: build/blocks/custom-grid/index.js:1 src/blocks/custom-grid/edit.js:116
+#: build/blocks/custom-grid/index.js:1 src/blocks/custom-grid/edit.js:130
 #: src/components/LayoutGridSettingsPanel.js:67
 #: src/components/LayoutGridSettingsPanel.js:76
 msgid "Layout Settings"
@@ -308,7 +333,7 @@ msgstr "レイアウト設定"
 #: build/blocks/custom-group/index.js:1
 #: src/components/PositionSettingsPanel.js:66
 msgid "Alignment Settings"
-msgstr "位置設置"
+msgstr "配置の設置"
 
 #: build/blocks/custom-group/index.js:1
 #: src/components/PositionSettingsPanel.js:69
@@ -344,7 +369,7 @@ msgstr ""
 
 #: build/blocks/custom-group/index.js:1 src/components/LinkSettingsPanel.js:51
 msgid "Rel"
-msgstr ""
+msgstr "Rel"
 
 #: build/blocks/custom-offcanvas/index.js:1
 #: src/blocks/custom-offcanvas/edit.js:63
@@ -418,7 +443,7 @@ msgstr "グリッド"
 #: build/blocks/custom-grid/block.json src/blocks/custom-grid/block.json
 msgctxt "block description"
 msgid "A custom row block."
-msgstr ""
+msgstr "行ブロック."
 
 #: build/blocks/custom-group/block.json src/blocks/custom-group/block.json
 msgctxt "block title"
