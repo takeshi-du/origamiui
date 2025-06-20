@@ -1781,7 +1781,7 @@
   pointer-events: auto;
 }
 
-.oui_offcanvas_opened #wpadminbar {
+.oui_offcanvas_opened #oui_wpadminbar {
   z-index: 1;
 }
 
@@ -5348,13 +5348,6 @@ a:focus {
   outline: 0;
 }
 
-@media (max-width: 767.8px) {
-  .oui_container {
-    width: 100%;
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
 .oui_w-100 img {
   width: 100% !important;
 }
