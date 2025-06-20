@@ -43,5 +43,21 @@ Once the plugin is activated, the custom blocks will appear in the block inserte
 
 == Changelog ==
 
-For the plugin's changelog, please head over to [the GitHub repository](https://github.com/takeshi-du/origamiui)
+= 1.0.0 =
+* Add CSS Editor.
+* Fix style issue.
 
+= 0.3.0 =
+* Update Settings UI.
+
+= 0.2.0 =
+* Add Header Offcanvas.
+
+= 0.1.2 =
+* Fix style issue.
+
+= 0.1.1 =
+* Fix style issue.
+
+= 0.1.0 =
+* Initial release.
