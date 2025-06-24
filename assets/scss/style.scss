@@ -11,7 +11,7 @@ $breakpoints: (
 }
 
 // ------------------------------
-// Margin/Padding
+// Margin / Padding  +  auto 対応
 // ------------------------------
 $properties: (
   "m": "margin",
@@ -25,46 +25,80 @@ $directions: (
   "r": "right"
 );
 
-// スペースの値（今回はn=1のみ）
 $space-values: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 $negative-space-values: -1, -2, -3, -4, -5, -6, -7, -8, -9, -10;
 
-// smブレークポイント（メディアクエリなし）
+// ---------- sm（メディアクエリなし）
 @each $prop-abbr, $prop in $properties {
   @each $dir-abbr, $dir in $directions {
+    // 数値ユーティリティ
     @each $value in $space-values {
       .#{$prop-abbr}#{$dir-abbr}-#{$value} {
         #{$prop}-#{$dir}: calc(var(--oui-space) * #{$value}) !important;
       }
     }
+    // マイナス値ユーティリティ
     @each $value in $negative-space-values {
       .#{$prop-abbr}#{$dir-abbr}-n#{-$value} {
         #{$prop}-#{$dir}: calc(var(--oui-space) * #{$value}) !important;
       }
     }
+
+    // ===== ここから auto ユーティリティ =====
+    @if $prop == margin {
+      // 個別方向（例: .mt-auto）
+      .#{$prop-abbr}#{$dir-abbr}-auto {
+        #{$prop}-#{$dir}: auto !important;
+      }
+    }
+  }
+
+  // 全方向（例: .m-auto）
+  @if $prop == margin {
+    .#{$prop-abbr}-auto {
+      #{$prop}: auto !important;
+    }
   }
 }
-// mdとlgブレークポイント
+
+// ---------- md / lg などブレークポイント付き
 @each $bp-name, $bp-value in $breakpoints {
   @if $bp-name != "sm" {
     @media (min-width: $bp-value) {
       @each $prop-abbr, $prop in $properties {
         @each $dir-abbr, $dir in $directions {
+          // 数値ユーティリティ
           @each $value in $space-values {
             .#{$prop-abbr}#{$dir-abbr}-#{$bp-name}-#{$value} {
               #{$prop}-#{$dir}: calc(var(--oui-space) * #{$value}) !important;
             }
           }
+          // マイナス値ユーティリティ
           @each $value in $negative-space-values {
             .#{$prop-abbr}#{$dir-abbr}-#{$bp-name}-n#{-$value} {
               #{$prop}-#{$dir}: calc(var(--oui-space) * #{$value}) !important;
             }
+          }
+
+          // ===== auto ユーティリティ =====
+          @if $prop == margin {
+            .#{$prop-abbr}#{$dir-abbr}-#{$bp-name}-auto {
+              #{$prop}-#{$dir}: auto !important;
+            }
+          }
+        }
+
+        // 全方向（例: .m-md-auto）
+        @if $prop == margin {
+          .#{$prop-abbr}-#{$bp-name}-auto {
+            #{$prop}: auto !important;
           }
         }
       }
     }
   }
 }
+
 
 // ------------------------------
 // gap

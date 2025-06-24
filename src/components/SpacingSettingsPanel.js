@@ -40,6 +40,17 @@ export default function SpacingSettingsPanel( {
 	// space オプション生成
 	const base = parseFloat( styles.space );
 	const hasBase = ! isNaN( base );
+	const spaceOptionsMargin = hasBase
+		? [
+				{ label: '---', value: '' },
+				{ label: 'auto',   value: 'auto' },
+				{ label: '0',   value: '0' },
+				...Array.from( { length: 10 }, ( _, i ) => ( {
+					label: `${ base * ( i + 1 ) }`,
+					value: String( i + 1 ),
+				} ) ),
+			]
+		: [ { label: '---', value: '' }, { label: 'auto',   value: 'auto' } ];
 	const spaceOptions = hasBase
 		? [
 				{ label: '---', value: '' },
@@ -106,7 +117,7 @@ export default function SpacingSettingsPanel( {
 										key={`${side}-${tab.name}`}
 										label={ `${ side } (${ tab.name })` }
 										value={ styles.margin[ side ][ tab.name ] }
-										options={spaceOptions}
+										options={spaceOptionsMargin}
 										onChange={ ( v ) =>
 											upStyle( `margin.${ side }.${ tab.name }`, v )
 										}
