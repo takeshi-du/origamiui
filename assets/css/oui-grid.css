@@ -1781,7 +1781,7 @@
   pointer-events: auto;
 }
 
-.oui_offcanvas_opened #oui_wpadminbar {
+.oui_offcanvas_opened #wpadminbar {
   z-index: 1;
 }
 

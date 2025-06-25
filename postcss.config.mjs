@@ -12,7 +12,8 @@ export default context => {
         cascade: false
       },
       'postcss-prefixer': {
-        prefix: 'oui_'
+        prefix: 'oui_',
+        ignore: ['#wpadminbar'],
       },
       rtlcss: context.env === 'RTL'
     }
