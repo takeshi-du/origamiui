@@ -181,7 +181,11 @@ export const convertStylesToCSS = (styles) => {
       }
     }
     if (offset) {
-      generateBreakpointClasses('oui_offset', offset);
+      if (parentBlockName === 'origamiui/custom-grid') {
+        generateBreakpointClasses('oui_g-offset', offset);
+      } else {
+        generateBreakpointClasses('oui_offset', offset);
+      }
     }
   }
 

@@ -227,3 +227,24 @@ a:focus {
     grid-template-columns: repeat(var(--oui-grid-columns-lg, 12), 1fr);
   }
 }
+
+// offset
+$offset-values: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
+
+@each $bp-name, $bp-value in $breakpoints {
+  @if $bp-name != "sm" {
+    @media (min-width: $bp-value) {
+      @each $value in $offset-values {
+        .g-offset-#{$bp-name}-#{$value} {
+          grid-column-start: $value !important;
+        }
+      }
+    }
+  } @else {
+    @each $value in $offset-values {
+      .g-offset-#{$value} {
+        grid-column-start: $value !important;
+      }
+    }
+  }
+}

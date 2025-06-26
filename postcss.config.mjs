@@ -13,7 +13,15 @@ export default context => {
       },
       'postcss-prefixer': {
         prefix: 'oui_',
-        ignore: ['#wpadminbar'],
+        ignore: [
+          '#wpadminbar',
+          '.wp-block-origamiui-custom-group',
+          '.wp-block-origamiui-custom-container',
+          '.wp-block-origamiui-custom-grid',
+          '.wp-block-origamiui-custom-column',
+          '.wp-block-origamiui-custom-offcanvas',
+          '.wp-block-origamiui-custom-toggle',
+        ],
       },
       rtlcss: context.env === 'RTL'
     }
