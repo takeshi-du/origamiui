@@ -86,7 +86,7 @@ export default function PositionSettingsPanel( {
 			<Button
 				icon={ trash }
 				variant="secondary"
-				text={ __( 'Reset Position', 'origamiui' ) }
+				text={ __( '配置リセット', 'origamiui' ) }
 				onClick={ resetPosition }
 				description={ __( 'Reset Position', 'origamiui' ) }
 			/>
