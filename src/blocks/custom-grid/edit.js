@@ -300,29 +300,25 @@ export default function Edit({ attributes, setAttributes, clientId }){
           initialOpen={ false }
         />
         <PanelBody title={__('Position Settings', 'origamiui')} initialOpen={false}>
-          <ResponsiveTabs>
-            { ( tab ) => (
-              <Flex wrap style={ { marginTop: '1.5em' } }>
-                <FlexItem style={ { width: '45%' } }>
-                  <SelectControl
-                    label={ `${ __( 'Position', 'origamiui' ) } (${ tab.name })` }
-                    value={ styles.base.position.className[ tab.name ] }
-                    options={ [
-                      { label: '---', value: '' },
-                      { label: 'static', value: 'static' },
-                      { label: 'relative', value: 'relative' },
-                      { label: 'absolute', value: 'absolute' },
-                      { label: 'fixed', value: 'fixed' },
-                      { label: 'sticky', value: 'sticky' },
-                    ] }
-                    onChange={(v) => updateStyles(`base.position.className.${tab.name}`, v)}
-                    __next40pxDefaultSize
-                    __nextHasNoMarginBottom
-                  />
-                </FlexItem>
-              </Flex>
-            ) }
-          </ResponsiveTabs>
+          <Flex wrap style={ { marginTop: '1.5em' } }>
+            <FlexItem style={ { width: '45%' } }>
+              <SelectControl
+                label={ `${ __( 'Position', 'origamiui' ) }` }
+                value={ styles.base.position.className.sm }
+                options={ [
+                  { label: '---', value: '' },
+                  { label: 'static', value: 'static' },
+                  { label: 'relative', value: 'relative' },
+                  { label: 'absolute', value: 'absolute' },
+                  { label: 'fixed', value: 'fixed' },
+                  { label: 'sticky', value: 'sticky' },
+                ] }
+                onChange={(v) => updateStyles(`base.position.className.sm`, v)}
+                __next40pxDefaultSize
+                __nextHasNoMarginBottom
+              />
+            </FlexItem>
+          </Flex>
         </PanelBody>
         <DisplaySettingsPanel
           styles={ styles.base.display }

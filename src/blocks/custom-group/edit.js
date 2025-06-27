@@ -97,6 +97,8 @@ export default function Edit({ attributes, setAttributes, clientId }){
           initialOpen={ false }
         />
         <PositionSettingsPanel
+          stylesRoot={ styles }
+          setStyles={ ( s ) => setAttributes({ styles: s }) }
           styles={ styles.base.position }
           updateStyles={ updateStyles }
           initialOpen={ false }
