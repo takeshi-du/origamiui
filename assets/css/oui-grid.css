@@ -5407,13 +5407,19 @@ a:focus {
   height: auto;
 }
 
-.wp-block-origamiui-custom-group img,
+.wp-block-origamiui-custom-group figure, .wp-block-origamiui-custom-group img,
+.wp-block-origamiui-custom-container figure,
 .wp-block-origamiui-custom-container img,
+.wp-block-origamiui-custom-grid figure,
 .wp-block-origamiui-custom-grid img,
+.wp-block-origamiui-custom-column figure,
 .wp-block-origamiui-custom-column img,
+.wp-block-origamiui-custom-offcanvas figure,
 .wp-block-origamiui-custom-offcanvas img,
+.wp-block-origamiui-custom-toggle figure,
 .wp-block-origamiui-custom-toggle img {
   line-height: 1;
+  font-size: 1px;
 }
 
 .oui_grid {

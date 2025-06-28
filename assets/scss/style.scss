@@ -208,8 +208,9 @@ a:focus {
 .wp-block-origamiui-custom-column,
 .wp-block-origamiui-custom-offcanvas,
 .wp-block-origamiui-custom-toggle {
-  img {
+  figure, img {
     line-height: 1;
+    font-size: 1px;
   }
 }
 
