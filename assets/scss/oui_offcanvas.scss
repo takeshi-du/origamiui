@@ -2,17 +2,29 @@
 /* offcanvas */
 /* ---------------------- */
 .offcanvas + .offcanvas_bg {display: none;}
-.offcanvas.offcanvas-breakpoint-lg {
-  width: var(--oui-offcanvas-width-lg, 100%);
+.offcanvas.offcanvas-breakpoint-xl {
+  width: var(--oui-offcanvas-width-xl, 100%);
 }
-.offcanvas.offcanvas-breakpoint-lg.offcanvas_left {
-  left: calc(var(--oui-offcanvas-width-lg, 100%) * -1);
+.offcanvas.offcanvas-breakpoint-xl.offcanvas_left {
+  left: calc(var(--oui-offcanvas-width-xl, 100%) * -1);
 }
-.offcanvas.offcanvas-breakpoint-lg.offcanvas_right {
-  right: calc(var(--oui-offcanvas-width-lg, 100%) * -1);
+.offcanvas.offcanvas-breakpoint-xl.offcanvas_right {
+  right: calc(var(--oui-offcanvas-width-xl, 100%) * -1);
 }
-.offcanvas.offcanvas-breakpoint-lg + .offcanvas_bg {display: block;}
-@media (max-width: 991.98px) {
+.offcanvas.offcanvas-breakpoint-xl + .offcanvas_bg {display: block;}
+@media (max-width: 1399.98px) {
+  .offcanvas.offcanvas-breakpoint-lg {
+    width: var(--oui-offcanvas-width-lg, 100%);
+  }
+  .offcanvas.offcanvas-breakpoint-lg.offcanvas_left {
+    left: calc(var(--oui-offcanvas-width-lg, 100%) * -1);
+  }
+  .offcanvas.offcanvas-breakpoint-lg.offcanvas_right {
+    right: calc(var(--oui-offcanvas-width-lg, 100%) * -1);
+  }
+  .offcanvas.offcanvas-breakpoint-lg + .offcanvas_bg {display: block;}
+}
+@media (max-width: 1199.98px) {
   .offcanvas.offcanvas-breakpoint-md {
     width: var(--oui-offcanvas-width-md, 100%);
   }
@@ -28,19 +40,10 @@
   .offcanvas.offcanvas-breakpoint-sm {
     width: var(--oui-offcanvas-width-sm, 100%);
   }
-  .offcanvas.offcanvas-breakpoint-md {
-    width: var(--oui-offcanvas-width-sm, 100%);
-  }
   .offcanvas.offcanvas-breakpoint-sm.offcanvas_left {
     left: calc(var(--oui-offcanvas-width-sm, 100%) * -1);
   }
   .offcanvas.offcanvas-breakpoint-sm.offcanvas_right {
-    right: calc(var(--oui-offcanvas-width-sm, 100%) * -1);
-  }
-  .offcanvas.offcanvas-breakpoint-md.offcanvas_left {
-    left: calc(var(--oui-offcanvas-width-sm, 100%) * -1);
-  }
-  .offcanvas.offcanvas-breakpoint-md.offcanvas_right {
     right: calc(var(--oui-offcanvas-width-sm, 100%) * -1);
   }
   .offcanvas + .offcanvas_bg {display: block;}
@@ -102,7 +105,7 @@
 }
 
 
-@media (max-width: 991.98px) {
+@media (max-width: 1199.98px) {
   .offcanvas.offcanvas-breakpoint-md {
     height: 100vh;
     position: fixed;
@@ -157,7 +160,62 @@
   }
 }
 
-.offcanvas.offcanvas-breakpoint-lg {
+@media (max-width: 1399.98px) {
+  .offcanvas.offcanvas-breakpoint-lg {
+    height: 100vh;
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    overflow-x: hidden;
+    transition: 0.5s ease;
+    visibility: hidden;
+    pointer-events: none;
+    background-color: var(--oui-offcanvas-bgcolor, #fff);
+  }
+  .offcanvas.offcanvas-breakpoint-lg.offcanvas_slide.is_active {
+    z-index: 99999;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  /* フェードイン */
+  .offcanvas.offcanvas-breakpoint-lg.offcanvas_fade {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .offcanvas.offcanvas-breakpoint-lg.offcanvas_fade.is_active {
+    opacity: 1;
+    z-index: 99999;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .offcanvas.offcanvas-breakpoint-lg.offcanvas_fade.offcanvas_left {
+    left: 0 !important;
+  }
+  .offcanvas.offcanvas-breakpoint-lg.offcanvas_fade.offcanvas_right {
+    right: 0 !important;
+  }
+  .offcanvas-breakpoint-lg + .offcanvas_bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* z-index: 9; */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+  .offcanvas_bg.bg_is_active {
+    opacity: 1;
+    z-index: 3;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+.offcanvas.offcanvas-breakpoint-xl {
   height: 100vh;
   position: fixed;
   z-index: 99999;
@@ -168,30 +226,30 @@
   pointer-events: none;
   background-color: var(--oui-offcanvas-bgcolor, #fff);
 }
-.offcanvas.offcanvas-breakpoint-lg.offcanvas_slide.is_active {
+.offcanvas.offcanvas-breakpoint-xl.offcanvas_slide.is_active {
   z-index: 99999;
   visibility: visible;
   pointer-events: auto;
 }
 /* slide */
 /* フェードイン */
-.offcanvas.offcanvas-breakpoint-lg.offcanvas_fade {
+.offcanvas.offcanvas-breakpoint-xl.offcanvas_fade {
   opacity: 0;
   transition: opacity 0.5s ease;
 }
-.offcanvas.offcanvas-breakpoint-lg.offcanvas_fade.is_active {
+.offcanvas.offcanvas-breakpoint-xl.offcanvas_fade.is_active {
   opacity: 1;
   z-index: 99999;
   visibility: visible;
   pointer-events: auto;
 }
-.offcanvas.offcanvas-breakpoint-lg.offcanvas_fade.offcanvas_left {
+.offcanvas.offcanvas-breakpoint-xl.offcanvas_fade.offcanvas_left {
   left: 0 !important;
 }
-.offcanvas.offcanvas-breakpoint-lg.offcanvas_fade.offcanvas_right {
+.offcanvas.offcanvas-breakpoint-xl.offcanvas_fade.offcanvas_right {
   right: 0 !important;
 }
-.offcanvas-breakpoint-lg + .offcanvas_bg {
+.offcanvas-breakpoint-xl + .offcanvas_bg {
   position: fixed;
   top: 0;
   left: 0;

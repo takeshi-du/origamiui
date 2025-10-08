@@ -74,14 +74,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const BREAKPOINTS = {
     SM_MAX_WIDTH: '767.98px',
-    MD_MAX_WIDTH: '991.98px'
-    // LG_MIN_WIDTH: '992px'
+    MD_MAX_WIDTH: '991.98px',
+    LG_MAX_WIDTH: '1199.98px'
   };
 
   const CSS_VARIABLES = {
     SM_WIDTH: '--oui-offcanvas-width-sm',
     MD_WIDTH: '--oui-offcanvas-width-md',
-    LG_WIDTH: '--oui-offcanvas-width-lg'
+    LG_WIDTH: '--oui-offcanvas-width-lg',
+    XL_WIDTH: '--oui-offcanvas-width-xl'
   };
 
   function getOffcanvasWidthInfo() {
@@ -101,9 +102,12 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (window.matchMedia(`(max-width: ${BREAKPOINTS.MD_MAX_WIDTH})`).matches) {
       activeBreakpoint = 'md';
       cssVariableName = CSS_VARIABLES.MD_WIDTH;
-    } else {
+    } else if (window.matchMedia(`(max-width: ${BREAKPOINTS.LG_MAX_WIDTH})`).matches) {
       activeBreakpoint = 'lg';
       cssVariableName = CSS_VARIABLES.LG_WIDTH;
+    } else {
+      activeBreakpoint = 'xl';
+      cssVariableName = CSS_VARIABLES.XL_WIDTH;
     }
 
     const variableValue = computedStyle.getPropertyValue(cssVariableName).trim();

@@ -56,7 +56,7 @@ export default function LayoutGridSettingsPanel( {
 
 		// 2) row / column × sm,md,lg すべて空欄
 		[ 'row', 'column' ].forEach( axis => {
-			[ 'sm', 'md', 'lg' ].forEach( bp => {
+			[ 'sm', 'md', 'lg', 'xl' ].forEach( bp => {
 				updateStyles( `${ basePath }.gap.${ axis }.${ bp }`, '' );
 			} );
 		} );

@@ -9,6 +9,12 @@ $include-column-box-sizing: true !default;
 
 // 2. Include any default variable overrides here
 $enable-cssgrid:              true;
+$grid-breakpoints: (
+  sm: 0,
+  md: 768px,
+  lg: 1200px,
+  xl: 1400px
+) !default;
 
 // 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
 @import "../../node_modules/bootstrap/scss/variables";

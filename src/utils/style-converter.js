@@ -144,6 +144,18 @@ export const convertStylesToCSS = (styles) => {
     // return classMap[alignment] || 'position-absolute oui_top-50 oui_start-50 translate-middle';
   };
 
+  if (styles?.base?.container) {
+    const { width } = styles.base.container;
+
+    if (width) {
+      Object.entries(width).forEach(([breakpoint, val]) => {
+        if (val && val !== '---') {
+          inlineStyles[`--oui-container-${breakpoint}`] = val;
+        }
+      });
+    }
+  }
+
   if (styles?.base?.offcanvas) {
     const { bgColor, width } = styles.base.offcanvas;
 
@@ -283,7 +295,7 @@ export const convertStylesToCSS = (styles) => {
     }
 
     if (grid?.columns) {
-      ['sm','md','lg'].forEach((bp) => {
+      ['sm','md','lg','xl'].forEach((bp) => {
         const val = styles.base.display.grid.columns[bp];
         if (val !== undefined && val !== '' && Number(val) !== 12) {
           inlineStyles[`--oui-grid-columns-${bp}`] = String(val);

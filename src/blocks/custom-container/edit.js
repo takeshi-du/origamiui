@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, useInnerBlocksProps, InspectorControls, ButtonBlockAppender } from '@wordpress/block-editor';
-import { PanelBody, SelectControl, Flex, FlexItem } from '@wordpress/components';
+import { PanelBody, SelectControl, Flex, FlexItem, __experimentalUnitControl as UnitControl, __experimentalHeading as Heading } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { convertStylesToCSS } from '../../utils/style-converter';
 import cloneDeep from 'lodash/cloneDeep';
@@ -75,6 +75,47 @@ export default function Edit({ attributes, setAttributes, clientId }){
             onChange={(newContainer) => updateStyles(`base.display.container`, newContainer)}
             __next40pxDefaultSize={ true }
             __nextHasNoMarginBottom={ true }
+          />
+          <Heading style={{ marginTop: '1.5em' }}>{__(`Container Max Width`, 'origamiui')}</Heading>
+          <UnitControl
+            label={__(`Container Max Width (SM)`, 'origamiui')}
+            value={styles?.base?.container?.width?.sm || ''}
+            onChange={(newWidth) => updateStyles(`base.container.width.sm`, newWidth)}
+            units={[
+              { value: 'px', label: 'px' },
+              { value: '%', label: '%' },
+            ]}
+            __next40pxDefaultSize={ true }
+          />
+          <UnitControl
+            label={__(`Container Max Width (MD)`, 'origamiui')}
+            value={styles?.base?.container?.width?.md || ''}
+            onChange={(newWidth) => updateStyles(`base.container.width.md`, newWidth)}
+            units={[
+              { value: 'px', label: 'px' },
+              { value: '%', label: '%' },
+            ]}
+            __next40pxDefaultSize={ true }
+          />
+          <UnitControl
+            label={__(`Container Max Width (LG)`, 'origamiui')}
+            value={styles?.base?.container?.width?.lg || ''}
+            onChange={(newWidth) => updateStyles(`base.container.width.lg`, newWidth)}
+            units={[
+              { value: 'px', label: 'px' },
+              { value: '%', label: '%' },
+            ]}
+            __next40pxDefaultSize={ true }
+          />
+          <UnitControl
+            label={__(`Container Max Width (XL)`, 'origamiui')}
+            value={styles?.base?.container?.width?.xl || ''}
+            onChange={(newWidth) => updateStyles(`base.container.width.xl`, newWidth)}
+            units={[
+              { value: 'px', label: 'px' },
+              { value: '%', label: '%' },
+            ]}
+            __next40pxDefaultSize={ true }
           />
         </PanelBody>
         <LayoutFlexSettingsPanel

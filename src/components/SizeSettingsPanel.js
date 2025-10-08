@@ -55,7 +55,7 @@ export default function SizeSettingsPanel( {
 		set( clone, `${ basePath }.size`, '' );
 
 		[ 'width', 'height' ].forEach( axis => {
-			[ 'sm', 'md', 'lg' ].forEach( bp => {
+			[ 'sm', 'md', 'lg', 'xl' ].forEach( bp => {
 				set( clone, `${ basePath }.${ axis }.${ bp }`, '' );
 			} );
 		} );

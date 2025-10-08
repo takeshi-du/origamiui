@@ -1,13 +1,53 @@
-// ブレークポイントの定義
+// ブレークポイントの定義: min-width
 $breakpoints: (
   "sm": 0,       // smはメディアクエリなし
   "md": 768px,
-  "lg": 992px
+  "lg": 1200px,
+  "xl": 1400px
 );
 :root {
   --oui-space: 5px;
   --oui-gapSpace: 24px;
   --oui-size: 5%;
+  /* container max-width */
+  --oui-container-sm: 540px; // 0~767.98px
+  --oui-container-md: 960px; // 768px~1199.98px
+  --oui-container-lg: 1140px; // 1200px~1399.98px
+  --oui-container-xl: 1320px; // 1400px~
+  /* offcanvas width */
+  --oui-offcanvas-width-sm: 80%;
+  --oui-offcanvas-width-md: 100%;
+  --oui-offcanvas-width-lg: 100%;
+  --oui-offcanvas-width-xl: 100%;
+}
+
+// ------------------------------
+// Container
+// ------------------------------
+@media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: var(--oui-container-sm);
+  }
+}
+@media (min-width: 768px) {
+  .container-md, .container-sm, .container {
+    max-width: var(--oui-container-md);
+  }
+}
+@media (min-width: 992px) {
+  .container-lg, .container-md, .container-sm, .container {
+    max-width: var(--oui-container-md);
+  }
+}
+@media (min-width: 1200px) {
+  .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: var(--oui-container-lg);
+  }
+}
+@media (min-width: 1400px) {
+  .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: var(--oui-container-xl);
+  }
 }
 
 // ------------------------------
@@ -192,6 +232,10 @@ a:focus {
 // image
 // ------------------------------
 .w-100 {
+  width: 100% !important;
+  figure {
+    width: 100% !important;
+  }
   img {
     width: 100% !important;
   }

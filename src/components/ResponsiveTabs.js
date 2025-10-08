@@ -1,6 +1,6 @@
 import { TabPanel, Dashicon } from '@wordpress/components';
 
-export const breakpoints = ['sm', 'md', 'lg'];
+export const breakpoints = ['sm', 'md', 'lg', 'xl'];
 
 /**
  * Dashicons map:
@@ -13,6 +13,7 @@ const iconMap = {
 	sm: 'smartphone',
 	md: 'tablet',
 	lg: 'laptop',
+	xl: 'desktop',
 };
 
 

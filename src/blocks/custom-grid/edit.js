@@ -50,7 +50,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
     clone.base.flex.gapSpace = '';
 
     ['row','column'].forEach( axis => {
-      ['sm','md','lg'].forEach( bp => {
+      ['sm','md','lg','xl'].forEach( bp => {
         clone.base.flex.gap[ axis ][ bp ] = '';
       });
     });
@@ -120,6 +120,16 @@ export default function Edit({ attributes, setAttributes, clientId }){
             label={ `${ __( 'Grid Columns', 'origamiui' ) } (LG)` }
             value={ styles.base.display.grid.columns.lg }
             onChange={ ( v ) => updateStyles( `base.display.grid.columns.lg`, v ) }
+            min={ 1 }
+            max={ 12 }
+            step={ 1 }
+            __next40pxDefaultSize
+            __nextHasNoMarginBottom
+          />
+          <RangeControl
+            label={ `${ __( 'Grid Columns', 'origamiui' ) } (XL)` }
+            value={ styles.base.display.grid.columns.xl }
+            onChange={ ( v ) => updateStyles( `base.display.grid.columns.xl`, v ) }
             min={ 1 }
             max={ 12 }
             step={ 1 }

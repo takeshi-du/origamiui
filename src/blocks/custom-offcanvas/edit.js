@@ -9,6 +9,7 @@ import set from 'lodash/set';
 
 // 追加: 共通コンポーネント
 import LayoutFlexSettingsPanel from '../../components/LayoutFlexSettingsPanel';
+import ResponsiveTabs from '../../components/ResponsiveTabs';
 
 export default function Edit({ attributes, setAttributes, clientId }){
   const {
@@ -17,7 +18,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
     offcanvasBreakPoint,
     styles
   } = attributes;
-  const breakpoints = ['sm', 'md', 'lg'];
+  const breakpoints = ['sm', 'md', 'lg', 'xl'];
 
   // スタイルを変換（useMemoで最適化）
   const { inlineStyles, blockClasses } = useMemo(() => {
@@ -89,7 +90,8 @@ export default function Edit({ attributes, setAttributes, clientId }){
             options={[
               { label: 'mobile', value: 'oui_offcanvas-breakpoint-sm' },
               { label: 'tablet', value: 'oui_offcanvas-breakpoint-md' },
-              { label: 'pc', value: 'oui_offcanvas-breakpoint-lg' }
+              { label: 'laptop', value: 'oui_offcanvas-breakpoint-lg' },
+              { label: 'desktop', value: 'oui_offcanvas-breakpoint-xl' }
             ]}
             onChange={(value) => setAttributes({ offcanvasBreakPoint: value })}
             __next40pxDefaultSize={ true }
@@ -102,15 +104,12 @@ export default function Edit({ attributes, setAttributes, clientId }){
             onChange={ ( value ) => updateStyles(`base.offcanvas.bgColor`, value)}
             enableAlpha
           />
-          <TabPanel
-            tabs={tabs}
-            onSelect={() => {}} // タブ選択時の処理は不要
-          >
+          <ResponsiveTabs>
             {(tab) => (
               <>
-                <Heading style={{ marginTop: '1.5em' }}>{__(`Offcanvas Width for ${tab.title}`, 'origamiui')}</Heading>
+                <Heading style={{ marginTop: '1.5em' }}>{__(`Offcanvas Width for ${tab.name}`, 'origamiui')}</Heading>
                 <UnitControl
-                  label={__(`Offcanvas Width (${tab.title})`, 'origamiui')}
+                  label={__(`Offcanvas Width (${tab.name})`, 'origamiui')}
                   value={styles.base.offcanvas.width[tab.name]}
                   onChange={(newWidth) => updateStyles(`base.offcanvas.width.${tab.name}`, newWidth)}
                   units={[
@@ -120,7 +119,7 @@ export default function Edit({ attributes, setAttributes, clientId }){
                 />
               </>
             )}
-          </TabPanel>
+          </ResponsiveTabs>
         </PanelBody>
         <LayoutFlexSettingsPanel
           stylesRoot={ styles }

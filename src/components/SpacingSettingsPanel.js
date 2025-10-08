@@ -69,7 +69,7 @@ export default function SpacingSettingsPanel( {
 
 		[ 'margin', 'padding' ].forEach( axis => {
 			[ 'top', 'bottom', 'left', 'right' ].forEach( side => {
-				[ 'sm', 'md', 'lg' ].forEach( bp => {
+				[ 'sm', 'md', 'lg', 'xl' ].forEach( bp => {
 					set( clone, `${ basePath }.${ axis }.${side}.${ bp }`, '' );
 				} );
 			} );

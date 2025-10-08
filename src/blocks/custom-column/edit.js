@@ -117,6 +117,18 @@ export default function Edit({ attributes, setAttributes, clientId }){
             __next40pxDefaultSize
             __nextHasNoMarginBottom
           />
+          <RangeControl
+            label={ `${ __( 'Column', 'origamiui' ) } (XL)` }
+            value={ styles.base.sizing.column.xl ?? undefined }
+            onChange={ ( v ) => updateStyles( `base.sizing.column.xl`, v ) }
+            min={ 1 }
+            max={ 12 }
+            step={ 1 }
+            allowReset
+	          resetFallbackValue=""
+            __next40pxDefaultSize
+            __nextHasNoMarginBottom
+          />
           <Heading style={ { marginTop: '1.5em' } }>{ __( 'Offset Settings', 'origamiui' ) }</Heading>
           <RangeControl
             label={ `${ __( 'Offset', 'origamiui' ) } (SM)` }
@@ -146,6 +158,18 @@ export default function Edit({ attributes, setAttributes, clientId }){
             label={ `${ __( 'Offset', 'origamiui' ) } (LG)` }
             value={ styles.base.sizing.offset.lg ?? undefined }
             onChange={ ( v ) => updateStyles( `base.sizing.offset.lg`, v ) }
+            min={ 1 }
+            max={ 12 }
+            step={ 1 }
+            allowReset
+	          resetFallbackValue=""
+            __next40pxDefaultSize
+            __nextHasNoMarginBottom
+          />
+          <RangeControl
+            label={ `${ __( 'Offset', 'origamiui' ) } (XL)` }
+            value={ styles.base.sizing.offset.xl ?? undefined }
+            onChange={ ( v ) => updateStyles( `base.sizing.offset.xl`, v ) }
             min={ 1 }
             max={ 12 }
             step={ 1 }

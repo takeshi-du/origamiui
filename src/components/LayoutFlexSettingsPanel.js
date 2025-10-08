@@ -64,7 +64,7 @@ export default function LayoutFlexSettingsPanel( {
 		set( clone, `${ basePath }.gapSpace`, '' );
 
 		[ 'row', 'column' ].forEach( axis => {
-			[ 'sm', 'md', 'lg' ].forEach( bp => {
+			[ 'sm', 'md', 'lg', 'xl' ].forEach( bp => {
 				set( clone, `${ basePath }.gap.${ axis }.${ bp }`, '' );
 			} );
 		} );
