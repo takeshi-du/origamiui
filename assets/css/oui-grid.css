@@ -2398,11 +2398,6 @@
     max-width: var(--oui-container-md);
   }
 }
-@media (min-width: 992px) {
-  .oui_container-lg, .oui_container-md, .oui_container-sm, .oui_container {
-    max-width: var(--oui-container-md);
-  }
-}
 @media (min-width: 1200px) {
   .oui_container-xl, .oui_container-lg, .oui_container-md, .oui_container-sm, .oui_container {
     max-width: var(--oui-container-lg);
@@ -5347,9 +5342,14 @@ a:focus {
     grid-template-columns: repeat(var(--oui-grid-columns-md, 12), 1fr);
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .oui_grid {
     grid-template-columns: repeat(var(--oui-grid-columns-lg, 12), 1fr);
+  }
+}
+@media (min-width: 1400px) {
+  .oui_grid {
+    grid-template-columns: repeat(var(--oui-grid-columns-xl, 12), 1fr);
   }
 }
 

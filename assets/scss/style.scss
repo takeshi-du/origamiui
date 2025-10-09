@@ -34,11 +34,11 @@ $breakpoints: (
     max-width: var(--oui-container-md);
   }
 }
-@media (min-width: 992px) {
-  .container-lg, .container-md, .container-sm, .container {
-    max-width: var(--oui-container-md);
-  }
-}
+// @media (min-width: 992px) {
+//   .container-lg, .container-md, .container-sm, .container {
+//     max-width: var(--oui-container-md);
+//   }
+// }
 @media (min-width: 1200px) {
   .container-xl, .container-lg, .container-md, .container-sm, .container {
     max-width: var(--oui-container-lg);
@@ -268,8 +268,11 @@ a:focus {
   @media (min-width: 768px) {   // md
     grid-template-columns: repeat(var(--oui-grid-columns-md, 12), 1fr);
   }
-  @media (min-width: 992px) {   // lg
+  @media (min-width: 1200px) {   // lg
     grid-template-columns: repeat(var(--oui-grid-columns-lg, 12), 1fr);
+  }
+  @media (min-width: 1400px) {   // lg
+    grid-template-columns: repeat(var(--oui-grid-columns-xl, 12), 1fr);
   }
 }
 

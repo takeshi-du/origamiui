@@ -77,46 +77,56 @@ export default function Edit({ attributes, setAttributes, clientId }){
             __nextHasNoMarginBottom={ true }
           />
           <Heading style={{ marginTop: '1.5em' }}>{__(`Container Max Width`, 'origamiui')}</Heading>
-          <UnitControl
-            label={__(`Container Max Width (SM)`, 'origamiui')}
-            value={styles?.base?.container?.width?.sm || ''}
-            onChange={(newWidth) => updateStyles(`base.container.width.sm`, newWidth)}
-            units={[
-              { value: 'px', label: 'px' },
-              { value: '%', label: '%' },
-            ]}
-            __next40pxDefaultSize={ true }
-          />
-          <UnitControl
-            label={__(`Container Max Width (MD)`, 'origamiui')}
-            value={styles?.base?.container?.width?.md || ''}
-            onChange={(newWidth) => updateStyles(`base.container.width.md`, newWidth)}
-            units={[
-              { value: 'px', label: 'px' },
-              { value: '%', label: '%' },
-            ]}
-            __next40pxDefaultSize={ true }
-          />
-          <UnitControl
-            label={__(`Container Max Width (LG)`, 'origamiui')}
-            value={styles?.base?.container?.width?.lg || ''}
-            onChange={(newWidth) => updateStyles(`base.container.width.lg`, newWidth)}
-            units={[
-              { value: 'px', label: 'px' },
-              { value: '%', label: '%' },
-            ]}
-            __next40pxDefaultSize={ true }
-          />
-          <UnitControl
-            label={__(`Container Max Width (XL)`, 'origamiui')}
-            value={styles?.base?.container?.width?.xl || ''}
-            onChange={(newWidth) => updateStyles(`base.container.width.xl`, newWidth)}
-            units={[
-              { value: 'px', label: 'px' },
-              { value: '%', label: '%' },
-            ]}
-            __next40pxDefaultSize={ true }
-          />
+          <Flex wrap>
+            <FlexItem key={ 'SM' } style={ { width: '45%' } }>
+              <UnitControl
+                label={__(`SM`, 'origamiui')}
+                value={styles?.base?.container?.width?.sm || ''}
+                onChange={(newWidth) => updateStyles(`base.container.width.sm`, newWidth)}
+                units={[
+                  { value: 'px', label: 'px' },
+                  { value: '%', label: '%' },
+                ]}
+                __next40pxDefaultSize={ true }
+              />
+            </FlexItem>
+            <FlexItem key={ 'MD' } style={ { width: '45%' } }>
+              <UnitControl
+                label={__(`MD`, 'origamiui')}
+                value={styles?.base?.container?.width?.md || ''}
+                onChange={(newWidth) => updateStyles(`base.container.width.md`, newWidth)}
+                units={[
+                  { value: 'px', label: 'px' },
+                  { value: '%', label: '%' },
+                ]}
+                __next40pxDefaultSize={ true }
+              />
+            </FlexItem>
+            <FlexItem key={ 'LG' } style={ { width: '45%' } }>
+              <UnitControl
+                label={__(`LG`, 'origamiui')}
+                value={styles?.base?.container?.width?.lg || ''}
+                onChange={(newWidth) => updateStyles(`base.container.width.lg`, newWidth)}
+                units={[
+                  { value: 'px', label: 'px' },
+                  { value: '%', label: '%' },
+                ]}
+                __next40pxDefaultSize={ true }
+              />
+            </FlexItem>
+            <FlexItem key={ 'XL' } style={ { width: '45%' } }>
+              <UnitControl
+                label={__(`XL`, 'origamiui')}
+                value={styles?.base?.container?.width?.xl || ''}
+                onChange={(newWidth) => updateStyles(`base.container.width.xl`, newWidth)}
+                units={[
+                  { value: 'px', label: 'px' },
+                  { value: '%', label: '%' },
+                ]}
+                __next40pxDefaultSize={ true }
+              />
+            </FlexItem>
+          </Flex>
         </PanelBody>
         <LayoutFlexSettingsPanel
           stylesRoot={ styles }
