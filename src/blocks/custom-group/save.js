@@ -16,10 +16,19 @@ export default function save({ attributes }) {
   // ブロックの表示内容
   const TagName = tagName || 'div';
 
-  // TagNameが'a'の場合にhrefとrelを追加
+  // aタグの場合はリンク関連属性を付与
   if (TagName === 'a') {
-    blockProps.href = link.url;
-    if (link.rel) {
+    blockProps.href = link.url || '';
+
+    // target="_blank" 設定に対応
+    if (link.target) {
+      blockProps.target = '_blank';
+      // rel属性にnoopener noreferrerを追加（既存値があれば結合）
+      blockProps.rel = link.rel
+        ? `${link.rel} noopener noreferrer`
+        : 'noopener noreferrer';
+    } else if (link.rel) {
+      // 通常時はrelだけ
       blockProps.rel = link.rel;
     }
   }

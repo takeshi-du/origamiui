@@ -17,7 +17,8 @@
         "url": "",
         "rel": "",
         "mailTo": "",
-        "tell": ""
+        "tell": "",
+        "target": false
       }
     },
     "uid": {

@@ -4,7 +4,7 @@
  * Description:       Provides custom blocks for building layouts within the WordPress editor.
  * Requires at least: 6.4
  * Requires PHP:      7.2
- * Version:           1.1.0
+ * Version:           1.2.0
  * Author:            DesignupJP
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -99,7 +99,7 @@ function origamiui_custom_block_for_enqueue_css() {
     'oui-css',
     plugins_url('assets/css/oui-grid.min.css', __FILE__),
     array(),
-    '1.1.0'
+    '1.2.0'
   );
 }
 add_action('wp_enqueue_scripts', 'origamiui_custom_block_for_enqueue_css');
@@ -109,7 +109,7 @@ function origamiui_add_editor_css_to_editor() {
       'oui-editor',
       plugins_url('assets/css/oui-grid.min.css', __FILE__),
       [],
-      '1.1.0'
+      '1.2.0'
   );
 }
 add_action('enqueue_block_assets', 'origamiui_add_editor_css_to_editor');
@@ -172,7 +172,7 @@ function origamiui_print_collected_css() {
 
 	$handle = 'origamiui';
 	if ( ! wp_style_is( $handle, 'registered' ) ) {
-		wp_register_style( $handle, false, array(), null );
+		wp_register_style( $handle, false, array(), '1.2.0' );
 		wp_enqueue_style( $handle );
 	}
 

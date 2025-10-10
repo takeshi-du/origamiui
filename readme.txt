@@ -2,7 +2,7 @@
 Contributors: designupjp
 Tags: blocks, gutenberg, layout, responsive, editor
 Tested up to: 6.8
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,10 @@ Once the plugin is activated, the custom blocks will appear in the block inserte
 4. You can create any layouts.
 
 == Changelog ==
+
+= 1.2.0 =
+* Add Breakpoint.
+* Fix styles.
 
 = 1.1.0 =
 * Add Position Resset.
