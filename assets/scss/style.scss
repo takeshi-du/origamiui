@@ -2,7 +2,7 @@
 $breakpoints: (
   "sm": 0,       // smはメディアクエリなし
   "md": 768px,
-  "lg": 1200px,
+  "lg": 992px,
   "xl": 1400px
 );
 :root {
@@ -34,16 +34,16 @@ $breakpoints: (
     max-width: var(--oui-container-md);
   }
 }
-// @media (min-width: 992px) {
-//   .container-lg, .container-md, .container-sm, .container {
-//     max-width: var(--oui-container-md);
-//   }
-// }
-@media (min-width: 1200px) {
-  .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: var(--oui-container-lg);
+@media (min-width: 992px) {
+  .container-lg, .container-md, .container-sm, .container {
+    max-width: var(--oui-container-md);
   }
 }
+// @media (min-width: 1200px) {
+//   .container-xl, .container-lg, .container-md, .container-sm, .container {
+//     max-width: var(--oui-container-lg);
+//   }
+// }
 @media (min-width: 1400px) {
   .container-xl, .container-lg, .container-md, .container-sm, .container {
     max-width: var(--oui-container-xl);
@@ -268,7 +268,7 @@ a:focus {
   @media (min-width: 768px) {   // md
     grid-template-columns: repeat(var(--oui-grid-columns-md, 12), 1fr);
   }
-  @media (min-width: 1200px) {   // lg
+  @media (min-width: 992px) {   // lg
     grid-template-columns: repeat(var(--oui-grid-columns-lg, 12), 1fr);
   }
   @media (min-width: 1400px) {   // lg
