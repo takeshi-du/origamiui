@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const BREAKPOINTS = {
     SM_MAX_WIDTH: '767.98px',
-    MD_MAX_WIDTH: '1199.98px',
+    MD_MAX_WIDTH: '991.98px',
     LG_MAX_WIDTH: '1399.98px'
   };
 
