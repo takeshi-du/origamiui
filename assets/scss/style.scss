@@ -36,7 +36,7 @@ $breakpoints: (
 }
 @media (min-width: 992px) {
   .container-lg, .container-md, .container-sm, .container {
-    max-width: var(--oui-container-md);
+    max-width: var(--oui-container-lg);
   }
 }
 // @media (min-width: 1200px) {

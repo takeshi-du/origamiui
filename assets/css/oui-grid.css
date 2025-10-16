@@ -2400,7 +2400,7 @@
 }
 @media (min-width: 992px) {
   .oui_container-lg, .oui_container-md, .oui_container-sm, .oui_container {
-    max-width: var(--oui-container-md);
+    max-width: var(--oui-container-lg);
   }
 }
 @media (min-width: 1400px) {
